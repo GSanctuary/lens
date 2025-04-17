@@ -5,6 +5,7 @@
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> cf26bca9-cfef-4c08-9308-12bb29442d46
     - !<own> 5431c011-aaf1-4fd8-8d56-a89ad7ee0c41
+    - !<own> d301a8ff-9da1-44bf-ab2d-8b848dc78eac
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -2446,9 +2447,7 @@
   Enabled: true
   ScriptAsset: !<reference> 43a76931-9bde-4e06-95b3-e9128537f344
   ScriptInputsDefault:
-    editEventCallbacks: true
-    customFunctionForOnStateChanged: true
-    onStateChangedFunctionNames: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -2456,10 +2455,10 @@
       _onIcon: !<reference.SceneObject> 03a443dc-3868-4aa2-b331-9f7c1b0e7d42
       _offIcon: !<reference.SceneObject> 35694ba0-9156-4d6a-a542-0ee722b3ed5a
       _isToggledOn: true
-      editEventCallbacks: false
-      customFunctionForOnStateChanged: !<reference.ScriptComponent> 00000000-0000-0000-0000-000000000000
+      editEventCallbacks: true
+      customFunctionForOnStateChanged: !<reference.ScriptComponent> f6bfdcce-1f52-484e-8ed8-71d020c5d124
       onStateChangedFunctionNames: !<string[]>
-        []
+        - makeAPICall
   ScriptTypes:
     "":
       {}
@@ -4099,6 +4098,21 @@
     - !<own> b9db6845-acda-498a-b75d-5dd3920a1d08
   Components:
     []
+- !<SceneObject/d301a8ff-9da1-44bf-ab2d-8b848dc78eac>
+  PrefabRemaps:
+    []
+  Name: WebRequest
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f6bfdcce-1f52-484e-8ed8-71d020c5d124
 - !<SceneObject/d5c89681-8248-448c-bae3-7f86b84efc15>
   PrefabRemaps:
     []
@@ -4911,6 +4925,22 @@
     - !<own> 173c01cd-6adf-436e-b63a-cb64a99e4990
   Components:
     []
+- !<ScriptComponent/f6bfdcce-1f52-484e-8ed8-71d020c5d124>
+  PrefabRemaps:
+    []
+  Name: WebRequest
+  Enabled: true
+  ScriptAsset: !<reference> 17432446-e19b-40d8-888d-180340e96cbb
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      remoteServiceModule: !<reference.RemoteServiceModule> ee9fc462-2c16-4f15-9cbc-99bd606944a6
+  ScriptTypes:
+    "":
+      {}
 - !<RenderMeshVisual/f75d5139-e4e4-417d-b063-d6268435cd1c>
   PrefabRemaps:
     []
