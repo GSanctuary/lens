@@ -1,15 +1,20 @@
-import { Fetch } from './Fetch';
-
 @component
 export class WebRequest extends BaseScriptComponent {
   @input remoteServiceModule: RemoteServiceModule;
 
-  public makeAPICall(b: boolean) {
-    new Fetch(this.remoteServiceModule)
-      .method(RemoteServiceHttpRequest.HttpRequestMethod.Get)
-      .url('https://catfact.ninja/fact')
-      .body({})
-      .perform(this.handler);
+  async onAwake() {
+    let request = new Request(
+      'https://0bb4-205-175-97-141.ngrok-free.app/test',
+      {
+        method: 'GET',
+      }
+    );
+    let response = await this.remoteServiceModule.fetch(request);
+    print(response.status);
+    if (response.status == 200) {
+      let text = await response.text();
+      print(`Response: ${text}`);
+    }
   }
 
   handler: (response: RemoteServiceHttpResponse) => void = (response) => {
