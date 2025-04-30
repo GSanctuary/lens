@@ -6,6 +6,7 @@
     - !<own> cf26bca9-cfef-4c08-9308-12bb29442d46
     - !<own> 5431c011-aaf1-4fd8-8d56-a89ad7ee0c41
     - !<own> d301a8ff-9da1-44bf-ab2d-8b848dc78eac
+    - !<own> 7ba451b1-782e-4ec6-8c7a-124b5dbc6a51
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -298,6 +299,23 @@
   BodySettingValue: 1.000000
   Damping: 0.000000
   AngularDamping: 0.000000
+- !<ScriptComponent/04b95da4-3d37-4a39-bb47-0bc88e603266>
+  PrefabRemaps:
+    []
+  Name: PersistentStorageManager
+  Enabled: true
+  ScriptAsset: !<reference> 71a0609d-0fe2-48b1-8ff9-e9a3863b3a0a
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      keys: !<string[]>
+        - testKey
+  ScriptTypes:
+    "":
+      {}
 - !<ScreenTransform/0567012c-9e7e-4958-82dc-69f276c8822c>
   PrefabRemaps:
     []
@@ -2295,6 +2313,21 @@
     - !<own> 74e3a7ce-a1c1-477c-8012-0dc05abffa64
   Components:
     []
+- !<SceneObject/7ba451b1-782e-4ec6-8c7a-124b5dbc6a51>
+  PrefabRemaps:
+    []
+  Name: Persistent Storage Manager
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 04b95da4-3d37-4a39-bb47-0bc88e603266
 - !<SceneObject/7cc037a9-002b-4dea-89de-d02a671f4317>
   PrefabRemaps:
     []
@@ -2447,18 +2480,18 @@
   Enabled: true
   ScriptAsset: !<reference> 43a76931-9bde-4e06-95b3-e9128537f344
   ScriptInputsDefault:
-    {}
+    _isToggledOn: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       _onIcon: !<reference.SceneObject> 03a443dc-3868-4aa2-b331-9f7c1b0e7d42
       _offIcon: !<reference.SceneObject> 35694ba0-9156-4d6a-a542-0ee722b3ed5a
-      _isToggledOn: true
+      _isToggledOn: false
       editEventCallbacks: true
-      customFunctionForOnStateChanged: !<reference.ScriptComponent> f6bfdcce-1f52-484e-8ed8-71d020c5d124
+      customFunctionForOnStateChanged: !<reference.ScriptComponent> 04b95da4-3d37-4a39-bb47-0bc88e603266
       onStateChangedFunctionNames: !<string[]>
-        - makeAPICall
+        - testKeySetter
   ScriptTypes:
     "":
       {}
