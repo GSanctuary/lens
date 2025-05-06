@@ -1,5 +1,10 @@
+import { EventEmitter } from "../EventEmitter";
+
 @component
 export class SpeechToText extends BaseScriptComponent {
+
+  @input eventEmitter: EventEmitter;
+
   private readonly voiceMlModule =
     require('LensStudio:VoiceMLModule') as VoiceMLModule;
 
@@ -24,6 +29,7 @@ export class SpeechToText extends BaseScriptComponent {
     this.voiceMlModule.onListeningUpdate.add((event) => {
       if (event.transcription) {
         print(event.transcription);
+        this.eventEmitter.emit(Event.VoiceInput, event.transcription);
       }
     });
   }

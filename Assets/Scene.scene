@@ -7,6 +7,7 @@
     - !<own> 5431c011-aaf1-4fd8-8d56-a89ad7ee0c41
     - !<own> d301a8ff-9da1-44bf-ab2d-8b848dc78eac
     - !<own> 7ba451b1-782e-4ec6-8c7a-124b5dbc6a51
+    - !<own> 9e6c8f8a-f2bb-4935-8324-0db90ffab78d
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -699,6 +700,22 @@
     index-2: !<reference> 4d7b04b0-c767-41af-b1db-b303e215ccc4
     thumb-3_end_end_end_end: !<reference> e6347d85-9e56-4bbd-988e-3800d94116bd
     wrist_to_pinky: !<reference> d95e72f8-6a82-45e5-bf18-e77c12b69533
+- !<ScriptComponent/1ce86208-d90e-4736-967a-dcb818ffb8d4>
+  PrefabRemaps:
+    []
+  Name: SpeechController
+  Enabled: true
+  ScriptAsset: !<reference> f5f2dee9-61bb-40f6-be7e-ca95d5e9067f
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/1f1b1450-f5d9-488c-9efd-88ad917aeb2b>
   PrefabRemaps:
     []
@@ -2989,6 +3006,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/9e6c8f8a-f2bb-4935-8324-0db90ffab78d>
+  PrefabRemaps:
+    []
+  Name: Speech Controller
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 1ce86208-d90e-4736-967a-dcb818ffb8d4
 - !<SceneObject/9f6bc2c7-0aa9-4685-97fe-a3b4c3202344>
   PrefabRemaps:
     []

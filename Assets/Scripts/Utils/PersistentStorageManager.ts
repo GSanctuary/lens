@@ -17,6 +17,10 @@ export class PersistentStorageManager extends BaseScriptComponent {
     this.loadKeys();
   }
 
+  onDestroy() {
+    PersistentStorageManager.instance = null;
+  }
+
   private loadKeys = () => {
     for (const key of this.keys) {
       if (this.persistentStorage.has(key)) {
@@ -43,9 +47,5 @@ export class PersistentStorageManager extends BaseScriptComponent {
     this.localStorage[key] = value;
     this.persistentStorage.putString(key, value);
     print(`Set ${key} to ${value}`);
-  };
-
-  testKeySetter = (_: boolean) => {
-    this.set('testKey', 'testValue');
   };
 }
