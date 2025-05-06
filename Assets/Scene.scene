@@ -707,12 +707,12 @@
   Enabled: true
   ScriptAsset: !<reference> f5f2dee9-61bb-40f6-be7e-ca95d5e9067f
   ScriptInputsDefault:
-    {}
+    eventEmitter: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      {}
+      eventEmitter: !<MappingBased.EventEmitter> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     "":
       {}

@@ -1,4 +1,5 @@
 import { EventEmitter } from "../EventEmitter";
+import {EventType} from "../types/Event";
 
 @component
 export class SpeechToText extends BaseScriptComponent {
@@ -28,8 +29,7 @@ export class SpeechToText extends BaseScriptComponent {
     });
     this.voiceMlModule.onListeningUpdate.add((event) => {
       if (event.transcription) {
-        print(event.transcription);
-        this.eventEmitter.emit(Event.VoiceInput, event.transcription);
+        this.eventEmitter.emit(EventType.VoiceInput, event.transcription);
       }
     });
   }

@@ -1,9 +1,10 @@
+import { EventType } from "./types/Event";
 import { Widget } from "./Widget";
 
 @component
 export class EventEmitter extends BaseScriptComponent {
     private static instance: EventEmitter;
-    private eventListeners: Record<Event, Function[]>;
+    private eventListeners: Record<EventType, Function[]>;
     private widgetRegistry: Record<string, Widget> = {};
     
     onAwake() {
@@ -12,14 +13,20 @@ export class EventEmitter extends BaseScriptComponent {
         return;
         }
         EventEmitter.instance = this;
+        this.eventListeners = {
+            [EventType.VoiceInput]: [],
+            [EventType.WidgetOpen]: [],
+            [EventType.WidgetClose]: []
+        };
     }
     
     onDestroy() {
         EventEmitter.instance = null;
     }
     
-    emit(eventName: Event, ...args: any[]) {
+    emit(eventName: EventType, ...args: any[]) {
         const listeners = this.eventListeners[eventName];
+        print(`Emitting event: ${eventName}`);
         if (listeners) {
             for (const listener of listeners) {
                 listener(...args);
@@ -30,15 +37,17 @@ export class EventEmitter extends BaseScriptComponent {
     registerWidget(widget: Widget) {
         if (!this.widgetRegistry[widget.widgetName]) {
             this.widgetRegistry[widget.widgetName] = widget;
+            print(`Widget ${widget.widgetName} registered.`);
         } else {
             print(`Widget ${widget.widgetName} is already registered.`);
         }   
     }
     
-    on(eventName: string, callback: Function) {
+    on(eventName: EventType, callback: Function) {
         if (!this.eventListeners[eventName]) {
             this.eventListeners[eventName] = [];
         }
         this.eventListeners[eventName].push(callback);
+        print(`Event listener registered for event: ${eventName}`);
     }
 }

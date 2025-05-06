@@ -1,4 +1,5 @@
 import { EventEmitter } from "./EventEmitter"
+import { EventType } from "./types/Event";
 import { PersistentStorageManager } from "./Utils/PersistentStorageManager";
 
 @component
@@ -13,17 +14,11 @@ export class Widget extends BaseScriptComponent{
 
     onStart() {
         this.eventEmitter.registerWidget(this);
-        print(`Widget ${this.widgetName} registered.`);
-
-        this.hydrate();
+        this.registerEventHandlers();
     }
 
     protected registerEventHandlers() {
-        this.eventEmitter.on(Event.VoiceInput, (input: string) => {
-            print(`Voice input received: ${input}`);
-            this.handleVoiceInput(input);
-        }
-        );
+        this.eventEmitter.on(EventType.VoiceInput, this.handleVoiceInput);
     }
     
     protected hydrate() {
