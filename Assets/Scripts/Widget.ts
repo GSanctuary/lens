@@ -1,6 +1,6 @@
 import { EventEmitter } from "./EventEmitter"
 import { EventType } from "./types/Event";
-import { PersistentStorageManager } from "./Utils/PersistentStorageManager";
+import { PersistentStorageManager } from "./utils/PersistentStorageManager";
 
 @component
 export class Widget extends BaseScriptComponent{

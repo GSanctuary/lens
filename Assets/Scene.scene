@@ -8,6 +8,8 @@
     - !<own> d301a8ff-9da1-44bf-ab2d-8b848dc78eac
     - !<own> 7ba451b1-782e-4ec6-8c7a-124b5dbc6a51
     - !<own> 9e6c8f8a-f2bb-4935-8324-0db90ffab78d
+    - !<own> 14270c61-2ebe-4937-91f6-1e654df76d7d
+    - !<own> f31e3aca-d4ad-42b2-bb7d-e8af1aab0f62
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -516,6 +518,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/14270c61-2ebe-4937-91f6-1e654df76d7d>
+  PrefabRemaps:
+    []
+  Name: Event Emitter
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 646bd8db-048b-4311-92c7-20e4a70e8926
 - !<SceneObject/14d698ef-8daa-42a8-b538-8a8706c17fc5>
   PrefabRemaps:
     []
@@ -707,12 +724,12 @@
   Enabled: true
   ScriptAsset: !<reference> f5f2dee9-61bb-40f6-be7e-ca95d5e9067f
   ScriptInputsDefault:
-    eventEmitter: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
-      eventEmitter: !<MappingBased.EventEmitter> 00000000-0000-0000-0000-000000000000
+      eventEmitter: !<MappingBased.EventEmitter> 646bd8db-048b-4311-92c7-20e4a70e8926
   ScriptTypes:
     "":
       {}
@@ -1213,7 +1230,7 @@
     []
   Name: Canvas
   Enabled: true
-  UnitType: World
+  UnitType: Pixels
   SortingType: Hierarchy
   WorldSpaceRect:
     left: -1.000000
@@ -1993,6 +2010,22 @@
       acceptableXDirections: !<float> 3.000000
       acceptableYDirections: !<float> 3.000000
       acceptableZDirections: !<float> 3.000000
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/646bd8db-048b-4311-92c7-20e4a70e8926>
+  PrefabRemaps:
+    []
+  Name: EventEmitter
+  Enabled: true
+  ScriptAsset: !<reference> bbef6c14-1110-4c4e-b333-b7fd3723a5e2
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
   ScriptTypes:
     "":
       {}
@@ -3553,6 +3586,24 @@
   Components:
     - !<own> e0c0fc20-172c-4b11-8344-9a1446371cb3
     - !<own> f1510bdd-ab13-45c4-905e-9fad6a7cfdfe
+- !<ScriptComponent/b4d35e35-4e87-41fc-8eb3-8827ddeb58d4>
+  PrefabRemaps:
+    []
+  Name: Widget
+  Enabled: true
+  ScriptAsset: !<reference> a6750611-e580-416c-b294-c858c69fb5e6
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      widgetName: Test Widget
+      eventEmitter: !<MappingBased.EventEmitter> 646bd8db-048b-4311-92c7-20e4a70e8926
+      persistentStorage: !<MappingBased.PersistentStorageManager> 04b95da4-3d37-4a39-bb47-0bc88e603266
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/b587be77-c79a-4b38-b1f0-3253fe66fa19>
   PrefabRemaps:
     []
@@ -4098,7 +4149,7 @@
   PrefabRemaps:
     []
   Name: ContainerFrameUI
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 55.000000, y: -5.000000, z: -65.000000}
@@ -4916,6 +4967,21 @@
     CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<SceneObject/f31e3aca-d4ad-42b2-bb7d-e8af1aab0f62>
+  PrefabRemaps:
+    []
+  Name: Test Widget
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b4d35e35-4e87-41fc-8eb3-8827ddeb58d4
 - !<SceneObject/f4fc35a3-7c67-4709-ad29-151c55f9a44f>
   PrefabRemaps:
     []

@@ -4,7 +4,7 @@ export class WebRequest extends BaseScriptComponent {
 
   async onAwake() {
     let request = new Request(
-      'https://0bb4-205-175-97-141.ngrok-free.app/test',
+      'https://5ae2-205-175-97-141.ngrok-free.app/test',
       {
         method: 'GET',
       }

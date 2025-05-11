@@ -21,6 +21,10 @@ export class PersistentStorageManager extends BaseScriptComponent {
     PersistentStorageManager.instance = null;
   }
 
+  static getInstance(): PersistentStorageManager {
+    return this.instance;
+  }
+
   private loadKeys = () => {
     for (const key of this.keys) {
       if (this.persistentStorage.has(key)) {
@@ -34,7 +38,7 @@ export class PersistentStorageManager extends BaseScriptComponent {
     }
   };
 
-  get = (key: string): string => {
+  get = (key: string): string | null => {
     if (this.localStorage[key] !== undefined) {
       return this.localStorage[key];
     } else {
@@ -45,6 +49,7 @@ export class PersistentStorageManager extends BaseScriptComponent {
 
   set = (key: string, value: string) => {
     this.localStorage[key] = value;
+    print(typeof key);
     this.persistentStorage.putString(key, value);
     print(`Set ${key} to ${value}`);
   };
