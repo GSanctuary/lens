@@ -7,33 +7,42 @@ export class EventEmitter extends BaseScriptComponent {
     private eventListeners: Record<EventType, Function[]>;
     private widgetRegistry: Record<string, Widget> = {};
 
-    private isActive: boolean = false; 
-    
+    private isActive: boolean = false;
+
     onAwake() {
         if (EventEmitter.instance) {
-        this.destroy();
-        return;
+            this.destroy();
+            return;
         }
         EventEmitter.instance = this;
         this.eventListeners = {
             [EventType.VoiceInput]: [],
             [EventType.WidgetOpen]: [],
-            [EventType.WidgetClose]: []
+            [EventType.WidgetClose]: [],
         };
     }
-    
+
     onDestroy() {
         EventEmitter.instance = null;
+    }
+
+    static getInstance(): EventEmitter {
+        if (!EventEmitter.instance) {
+            throw new Error("EventEmitter instance not initialized");
+        }
+        return EventEmitter.instance;
     }
 
     activate() {
         this.isActive = true;
         print("EventEmitter activated.");
     }
-    
+
     emit(eventName: EventType, ...args: any[]) {
         if (!this.isActive) {
-            print(`EventEmitter is not active. Event ${eventName} not emitted.`);
+            print(
+                `EventEmitter is not active. Event ${eventName} not emitted.`
+            );
             return;
         }
         const listeners = this.eventListeners[eventName];
@@ -51,9 +60,9 @@ export class EventEmitter extends BaseScriptComponent {
             print(`Widget ${widget.widgetName} registered.`);
         } else {
             print(`Widget ${widget.widgetName} is already registered.`);
-        }   
+        }
     }
-    
+
     on(eventName: EventType, callback: Function) {
         if (!this.eventListeners[eventName]) {
             this.eventListeners[eventName] = [];

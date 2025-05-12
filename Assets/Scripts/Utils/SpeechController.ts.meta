@@ -36,4 +36,4 @@
     -
       {}
   InputLines:
-    - // @input EventEmitter eventEmitter
+    []

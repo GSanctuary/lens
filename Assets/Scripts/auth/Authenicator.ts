@@ -4,7 +4,6 @@ import { PersistentStorageManager } from "../utils/PersistentStorageManager";
 
 @component
 export class Authenticator extends BaseScriptComponent {
-
     @input
     authKey: string;
 
@@ -23,12 +22,13 @@ export class Authenticator extends BaseScriptComponent {
                 store.set(this.authKey, newAPIKey);
                 print(`Generated API Key: ${newAPIKey}`);
             }
+            SanctuaryAPI.getInstance().setAPIKey(existingAPIKey);
             this.eventEmitter.activate();
         });
     }
 
     private async generateAPIKey(): Promise<string> {
         const sanctuaryAPI = SanctuaryAPI.getInstance();
-        return await sanctuaryAPI.getCredentials()
+        return await sanctuaryAPI.getCredentials();
     }
 }
