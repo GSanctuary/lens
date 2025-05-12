@@ -10,6 +10,7 @@
     - !<own> 9e6c8f8a-f2bb-4935-8324-0db90ffab78d
     - !<own> 14270c61-2ebe-4937-91f6-1e654df76d7d
     - !<own> f31e3aca-d4ad-42b2-bb7d-e8af1aab0f62
+    - !<own> 039aa599-41f8-4470-a0fb-a2f2d98a5f1b
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -247,6 +248,21 @@
   Components:
     - !<own> 8f600721-6836-4af1-9d0d-61751c96c92e
     - !<own> de0d91fa-aa71-42aa-a056-97a7278a1c2b
+- !<SceneObject/039aa599-41f8-4470-a0fb-a2f2d98a5f1b>
+  PrefabRemaps:
+    []
+  Name: Authenticator
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 4aec22d2-7eb2-4f6a-8389-6d9b96909d08
 - !<SceneObject/03a443dc-3868-4aa2-b331-9f7c1b0e7d42>
   PrefabRemaps:
     []
@@ -316,6 +332,7 @@
     "":
       keys: !<string[]>
         - testKey
+        - apiKey
   ScriptTypes:
     "":
       {}
@@ -1534,6 +1551,22 @@
   ForceCompound: false
   Intangible: false
   ShowCollider: false
+- !<ScriptComponent/4aec22d2-7eb2-4f6a-8389-6d9b96909d08>
+  PrefabRemaps:
+    []
+  Name: Authenicator
+  Enabled: true
+  ScriptAsset: !<reference> a1f214f1-c883-412a-ba03-790dfb6d1086
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      authKey: apiKey
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/4ccdd17d-af3d-4324-ae93-646bdd50b34b>
   PrefabRemaps:
     []
