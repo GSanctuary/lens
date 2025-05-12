@@ -6,6 +6,8 @@ export class EventEmitter extends BaseScriptComponent {
     private static instance: EventEmitter;
     private eventListeners: Record<EventType, Function[]>;
     private widgetRegistry: Record<string, Widget> = {};
+
+    private isActive: boolean = false; 
     
     onAwake() {
         if (EventEmitter.instance) {
@@ -23,8 +25,17 @@ export class EventEmitter extends BaseScriptComponent {
     onDestroy() {
         EventEmitter.instance = null;
     }
+
+    activate() {
+        this.isActive = true;
+        print("EventEmitter activated.");
+    }
     
     emit(eventName: EventType, ...args: any[]) {
+        if (!this.isActive) {
+            print(`EventEmitter is not active. Event ${eventName} not emitted.`);
+            return;
+        }
         const listeners = this.eventListeners[eventName];
         print(`Emitting event: ${eventName}`);
         if (listeners) {

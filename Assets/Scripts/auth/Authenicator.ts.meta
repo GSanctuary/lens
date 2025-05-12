@@ -1,0 +1,42 @@
+- !<AssetImportMetadata/f914ed78-c2bf-4999-9c1f-f10eaf757c0b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> a1f214f1-c883-412a-ba03-790dfb6d1086
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> a1f214f1-c883-412a-ba03-790dfb6d1086
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1c528d15-0d2f-47eb-a9d7-40d8a52b920a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1c528d15-0d2f-47eb-a9d7-40d8a52b920a>
+  SvgIcon: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 70068c82-aadb-467e-b54e-4e23016bed16
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    authKey: false
+    eventEmitter: false
+  ScriptTypesHidden:
+    {}
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - authKey: ""
+      eventEmitter: !<MappingBased.EventEmitter> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input string authKey
+    - // @input EventEmitter eventEmitter
