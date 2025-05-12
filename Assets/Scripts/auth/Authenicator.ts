@@ -1,3 +1,4 @@
+import { EventEmitter } from "../EventEmitter";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { PersistentStorageManager } from "../utils/PersistentStorageManager";
 
@@ -6,6 +7,9 @@ export class Authenticator extends BaseScriptComponent {
 
     @input
     authKey: string;
+
+    @input
+    eventEmitter: EventEmitter;
 
     onAwake() {
         this.createEvent("OnStartEvent").bind(async () => {
@@ -18,9 +22,8 @@ export class Authenticator extends BaseScriptComponent {
                 const newAPIKey = await this.generateAPIKey();
                 store.set(this.authKey, newAPIKey);
                 print(`Generated API Key: ${newAPIKey}`);
-
-                // TODO: Tell event emitter to start listening
             }
+            this.eventEmitter.activate();
         });
     }
 

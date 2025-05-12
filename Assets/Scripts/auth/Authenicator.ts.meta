@@ -27,13 +27,16 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     authKey: false
+    eventEmitter: false
   ScriptTypesHidden:
     {}
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - authKey: ""
+      eventEmitter: !<MappingBased.EventEmitter> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input string authKey
+    - // @input EventEmitter eventEmitter
