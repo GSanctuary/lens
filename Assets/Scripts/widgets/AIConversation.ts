@@ -11,9 +11,6 @@ export class AIConversation extends Widget {
     textPrefab: ObjectPrefab;
     @input
     scrollView: SceneObject;
-    @input
-    renderConversation: RenderConversation;
-
     @input newConversationButton: PinchButton;
 
     private conversations: Conversation[] = [];
