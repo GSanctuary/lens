@@ -66,7 +66,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.baseUrl}/ai/conversations`, {
+        const request = new Request(`${this.baseUrl}/ai/conversation`, {
             method: "POST",
             body: JSON.stringify({ title }),
             headers: this.headers,

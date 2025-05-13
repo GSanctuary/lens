@@ -1,7 +1,9 @@
+import { PinchButton } from "../../SpectaclesInteractionKit/Components/UI/PinchButton/PinchButton";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Conversation } from "../types/Sanctuary";
 import { Widget } from "../Widget";
 import { AIConversationItem } from "./AIConversationItem";
+import { RenderConversation } from "./RenderConversation";
 
 @component
 export class AIConversation extends Widget {
@@ -9,6 +11,10 @@ export class AIConversation extends Widget {
     textPrefab: ObjectPrefab;
     @input
     scrollView: SceneObject;
+    @input
+    renderConversation: RenderConversation;
+
+    @input newConversationButton: PinchButton;
 
     private conversations: Conversation[] = [];
 
@@ -20,37 +26,55 @@ export class AIConversation extends Widget {
 
     async onStart(): Promise<void> {
         super.onStart();
+        this.newConversationButton.onButtonPinched.add(this.newConversation);
+        await this.hydrateAndPopulate();
+    }
+
+    newConversation = (): void => {
+        const conversationTitle = `Conversation ${
+            this.conversations.length + 1
+        }`;
+        SanctuaryAPI.getInstance()
+            .newConversation(conversationTitle)
+            .then((conversation) => {
+                print(`New conversation created: ${conversation.title}`);
+                this.conversations = [conversation, ...this.conversations];
+                this.populateConversations();
+            })
+            .catch((error) => {
+                print(`Error creating new conversation: ${error}`);
+            });
+    };
+
+    private async hydrateAndPopulate(): Promise<void> {
         await this.hydrate();
         this.populateConversations();
     }
 
     private populateConversations(): void {
-        const yStart = 0;
-        const yOffset = -5.4;
-
-        for (let i = 0; i < this.conversations.length; i++) {
-            print(`Conversation ${i}: ${this.conversations[i].title}`);
-            const conversation = this.conversations[i];
-            const item = this.textPrefab.instantiate(this.scrollView);
-            const screenTransform = item.getComponent(
-                "Component.ScreenTransform"
-            );
-            const aiConversationItem = item.getComponent<AIConversationItem>(
+        print("Populating conversations");
+        print(this.conversations.length);
+        for (let i = 0; i < this.scrollView.getChildrenCount(); i++) {
+            const child = this.scrollView.getChild(i);
+            child.enabled = true;
+            if (i >= this.conversations.length) {
+                child.enabled = false;
+                continue;
+            }
+            const aiConversationItem = child.getComponent(
                 AIConversationItem.getTypeName()
             );
-            aiConversationItem.titleText.text = conversation.title;
-            // Format the date to a more readable format
+            aiConversationItem.titleText.text = this.conversations[i].title;
             aiConversationItem.dateText.text =
-                conversation.createdAt.toDateString();
-            screenTransform.offsets.setCenter(
-                new vec2(0, yStart + yOffset * i)
-            );
-            item.enabled = true;
+                this.conversations[i].createdAt.toString();
         }
     }
 
     protected async hydrate(): Promise<void> {
         this.conversations =
             await SanctuaryAPI.getInstance().getConversations();
+        this.conversations = this.conversations.sort(
+            (a, b) => -(a.createdAt.getTime() - b.createdAt.getTime())
+        );
     }
 }
