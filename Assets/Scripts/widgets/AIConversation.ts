@@ -3,7 +3,6 @@ import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Conversation } from "../types/Sanctuary";
 import { Widget } from "../Widget";
 import { AIConversationItem } from "./AIConversationItem";
-import { RenderConversation } from "./RenderConversation";
 
 @component
 export class AIConversation extends Widget {

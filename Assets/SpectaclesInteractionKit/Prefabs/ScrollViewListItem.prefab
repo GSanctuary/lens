@@ -16,7 +16,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: Details if they exist
+  Text: Loading...
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -142,7 +142,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: Jaz Powderman
+  Text: Loading...
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -210,7 +210,7 @@
 - !<SceneObject/4e6119a4-8585-4e43-bdb3-420a9a2e4768>
   PrefabRemaps:
     []
-  Name: Title
+  Name: ContactDetails
   Enabled: true
   Layers: 1
   LocalTransform:
@@ -223,6 +223,23 @@
   Components:
     - !<own> 77f436c1-5f00-456f-b522-64ebbd3ace98
     - !<own> 01ebc5aa-f1c1-4c39-bbac-ecd920871165
+- !<ScriptComponent/51928aec-3ef3-47a5-b948-75a30528716e>
+  PrefabRemaps:
+    []
+  Name: AIConversationItem
+  Enabled: true
+  ScriptAsset: !<reference> 9449fef7-c2bc-40b5-8cb6-3d1ef95acfe6
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      titleText: !<reference.Text> 351c8c0c-435c-4413-9271-b445f6190e17
+      dateText: !<reference.Text> 01ebc5aa-f1c1-4c39-bbac-ecd920871165
+  ScriptTypes:
+    "":
+      {}
 - !<Image/696e11fa-f32d-4f8e-8705-e6da1ca31859>
   PrefabRemaps:
     []
@@ -269,7 +286,7 @@
   RawMode: true
   ForceBasic: true
   Anchor:
-    left: -0.500000
+    left: -0.825000
     bottom: 0.200000
     right: 0.665100
     top: 0.200000
@@ -302,7 +319,7 @@
   RawMode: true
   ForceBasic: true
   Anchor:
-    left: -0.500000
+    left: -0.825000
     bottom: -0.500000
     right: 0.665100
     top: -0.500000
@@ -348,7 +365,7 @@
   PrefabRemaps:
     []
   Name: ScrollViewListItem
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.300000, z: 0.000000}
@@ -361,28 +378,11 @@
     - !<own> 1bd34cdf-13f5-4f74-b3fb-4b165248f2e3
   Components:
     - !<own> 118e2ada-7ede-40e4-9a94-a8e152aa5b70
-    - !<own> e902eff9-e0c7-4b7c-a80a-124d5e629671
-- !<ScriptComponent/e902eff9-e0c7-4b7c-a80a-124d5e629671>
-  PrefabRemaps:
-    []
-  Name: AIConversationItem
-  Enabled: true
-  ScriptAsset: !<reference> 9449fef7-c2bc-40b5-8cb6-3d1ef95acfe6
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      titleText: !<reference.Text> 351c8c0c-435c-4413-9271-b445f6190e17
-      dateText: !<reference.Text> 01ebc5aa-f1c1-4c39-bbac-ecd920871165
-  ScriptTypes:
-    "":
-      {}
+    - !<own> 51928aec-3ef3-47a5-b948-75a30528716e
 - !<SceneObject/f08e435f-bec9-4198-81d2-0da88a1f73fd>
   PrefabRemaps:
     []
-  Name: Title
+  Name: ContactName
   Enabled: true
   Layers: 1
   LocalTransform:
