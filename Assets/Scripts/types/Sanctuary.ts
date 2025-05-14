@@ -17,7 +17,6 @@ export type Conversation = {
 export const convertRawConversationToConversation = (
     rawConversation: RawConversation
 ): Conversation => {
-    const date = new Date(rawConversation.createdAt);
     return {
         ...rawConversation,
         createdAt: new Date(rawConversation.createdAt),
