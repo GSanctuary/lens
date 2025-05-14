@@ -1,6 +1,8 @@
 import { PinchButton } from "../../SpectaclesInteractionKit/Components/UI/PinchButton/PinchButton";
+import { EventEmitter } from "../EventEmitter";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Conversation } from "../types/Sanctuary";
+import { WidgetKind } from "../types/WidgetKind";
 import { Widget } from "../Widget";
 import { AIConversationItem } from "./AIConversationItem";
 
@@ -63,8 +65,20 @@ export class AIConversation extends Widget {
             aiConversationItem.titleText.text = this.conversations[i].title;
             aiConversationItem.dateText.text =
                 this.conversations[i].createdAt.toLocaleString("en-US");
+            aiConversationItem.addButtonCallback(
+                this.handleButtonConversationClick(this.conversations[i])
+            );
         }
     }
+
+    private handleButtonConversationClick = (conversation: Conversation) => {
+        return () => {
+            print(`Conversation clicked: ${conversation.title}`);
+            EventEmitter.getInstance().openWidget(WidgetKind.AI, {
+                ...conversation,
+            });
+        };
+    };
 
     protected async hydrate(): Promise<void> {
         this.conversations =

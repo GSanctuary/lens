@@ -1,45 +1,45 @@
-- !<AssetImportMetadata/452e92a7-ceba-49de-bfac-ca8f22637b8f>
+- !<AssetImportMetadata/609f02d6-2513-421a-ade8-dc5ab5a08c49>
   ImportedAssetIds:
-    TypeScriptAsset: !<reference> 9449fef7-c2bc-40b5-8cb6-3d1ef95acfe6
+    TypeScriptAsset: !<reference> f4527795-011e-4260-9a51-651b39e7a2e3
   ImporterName: TypeScriptAssetImporter
-  PrimaryAsset: !<reference> 9449fef7-c2bc-40b5-8cb6-3d1ef95acfe6
+  PrimaryAsset: !<reference> f4527795-011e-4260-9a51-651b39e7a2e3
   PackageType: NotAPackage
   PackagePolicy: CannotBeUnpacked
   ExtraData:
     {}
   AssetDataMap:
-    TypeScriptAsset: !<own> 561c6f49-d760-467f-8780-ad9290526fad
+    TypeScriptAsset: !<own> ead202ab-a77d-492c-8736-ecae2753a407
   DependentFiles:
     []
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<TypeScriptAssetData/561c6f49-d760-467f-8780-ad9290526fad>
+- !<TypeScriptAssetData/ead202ab-a77d-492c-8736-ecae2753a407>
   SvgIcon: ""
   Description: ""
   InternalVersion: 0
   VersionMajor: 0
   VersionMinor: 0
   VersionPatch: 0
-  ComponentUid: 803dba23-2f67-4ad7-bef8-62f7343300e3
+  ComponentUid: fd5a4ae4-c50c-41f0-829a-b71c8947fa23
   ExportUid: 00000000-0000-0000-0000-000000000000
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
     dateText: false
-    pinchButton: false
+    kindString: false
     titleText: false
   ScriptTypesHidden:
     {}
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
-    - titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+    - kindString: ""
+      titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       dateText: !<reference.Text> 00000000-0000-0000-0000-000000000000
-      pinchButton: !<MappingBased.PinchButton> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
+    - // @input string kindString
     - // @input Component.Text titleText
     - // @input Component.Text dateText
-    - // @input PinchButton pinchButton

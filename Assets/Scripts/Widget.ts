@@ -36,7 +36,7 @@ export class Widget extends BaseScriptComponent {
         );
     }
 
-    open = (...args: any[]) => {
+    open = (args: Record<string, any>) => {
         print(`Opening widget: ${this.kind}`);
         let object = global.scene.createSceneObject("AI Widget Instance");
         object = this.getSceneObject().copySceneObject(this.getSceneObject());

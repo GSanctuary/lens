@@ -73,10 +73,10 @@ export class EventEmitter extends BaseScriptComponent {
         }
     }
 
-    openWidget = (widgetKind: WidgetKind, ...args: any[]) => {
+    openWidget = (widgetKind: WidgetKind, args: Record<string, any>) => {
         const widget = this.widgetRegistry[widgetKind];
         if (widget) {
-            widget.open(...args);
+            widget.open(args);
         } else {
             print(`Widget ${widgetKind} not found.`);
         }
