@@ -14,8 +14,7 @@ export class AIConversation extends Widget {
 
     private conversations: Conversation[] = [];
 
-    onAwake(): void {
-        super.onAwake();
+    override onAwake(): void {
         print("AIConversation awake");
         this.createEvent("OnStartEvent").bind(() => this.onStart());
     }
@@ -27,9 +26,10 @@ export class AIConversation extends Widget {
     }
 
     newConversation = (): void => {
-        const conversationTitle = `Conversation ${
-            this.conversations.length + 1
-        }`;
+        const maxId = this.conversations.reduce((acc, curr) =>
+            curr.id > acc.id ? curr : acc
+        ).id;
+        const conversationTitle = `Conversation ${maxId + 1}`;
         SanctuaryAPI.getInstance()
             .newConversation(conversationTitle)
             .then((conversation) => {
@@ -62,7 +62,7 @@ export class AIConversation extends Widget {
             );
             aiConversationItem.titleText.text = this.conversations[i].title;
             aiConversationItem.dateText.text =
-                this.conversations[i].createdAt.toString();
+                this.conversations[i].createdAt.toLocaleString("en-US");
         }
     }
 

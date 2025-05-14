@@ -26,23 +26,23 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    kindString: false
     newConversationButton: false
     scrollView: false
     textPrefab: false
-    widgetName: false
   ScriptTypesHidden:
     {}
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
-    - widgetName: ""
-      textPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+    - textPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       scrollView: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       newConversationButton: !<MappingBased.PinchButton> 00000000-0000-0000-0000-000000000000
+      kindString: ""
   ScriptTypes:
     -
       {}
   InputLines:
-    - // @input string widgetName
+    - // @input string kindString
     - // @input Asset.ObjectPrefab textPrefab
     - // @input SceneObject scrollView
     - // @input PinchButton newConversationButton
