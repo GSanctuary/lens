@@ -1,3 +1,4 @@
+import { Conversation } from "../types/Sanctuary";
 import { Widget } from "../Widget";
 
 @component
@@ -6,7 +7,9 @@ export class AIView extends Widget {
     titleText: Text;
 
     @input
-    dateText: Text;
+    inputText: Text;
+
+    private conversation: Conversation;
 
     override open = (args: Record<string, any>) => {
         const { title } = args;
@@ -15,5 +18,11 @@ export class AIView extends Widget {
             return;
         }
         this.titleText.text = title;
+        this.conversation = args as Conversation;
+    };
+
+    protected override handleVoiceInput = (input: string) => {
+        print(`Handling voice input in AIView: ${input}`);
+        this.inputText.text = input;
     };
 }

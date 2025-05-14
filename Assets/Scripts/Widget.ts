@@ -47,7 +47,7 @@ export class Widget extends BaseScriptComponent {
         throw new Error("hydrate() method not implemented.");
     }
 
-    private handleVoiceInput(input: string) {
+    protected handleVoiceInput = (input: string) => {
         print(`Handling voice input: ${input}`);
-    }
+    };
 }

@@ -28,9 +28,12 @@ export class AIConversation extends Widget {
     }
 
     newConversation = (): void => {
-        const maxId = this.conversations.reduce((acc, curr) =>
-            curr.id > acc.id ? curr : acc
-        ).id;
+        const maxId =
+            this.conversations.length > 0
+                ? this.conversations.reduce((acc, curr) =>
+                      curr.id > acc.id ? curr : acc
+                  ).id
+                : 1;
         const conversationTitle = `Conversation ${maxId + 1}`;
         SanctuaryAPI.getInstance()
             .newConversation(conversationTitle)

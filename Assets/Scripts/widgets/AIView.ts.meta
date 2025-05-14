@@ -26,7 +26,7 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
-    dateText: false
+    inputText: false
     kindString: false
     titleText: false
   ScriptTypesHidden:
@@ -35,11 +35,11 @@
   DefaultScriptInputs:
     - kindString: ""
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
-      dateText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      inputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input string kindString
     - // @input Component.Text titleText
-    - // @input Component.Text dateText
+    - // @input Component.Text inputText
