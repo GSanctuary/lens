@@ -1,11 +1,12 @@
 import { EventType } from "./types/Event";
+import { WidgetKind } from "./types/WidgetKind";
 import { Widget } from "./Widget";
 
 @component
 export class EventEmitter extends BaseScriptComponent {
     private static instance: EventEmitter;
     private eventListeners: Record<EventType, Function[]>;
-    private widgetRegistry: Record<string, Widget> = {};
+    private widgetRegistry: Record<WidgetKind, Widget>;
 
     private isActive: boolean = false;
 
@@ -19,6 +20,10 @@ export class EventEmitter extends BaseScriptComponent {
             [EventType.VoiceInput]: [],
             [EventType.WidgetOpen]: [],
             [EventType.WidgetClose]: [],
+        };
+        this.widgetRegistry = {
+            [WidgetKind.AIConversation]: null,
+            [WidgetKind.AI]: null,
         };
     }
 
@@ -55,13 +60,27 @@ export class EventEmitter extends BaseScriptComponent {
     }
 
     registerWidget(widget: Widget) {
-        if (!this.widgetRegistry[widget.widgetName]) {
-            this.widgetRegistry[widget.widgetName] = widget;
-            print(`Widget ${widget.widgetName} registered.`);
-        } else {
-            print(`Widget ${widget.widgetName} is already registered.`);
+        try {
+            if (!this.widgetRegistry[widget.kind]) {
+                print("this branch");
+                this.widgetRegistry[widget.kind] = widget;
+                print(`Widget ${widget.kind} registered.`);
+            } else {
+                print(`Widget ${widget.kind} is already registered.`);
+            }
+        } catch (error) {
+            print(`Error registering widget: ${error}`);
         }
     }
+
+    openWidget = (widgetKind: WidgetKind, ...args: any[]) => {
+        const widget = this.widgetRegistry[widgetKind];
+        if (widget) {
+            widget.open(...args);
+        } else {
+            print(`Widget ${widgetKind} not found.`);
+        }
+    };
 
     on(eventName: EventType, callback: Function) {
         if (!this.eventListeners[eventName]) {
