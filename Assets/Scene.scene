@@ -3546,14 +3546,14 @@
   Enabled: true
   ScriptAsset: !<reference> f4527795-011e-4260-9a51-651b39e7a2e3
   ScriptInputsDefault:
-    inputText: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       kindString: AI
       titleText: !<reference.Text> ac5952a9-557a-4215-86d1-b5dc97bde649
-      inputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      inputText: !<reference.Text> 0cb63d35-5852-44e7-82f4-1669db1c1c36
   ScriptTypes:
     "":
       {}
