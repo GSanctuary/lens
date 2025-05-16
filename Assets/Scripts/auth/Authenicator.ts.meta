@@ -33,10 +33,13 @@
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - authKey: ""
-      eventEmitter: !<MappingBased.EventEmitter> 00000000-0000-0000-0000-000000000000
+      eventEmitter: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input string authKey
-    - // @input EventEmitter eventEmitter
+    - // @input AssignableType eventEmitter
+  SetupScript:
+    code: ""
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

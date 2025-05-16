@@ -67,6 +67,7 @@
   DepthStencilRenderTarget: !<reference> 00000000-0000-0000-0000-000000000000
   MaskTexture: !<reference> 00000000-0000-0000-0000-000000000000
   RayTracing: !<reference> 00000000-0000-0000-0000-000000000000
+  DevicePropertiesSource: !<reference> 00000000-0000-0000-0000-000000000000
 - !<SceneObject/0005641c-028d-459a-0000-000000014b4d>
   PrefabRemaps:
     []
@@ -2086,7 +2087,7 @@
   ScriptInputs:
     "":
       authKey: apiKey
-      eventEmitter: !<MappingBased.EventEmitter> 646bd8db-048b-4311-92c7-20e4a70e8926
+      eventEmitter: !<MappingBased.AssignableType> 646bd8db-048b-4311-92c7-20e4a70e8926
   ScriptTypes:
     "":
       {}
@@ -3645,24 +3646,6 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
-- !<ScriptComponent/8561bc0a-c8ef-42ed-96b9-9e5b9f860c05>
-  PrefabRemaps:
-    []
-  Name: AIConversationItem
-  Enabled: true
-  ScriptAsset: !<reference> 9449fef7-c2bc-40b5-8cb6-3d1ef95acfe6
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      titleText: !<reference.Text> f1e2e095-440e-48e9-b39d-29446ea93517
-      dateText: !<reference.Text> 2a58cc51-7ff7-4df6-ab40-006fddaed6c0
-      pinchButton: !<MappingBased.PinchButton> e961b766-7d8a-4a5a-9077-2c6a18cff906
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/861d5424-1bda-460e-84ed-0d52218d4d6a>
   PrefabRemaps:
     []
@@ -3759,8 +3742,8 @@
     {}
   ScriptInputs:
     "":
-      baseUrl: "https://3a2a-205-175-97-141.ngrok-free.app"
-      remoteServiceModule: !<reference.RemoteServiceModule> ee9fc462-2c16-4f15-9cbc-99bd606944a6
+      baseUrl: "http://localhost:3000"
+      remoteServiceModule: !<reference.InternetModule> a1eac110-0527-48d2-84d5-1390427ce8b8
   ScriptTypes:
     "":
       {}
@@ -4060,6 +4043,7 @@
     - 984190c6-a551-461e-a31e-f79febd434ec: 550c6c72-ac97-4ad4-b8ae-24fddac37dab
     - 98f243ee-9aa4-40e4-8ec5-a5c8ca2875e4: 8bad703e-738e-4d03-90a1-b1528f63c08c
     - 9ae2659a-5a51-42ff-bd2f-0bdc1c2d098f: 38948f58-225e-4dfa-a9bb-96b60082833f
+    - 9d350bd4-e24f-420d-bd6e-fb08f909b57c: 93c9bfbe-8737-4346-8042-7cf2e56afcaa
     - a3054ebe-e80a-4295-9ef3-053497b082d3: c685bc37-4a6d-406e-b939-030922f8cb8c
     - a93b4601-508b-4862-bdae-b40cd57e7917: 1dc5f497-f243-4f42-b6e3-951ad3efb99e
     - a9b43f84-3a31-4eab-a2c0-3123ebac7dac: a8ac14f5-2615-47c4-b61b-593452490ad5
@@ -4092,7 +4076,7 @@
     - !<own> 86c202c7-a759-45c5-af86-441087026685
   Components:
     - !<own> eacbe125-833a-4f57-a66a-882950309747
-    - !<own> 8561bc0a-c8ef-42ed-96b9-9e5b9f860c05
+    - !<own> 9d350bd4-e24f-420d-bd6e-fb08f909b57c
 - !<ScreenTransform/92022ee1-3851-4179-89f9-574a448a3e1f>
   PrefabRemaps:
     []
@@ -4424,6 +4408,24 @@
     CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScriptComponent/9d350bd4-e24f-420d-bd6e-fb08f909b57c>
+  PrefabRemaps:
+    []
+  Name: AIConversationItem
+  Enabled: true
+  ScriptAsset: !<reference> d0dcf99c-438f-4807-802f-c72dd952367c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      titleText: !<reference.Text> f1e2e095-440e-48e9-b39d-29446ea93517
+      dateText: !<reference.Text> 2a58cc51-7ff7-4df6-ab40-006fddaed6c0
+      pinchButton: !<MappingBased.AssignableType> e961b766-7d8a-4a5a-9077-2c6a18cff906
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/9ddbf0d7-962e-42bd-a236-ccce28bea5b7>
   PrefabRemaps:
     []
@@ -5097,7 +5099,7 @@
     "":
       handType: left
       selectVisual: Default
-      handInteractor: !<MappingBased.HandInteractor> b194883f-9023-4e73-b292-c2be31f85e08
+      handInteractor: !<MappingBased.AssignableType> b194883f-9023-4e73-b292-c2be31f85e08
       handMesh: !<reference.RenderMeshVisual> 17070125-8bfc-48f2-8c16-3cc0f2be0abc
       root: !<reference.SceneObject> 2ba4e8a2-2f24-4eb8-aa3d-b2e11104b7b1
       autoJointMapping: true
@@ -5743,7 +5745,7 @@
     "":
       handType: right
       selectVisual: Default
-      handInteractor: !<MappingBased.HandInteractor> 1fe331d1-785d-41b3-9d09-31e0e823e6d6
+      handInteractor: !<MappingBased.AssignableType> 1fe331d1-785d-41b3-9d09-31e0e823e6d6
       handMesh: !<reference.RenderMeshVisual> 3bee7a9c-28dd-47ad-86e5-bf18a2ce48f2
       root: !<reference.SceneObject> 9c727071-628d-4239-98df-0c83d5737aeb
       autoJointMapping: true
@@ -6436,7 +6438,7 @@
       kindString: AIConversation
       textPrefab: !<reference.ObjectPrefab> 626fa2aa-cf28-45b6-beb9-16cdc571a1e7
       scrollView: !<reference.SceneObject> 3d4b55de-8a21-464d-a9fb-1daa6c2acf76
-      newConversationButton: !<MappingBased.PinchButton> 02927071-a1e9-4451-adfa-ec1d93fb1121
+      newConversationButton: !<MappingBased.AssignableType> 02927071-a1e9-4451-adfa-ec1d93fb1121
   ScriptTypes:
     "":
       {}

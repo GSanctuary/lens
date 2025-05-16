@@ -31,9 +31,12 @@
     {}
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
-    - remoteServiceModule: !<reference.RemoteServiceModule> 00000000-0000-0000-0000-000000000000
+    - remoteServiceModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
-    - // @input Asset.RemoteServiceModule remoteServiceModule
+    - // @input Asset.InternetModule remoteServiceModule
+  SetupScript:
+    code: ""
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

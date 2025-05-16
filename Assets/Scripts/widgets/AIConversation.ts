@@ -1,9 +1,10 @@
-import { PinchButton } from "SpectaclesInteractionKit.lspkg/Components/UI/PinchButton/PinchButton";
+import { PinchButton } from "../../SpectaclesInteractionKit/Components/UI/PinchButton/PinchButton";
 import { EventEmitter } from "../EventEmitter";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Conversation } from "../types/Sanctuary";
 import { WidgetKind } from "../types/WidgetKind";
 import { Widget } from "../Widget";
+import { AIConversationItem } from "./AIConversationItem";
 
 @component
 export class AIConversation extends Widget {

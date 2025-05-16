@@ -13,7 +13,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
     baseUrl: string;
 
     @input
-    remoteServiceModule: RemoteServiceModule;
+    remoteServiceModule: InternetModule;
 
     private static instance: SanctuaryAPI;
     private apiKey: string | null = null;
