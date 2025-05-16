@@ -28,6 +28,7 @@
   ScriptInputsHidden:
     inputText: false
     kindString: false
+    outputText: false
     titleText: false
   ScriptTypesHidden:
     {}
@@ -36,6 +37,7 @@
     - kindString: ""
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       inputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      outputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -43,6 +45,7 @@
     - // @input string kindString
     - // @input Component.Text titleText
     - // @input Component.Text inputText
+    - // @input Component.Text outputText
   SetupScript:
     code: ""
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

@@ -121,11 +121,13 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("Failed to create completion");
         }
 
-        const body: { completion: RawCompletionResponse } =
+        const body: { createdMessage: RawCompletionResponse } =
             await response.json();
 
+        print(JSON.stringify(body));
+
         return convertRawCompletionResponseToCompletionResponse(
-            body.completion
+            body.createdMessage
         );
     }
 
