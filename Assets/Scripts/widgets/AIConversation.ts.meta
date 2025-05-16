@@ -34,10 +34,10 @@
     {}
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
-    - textPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+    - kindString: ""
+      textPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       scrollView: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
-      newConversationButton: !<MappingBased.PinchButton> 00000000-0000-0000-0000-000000000000
-      kindString: ""
+      newConversationButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -45,4 +45,7 @@
     - // @input string kindString
     - // @input Asset.ObjectPrefab textPrefab
     - // @input SceneObject scrollView
-    - // @input PinchButton newConversationButton
+    - // @input AssignableType newConversationButton
+  SetupScript:
+    code: ""
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
