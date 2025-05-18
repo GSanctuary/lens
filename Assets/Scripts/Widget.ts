@@ -11,6 +11,12 @@ export class Widget extends BaseScriptComponent {
     @input
     frame: ContainerFrame;
 
+    @input
+    camera: Camera;
+
+    @input
+    instantiationDistance: number = 100;
+
     kind: WidgetKind;
 
     onAwake() {
@@ -47,6 +53,7 @@ export class Widget extends BaseScriptComponent {
 
     protected activateWidget(): Widget {
         this.frame.getSceneObject().enabled = true;
+        this.placeInFrontOfCamera();
         return this;
     }
 
@@ -55,6 +62,18 @@ export class Widget extends BaseScriptComponent {
         this.frame.getSceneObject().enabled = false;
         return this;
     }
+
+    protected placeInFrontOfCamera = () => {
+        const cameraTransform = this.camera.getTransform();
+        const widgetTransform = this.frame.getSceneObject().getTransform();
+        const cameraPosition = cameraTransform.getWorldPosition();
+        const cameraForward = cameraTransform.forward;
+
+        const newPosition = cameraPosition.add(
+            cameraForward.scale(new vec3(0, 0, -this.instantiationDistance))
+        );
+        widgetTransform.setWorldPosition(newPosition);
+    };
 
     open = (args: Record<string, any>): Widget => {
         return this.activateWidget();

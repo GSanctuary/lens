@@ -26,7 +26,9 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    camera: false
     frame: false
+    instantiationDistance: false
     kindString: false
     newConversationButton: false
     scrollView: false
@@ -37,6 +39,8 @@
   DefaultScriptInputs:
     - kindString: ""
       frame: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      instantiationDistance: !<float> 100.000000
       textPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       scrollView: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       newConversationButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
@@ -46,6 +50,8 @@
   InputLines:
     - // @input string kindString
     - // @input AssignableType frame
+    - // @input Component.Camera camera
+    - // @input float instantiationDistance = 100
     - // @input Asset.ObjectPrefab textPrefab
     - // @input SceneObject scrollView
     - // @input AssignableType_1 newConversationButton

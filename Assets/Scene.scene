@@ -3565,13 +3565,15 @@
   Enabled: true
   ScriptAsset: !<reference> f4527795-011e-4260-9a51-651b39e7a2e3
   ScriptInputsDefault:
-    {}
+    instantiationDistance: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       kindString: AI
       frame: !<MappingBased.AssignableType> 28f7192d-234d-4233-81c7-374197c0f7f8
+      camera: !<reference.Camera> 00000000-0000-0065-0000-000000000065
+      instantiationDistance: !<float> 100.000000
       titleText: !<reference.Text> ac5952a9-557a-4215-86d1-b5dc97bde649
       inputText: !<reference.Text> 0cb63d35-5852-44e7-82f4-1669db1c1c36
       outputText: !<reference.Text> 9b72d11d-761b-4425-9fc7-a3f376b42fdf
@@ -6526,13 +6528,15 @@
   Enabled: true
   ScriptAsset: !<reference> 6f2a7a1d-5f3c-470e-9bd1-7a81a2055b64
   ScriptInputsDefault:
-    {}
+    instantiationDistance: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       kindString: AIConversation
       frame: !<MappingBased.AssignableType> 58ba9195-2234-4ed0-8804-eb55df216ae1
+      camera: !<reference.Camera> 00000000-0000-0065-0000-000000000065
+      instantiationDistance: !<float> 100.000000
       textPrefab: !<reference.ObjectPrefab> 626fa2aa-cf28-45b6-beb9-16cdc571a1e7
       scrollView: !<reference.SceneObject> 3d4b55de-8a21-464d-a9fb-1daa6c2acf76
       newConversationButton: !<MappingBased.AssignableType_1> 02927071-a1e9-4451-adfa-ec1d93fb1121

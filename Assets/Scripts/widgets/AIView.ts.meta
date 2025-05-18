@@ -26,8 +26,10 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    camera: false
     frame: false
     inputText: false
+    instantiationDistance: false
     kindString: false
     outputText: false
     titleText: false
@@ -37,6 +39,8 @@
   DefaultScriptInputs:
     - kindString: ""
       frame: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      instantiationDistance: !<float> 100.000000
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       inputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       outputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
@@ -46,6 +50,8 @@
   InputLines:
     - // @input string kindString
     - // @input AssignableType frame
+    - // @input Component.Camera camera
+    - // @input float instantiationDistance = 100
     - // @input Component.Text titleText
     - // @input Component.Text inputText
     - // @input Component.Text outputText
