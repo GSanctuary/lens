@@ -69,7 +69,6 @@ export class EventEmitter extends BaseScriptComponent {
     registerWidget(widget: Widget) {
         try {
             if (!this.widgetRegistry[widget.kind]) {
-                print("this branch");
                 this.widgetRegistry[widget.kind] = widget;
                 print(`Widget ${widget.kind} registered.`);
             } else {
@@ -81,11 +80,6 @@ export class EventEmitter extends BaseScriptComponent {
     }
 
     openWidget = (widgetKind: WidgetKind, args: Record<string, any>) => {
-        if (this.activeWidgets[widgetKind]) {
-            print(`Widget ${widgetKind} is already open.`);
-            return;
-        }
-
         const widget = this.widgetRegistry[widgetKind];
         if (widget) {
             widget.open(args);
@@ -95,14 +89,9 @@ export class EventEmitter extends BaseScriptComponent {
         }
     };
 
-    closeWidget = (widgetKind: WidgetKind, args: Record<string, any>) => {
-        if (this.activeWidgets[widgetKind]) {
-            const widget = this.activeWidgets[widgetKind];
-            if (widget) {
-                widget.close();
-                this.activeWidgets[widgetKind] = undefined;
-            }
-        }
+    closeWidget = (widgetKind: WidgetKind) => {
+        print(`Closing widget: ${widgetKind}`);
+        this.activeWidgets[widgetKind] = undefined;
     };
 
     on(eventName: EventType, callback: Function) {

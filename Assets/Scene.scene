@@ -1303,6 +1303,7 @@
     yAlways: true
     worldSnapping: true
     isFollowing: true
+    showCloseButton: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -1328,7 +1329,7 @@
       showFollowButton: true
       useFOVFollow: true
       isFollowing: false
-      showCloseButton: false
+      showCloseButton: true
       _enableInteractionPlane: true
   ScriptTypes:
     "":
@@ -2556,6 +2557,7 @@
     yAlways: true
     worldSnapping: true
     isFollowing: true
+    showCloseButton: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -2581,7 +2583,7 @@
       showFollowButton: true
       useFOVFollow: true
       isFollowing: false
-      showCloseButton: false
+      showCloseButton: true
       _enableInteractionPlane: true
   ScriptTypes:
     "":

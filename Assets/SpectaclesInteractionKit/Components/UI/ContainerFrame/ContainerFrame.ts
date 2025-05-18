@@ -224,7 +224,8 @@ export class ContainerFrame extends BaseScriptComponent {
     /**
      * event for callback on close button trigger
      */
-    onCloseButtonTrigger: Event = new Event();
+    private onCloseButtonTrigger: Event = new Event();
+    onCloseButtonTriggerEvent = this.onCloseButtonTrigger.publicApi();
 
     followButton!: LabeledPinchButton;
     /**

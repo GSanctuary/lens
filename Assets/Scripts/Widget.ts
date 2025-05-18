@@ -18,7 +18,12 @@ export class Widget extends BaseScriptComponent {
     }
 
     onStart() {
-        print(this.kindString);
+        this.frame = this.getSceneObject()
+            .getChild(0)
+            .getComponent(ContainerFrame.getTypeName());
+
+        this.frame.onCloseButtonTriggerEvent.add(this.close);
+
         switch (this.kindString) {
             case "AIConversation":
                 this.kind = WidgetKind.AIConversation;
@@ -46,6 +51,7 @@ export class Widget extends BaseScriptComponent {
     }
 
     protected deactivateWidget(): Widget {
+        EventEmitter.getInstance().closeWidget(this.kind);
         this.frame.getSceneObject().enabled = false;
         return this;
     }
