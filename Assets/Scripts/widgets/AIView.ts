@@ -3,6 +3,11 @@ import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Conversation } from "../types/Sanctuary";
 import { Widget } from "../Widget";
 import LogLevelProvider from "SpectaclesInteractionKit/Providers/InteractionConfigurationProvider/LogLevelProvider";
+import {
+    CancelToken,
+    clearTimeout,
+    setTimeout,
+} from "SpectaclesInteractionKit/Utils/FunctionTimingUtils";
 
 @component
 export class AIView extends Widget {
@@ -15,7 +20,11 @@ export class AIView extends Widget {
     @input
     outputText: Text;
 
+    @input
+    apiInvocationDelaySeconds: number = 1000;
+
     private conversation: Conversation;
+    private timeoutId: CancelToken | undefined;
 
     open = (args: Record<string, any>): Widget => {
         const { title } = args;
@@ -35,8 +44,13 @@ export class AIView extends Widget {
     };
 
     protected override handleVoiceInput = (input: string) => {
+        if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+        }
         this.inputText.text = input;
-        this.sendToAPI(input);
+        this.timeoutId = setTimeout(() => {
+            this.sendToAPI(input);
+        }, this.apiInvocationDelaySeconds);
         this.outputText.text = "Thinking...";
     };
 
@@ -54,5 +68,6 @@ export class AIView extends Widget {
         } catch (error) {
             print(`Error sending message: ${error}`);
         }
+        this.timeoutId = undefined;
     };
 }

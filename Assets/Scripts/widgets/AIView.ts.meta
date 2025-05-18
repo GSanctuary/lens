@@ -26,6 +26,7 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    apiInvocationDelaySeconds: false
     camera: false
     frame: false
     inputText: false
@@ -44,6 +45,7 @@
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       inputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       outputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      apiInvocationDelaySeconds: !<float> 1000.000000
   ScriptTypes:
     -
       {}
@@ -55,6 +57,7 @@
     - // @input Component.Text titleText
     - // @input Component.Text inputText
     - // @input Component.Text outputText
+    - // @input float apiInvocationDelaySeconds = 1000
   SetupScript:
     code: ""
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
