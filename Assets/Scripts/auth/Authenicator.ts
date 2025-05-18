@@ -7,9 +7,6 @@ export class Authenticator extends BaseScriptComponent {
     @input
     authKey: string;
 
-    @input
-    eventEmitter: EventEmitter;
-
     async onAwake() {
         const store = PersistentStorageManager.getInstance();
         const existingAPIKey = store.get(this.authKey);
@@ -22,7 +19,7 @@ export class Authenticator extends BaseScriptComponent {
             print(`Generated API Key: ${newAPIKey}`);
         }
         SanctuaryAPI.getInstance().setAPIKey(existingAPIKey);
-        this.eventEmitter.activate();
+        EventEmitter.activate();
     }
 
     private async generateAPIKey(): Promise<string> {

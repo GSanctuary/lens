@@ -40,15 +40,12 @@ export class Widget extends BaseScriptComponent {
             default:
                 break;
         }
-        EventEmitter.getInstance().registerWidget(this);
+        EventEmitter.registerWidget(this);
         this.registerEventHandlers();
     }
 
     protected registerEventHandlers(): void {
-        EventEmitter.getInstance().on(
-            EventType.VoiceInput,
-            this.handleVoiceInput
-        );
+        EventEmitter.on(EventType.VoiceInput, this.handleVoiceInput.bind(this));
     }
 
     protected activateWidget(): Widget {
@@ -58,7 +55,7 @@ export class Widget extends BaseScriptComponent {
     }
 
     protected deactivateWidget(): Widget {
-        EventEmitter.getInstance().closeWidget(this.kind);
+        EventEmitter.emit(EventType.WidgetClose, this.kind);
         this.frame.getSceneObject().enabled = false;
         return this;
     }

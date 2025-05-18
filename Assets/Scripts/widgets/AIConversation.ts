@@ -1,6 +1,7 @@
 import { PinchButton } from "../../SpectaclesInteractionKit/Components/UI/PinchButton/PinchButton";
 import { EventEmitter } from "../EventEmitter";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
+import { EventType } from "../types/Event";
 import { Conversation } from "../types/Sanctuary";
 import { WidgetKind } from "../types/WidgetKind";
 import { Widget } from "../Widget";
@@ -77,9 +78,11 @@ export class AIConversation extends Widget {
     private handleButtonConversationClick(conversation: Conversation) {
         return () => {
             print(`Conversation clicked: ${conversation.title}`);
-            EventEmitter.getInstance().openWidget(WidgetKind.AI, {
-                ...conversation,
-            });
+            EventEmitter.emit(
+                EventType.WidgetOpen,
+                WidgetKind.AI,
+                conversation
+            );
         };
     }
 

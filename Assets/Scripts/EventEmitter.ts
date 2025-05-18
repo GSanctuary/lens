@@ -32,6 +32,9 @@ export class EventEmitter extends BaseScriptComponent {
             [WidgetKind.AIConversation]: undefined,
             [WidgetKind.AI]: undefined,
         };
+
+        EventEmitter.on(EventType.WidgetOpen, this.openWidget.bind(this));
+        EventEmitter.on(EventType.WidgetClose, this.closeWidget.bind(this));
     }
 
     onDestroy() {
@@ -45,19 +48,19 @@ export class EventEmitter extends BaseScriptComponent {
         return EventEmitter.instance;
     }
 
-    activate() {
-        this.isActive = true;
+    static activate() {
+        this.instance.isActive = true;
         print("EventEmitter activated.");
     }
 
-    emit(eventName: EventType, ...args: any[]) {
-        if (!this.isActive) {
+    static emit(eventName: EventType, ...args: any[]) {
+        if (!this.instance.isActive) {
             print(
                 `EventEmitter is not active. Event ${eventName} not emitted.`
             );
             return;
         }
-        const listeners = this.eventListeners[eventName];
+        const listeners = this.instance.eventListeners[eventName];
         print(`Emitting event: ${eventName}`);
         if (listeners) {
             for (const listener of listeners) {
@@ -66,10 +69,10 @@ export class EventEmitter extends BaseScriptComponent {
         }
     }
 
-    registerWidget(widget: Widget) {
+    static registerWidget(widget: Widget) {
         try {
-            if (!this.widgetRegistry[widget.kind]) {
-                this.widgetRegistry[widget.kind] = widget;
+            if (!this.instance.widgetRegistry[widget.kind]) {
+                this.instance.widgetRegistry[widget.kind] = widget;
                 print(`Widget ${widget.kind} registered.`);
             } else {
                 print(`Widget ${widget.kind} is already registered.`);
@@ -79,7 +82,7 @@ export class EventEmitter extends BaseScriptComponent {
         }
     }
 
-    openWidget(widgetKind: WidgetKind, args: Record<string, any>) {
+    private openWidget(widgetKind: WidgetKind, args: Record<string, any>) {
         const widget = this.widgetRegistry[widgetKind];
         if (widget) {
             widget.open(args);
@@ -89,16 +92,16 @@ export class EventEmitter extends BaseScriptComponent {
         }
     }
 
-    closeWidget(widgetKind: WidgetKind) {
+    private closeWidget(widgetKind: WidgetKind) {
         print(`Closing widget: ${widgetKind}`);
         this.activeWidgets[widgetKind] = undefined;
     }
 
-    on(eventName: EventType, callback: Function) {
-        if (!this.eventListeners[eventName]) {
-            this.eventListeners[eventName] = [];
+    static on(eventName: EventType, callback: Function) {
+        if (!this.instance.eventListeners[eventName]) {
+            this.instance.eventListeners[eventName] = [];
         }
-        this.eventListeners[eventName].push(callback);
+        this.instance.eventListeners[eventName].push(callback);
         print(`Event listener registered for event: ${eventName}`);
     }
 }

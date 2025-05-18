@@ -26,10 +26,7 @@ export class SpeechToText extends BaseScriptComponent {
         });
         this.voiceMlModule.onListeningUpdate.add((event) => {
             if (event.transcription) {
-                EventEmitter.getInstance().emit(
-                    EventType.VoiceInput,
-                    event.transcription
-                );
+                EventEmitter.emit(EventType.VoiceInput, event.transcription);
             }
         });
     }
