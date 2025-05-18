@@ -79,7 +79,7 @@ export class EventEmitter extends BaseScriptComponent {
         }
     }
 
-    openWidget = (widgetKind: WidgetKind, args: Record<string, any>) => {
+    openWidget(widgetKind: WidgetKind, args: Record<string, any>) {
         const widget = this.widgetRegistry[widgetKind];
         if (widget) {
             widget.open(args);
@@ -87,12 +87,12 @@ export class EventEmitter extends BaseScriptComponent {
         } else {
             print(`Widget ${widgetKind} not found.`);
         }
-    };
+    }
 
-    closeWidget = (widgetKind: WidgetKind) => {
+    closeWidget(widgetKind: WidgetKind) {
         print(`Closing widget: ${widgetKind}`);
         this.activeWidgets[widgetKind] = undefined;
-    };
+    }
 
     on(eventName: EventType, callback: Function) {
         if (!this.eventListeners[eventName]) {

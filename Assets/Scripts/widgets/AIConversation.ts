@@ -27,7 +27,7 @@ export class AIConversation extends Widget {
         await this.hydrateAndPopulate();
     }
 
-    newConversation = (): void => {
+    newConversation(): void {
         const maxId =
             this.conversations.length > 0
                 ? this.conversations.reduce((acc, curr) =>
@@ -45,7 +45,7 @@ export class AIConversation extends Widget {
             .catch((error) => {
                 print(`Error creating new conversation: ${error}`);
             });
-    };
+    }
 
     private async hydrateAndPopulate(): Promise<void> {
         await this.hydrate();
@@ -74,16 +74,16 @@ export class AIConversation extends Widget {
         }
     }
 
-    private handleButtonConversationClick = (conversation: Conversation) => {
+    private handleButtonConversationClick(conversation: Conversation) {
         return () => {
             print(`Conversation clicked: ${conversation.title}`);
             EventEmitter.getInstance().openWidget(WidgetKind.AI, {
                 ...conversation,
             });
         };
-    };
+    }
 
-    protected async hydrate(): Promise<void> {
+    protected override async hydrate(): Promise<void> {
         this.conversations =
             await SanctuaryAPI.getInstance().getConversations();
         this.conversations = this.conversations.sort(

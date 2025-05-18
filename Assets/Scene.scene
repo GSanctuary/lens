@@ -522,7 +522,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: Input text
+  Text: Start talking...
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
@@ -3566,6 +3566,7 @@
   ScriptAsset: !<reference> f4527795-011e-4260-9a51-651b39e7a2e3
   ScriptInputsDefault:
     instantiationDistance: true
+    prefix: true
     apiInvocationDelaySeconds: true
   ScriptTypesDefault:
     {}
@@ -3575,6 +3576,7 @@
       frame: !<MappingBased.AssignableType> 28f7192d-234d-4233-81c7-374197c0f7f8
       camera: !<reference.Camera> 00000000-0000-0065-0000-000000000065
       instantiationDistance: !<float> 100.000000
+      prefix: Jarvis
       titleText: !<reference.Text> ac5952a9-557a-4215-86d1-b5dc97bde649
       inputText: !<reference.Text> 0cb63d35-5852-44e7-82f4-1669db1c1c36
       outputText: !<reference.Text> 9b72d11d-761b-4425-9fc7-a3f376b42fdf
@@ -4318,7 +4320,7 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: Model output here...
+  Text: "Jarvis' response here"
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000

@@ -12,7 +12,7 @@ export class AIConversationItem extends BaseScriptComponent {
     @input
     pinchButton: PinchButton;
 
-    addButtonCallback = (callback: (evt: InteractorEvent) => void) => {
+    addButtonCallback(callback: (evt: InteractorEvent) => void) {
         this.pinchButton.onButtonPinched.add(callback);
-    };
+    }
 }

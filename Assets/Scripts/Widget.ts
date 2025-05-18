@@ -44,7 +44,7 @@ export class Widget extends BaseScriptComponent {
         this.registerEventHandlers();
     }
 
-    protected registerEventHandlers() {
+    protected registerEventHandlers(): void {
         EventEmitter.getInstance().on(
             EventType.VoiceInput,
             this.handleVoiceInput
@@ -63,7 +63,7 @@ export class Widget extends BaseScriptComponent {
         return this;
     }
 
-    protected placeInFrontOfCamera = () => {
+    protected placeInFrontOfCamera() {
         const cameraTransform = this.camera.getTransform();
         const widgetTransform = this.frame.getSceneObject().getTransform();
         const cameraPosition = cameraTransform.getWorldPosition();
@@ -73,21 +73,21 @@ export class Widget extends BaseScriptComponent {
             cameraForward.scale(new vec3(0, 0, -this.instantiationDistance))
         );
         widgetTransform.setWorldPosition(newPosition);
-    };
+    }
 
-    open = (args: Record<string, any>): Widget => {
+    open(args: Record<string, any>): Widget {
         return this.activateWidget();
-    };
+    }
 
-    close = (): Widget => {
+    close(): Widget {
         return this.deactivateWidget();
-    };
+    }
 
-    protected async hydrate() {
+    protected async hydrate(): Promise<void> {
         throw new Error("hydrate() method not implemented.");
     }
 
-    protected handleVoiceInput = (input: string) => {
+    protected handleVoiceInput(input: string): void {
         print(`Handling voice input: ${input}`);
-    };
+    }
 }

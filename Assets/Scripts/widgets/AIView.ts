@@ -1,8 +1,6 @@
-import NativeLogger from "SpectaclesInteractionKit/Utils/NativeLogger";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Conversation } from "../types/Sanctuary";
 import { Widget } from "../Widget";
-import LogLevelProvider from "SpectaclesInteractionKit/Providers/InteractionConfigurationProvider/LogLevelProvider";
 import {
     CancelToken,
     clearTimeout,
@@ -26,7 +24,7 @@ export class AIView extends Widget {
     private conversation: Conversation;
     private timeoutId: CancelToken | undefined;
 
-    open = (args: Record<string, any>): Widget => {
+    open(args: Record<string, any>): Widget {
         const { title } = args;
         if (!title) {
             print("Title is required");
@@ -35,15 +33,15 @@ export class AIView extends Widget {
         this.titleText.text = title;
         this.conversation = args as Conversation;
         return this.activateWidget();
-    };
+    }
 
-    close = (): Widget => {
+    close(): Widget {
         this.inputText.text = "";
         this.outputText.text = "";
         return this.deactivateWidget();
-    };
+    }
 
-    protected override handleVoiceInput = (input: string) => {
+    protected override handleVoiceInput(input: string) {
         if (this.timeoutId) {
             clearTimeout(this.timeoutId);
         }
@@ -52,9 +50,9 @@ export class AIView extends Widget {
             this.sendToAPI(input);
         }, this.apiInvocationDelaySeconds);
         this.outputText.text = "Thinking...";
-    };
+    }
 
-    private sendToAPI = async (input: string) => {
+    private async sendToAPI(input: string): Promise<void> {
         if (!this.conversation) {
             throw new Error("Conversation is not set");
         }
@@ -69,5 +67,5 @@ export class AIView extends Widget {
             print(`Error sending message: ${error}`);
         }
         this.timeoutId = undefined;
-    };
+    }
 }
