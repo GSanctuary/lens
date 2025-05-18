@@ -1,3 +1,4 @@
+import { ContainerFrame } from "SpectaclesInteractionKit/Components/UI/ContainerFrame/ContainerFrame";
 import { EventEmitter } from "./EventEmitter";
 import { EventType } from "./types/Event";
 import { WidgetKind } from "./types/WidgetKind";
@@ -6,6 +7,9 @@ import { WidgetKind } from "./types/WidgetKind";
 export class Widget extends BaseScriptComponent {
     @input
     kindString: string;
+
+    @input
+    frame: ContainerFrame;
 
     kind: WidgetKind;
 
@@ -36,11 +40,22 @@ export class Widget extends BaseScriptComponent {
         );
     }
 
-    open = (args: Record<string, any>) => {
-        print(`Opening widget: ${this.kind}`);
-        let object = global.scene.createSceneObject("AI Widget Instance");
-        object = this.getSceneObject().copySceneObject(this.getSceneObject());
-        object.enabled = true;
+    protected activateWidget(): Widget {
+        this.frame.getSceneObject().enabled = true;
+        return this;
+    }
+
+    protected deactivateWidget(): Widget {
+        this.frame.getSceneObject().enabled = false;
+        return this;
+    }
+
+    open = (args: Record<string, any>): Widget => {
+        return this.activateWidget();
+    };
+
+    close = (): Widget => {
+        return this.deactivateWidget();
     };
 
     protected async hydrate() {

@@ -1,6 +1,8 @@
+import NativeLogger from "SpectaclesInteractionKit/Utils/NativeLogger";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Conversation } from "../types/Sanctuary";
 import { Widget } from "../Widget";
+import LogLevelProvider from "SpectaclesInteractionKit/Providers/InteractionConfigurationProvider/LogLevelProvider";
 
 @component
 export class AIView extends Widget {
@@ -15,14 +17,21 @@ export class AIView extends Widget {
 
     private conversation: Conversation;
 
-    override open = (args: Record<string, any>) => {
+    open = (args: Record<string, any>): Widget => {
         const { title } = args;
         if (!title) {
-            print("Invalid arguments passed to open method");
-            return;
+            print("Title is required");
+            return this.deactivateWidget();
         }
         this.titleText.text = title;
         this.conversation = args as Conversation;
+        return this.activateWidget();
+    };
+
+    close = (): Widget => {
+        this.inputText.text = "";
+        this.outputText.text = "";
+        return this.deactivateWidget();
     };
 
     protected override handleVoiceInput = (input: string) => {

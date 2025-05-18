@@ -21,7 +21,7 @@ export class AIConversation extends Widget {
         this.createEvent("OnStartEvent").bind(() => this.onStart());
     }
 
-    async onStart(): Promise<void> {
+    override async onStart(): Promise<void> {
         super.onStart();
         this.newConversationButton.onButtonPinched.add(this.newConversation);
         await this.hydrateAndPopulate();

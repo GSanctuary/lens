@@ -8,6 +8,8 @@ export class EventEmitter extends BaseScriptComponent {
     private eventListeners: Record<EventType, Function[]>;
     private widgetRegistry: Record<WidgetKind, Widget>;
 
+    private activeWidgets: Record<WidgetKind, Widget | undefined>;
+
     private isActive: boolean = false;
 
     onAwake() {
@@ -22,8 +24,13 @@ export class EventEmitter extends BaseScriptComponent {
             [EventType.WidgetClose]: [],
         };
         this.widgetRegistry = {
-            [WidgetKind.AIConversation]: null,
-            [WidgetKind.AI]: null,
+            [WidgetKind.AIConversation]: undefined,
+            [WidgetKind.AI]: undefined,
+        };
+
+        this.activeWidgets = {
+            [WidgetKind.AIConversation]: undefined,
+            [WidgetKind.AI]: undefined,
         };
     }
 
@@ -74,11 +81,27 @@ export class EventEmitter extends BaseScriptComponent {
     }
 
     openWidget = (widgetKind: WidgetKind, args: Record<string, any>) => {
+        if (this.activeWidgets[widgetKind]) {
+            print(`Widget ${widgetKind} is already open.`);
+            return;
+        }
+
         const widget = this.widgetRegistry[widgetKind];
         if (widget) {
             widget.open(args);
+            this.activeWidgets[widgetKind] = widget;
         } else {
             print(`Widget ${widgetKind} not found.`);
+        }
+    };
+
+    closeWidget = (widgetKind: WidgetKind, args: Record<string, any>) => {
+        if (this.activeWidgets[widgetKind]) {
+            const widget = this.activeWidgets[widgetKind];
+            if (widget) {
+                widget.close();
+                this.activeWidgets[widgetKind] = undefined;
+            }
         }
     };
 

@@ -26,6 +26,7 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    frame: false
     kindString: false
     newConversationButton: false
     scrollView: false
@@ -35,17 +36,19 @@
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - kindString: ""
+      frame: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       textPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       scrollView: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
-      newConversationButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      newConversationButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input string kindString
+    - // @input AssignableType frame
     - // @input Asset.ObjectPrefab textPrefab
     - // @input SceneObject scrollView
-    - // @input AssignableType newConversationButton
+    - // @input AssignableType_1 newConversationButton
   SetupScript:
     code: ""
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
