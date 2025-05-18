@@ -3566,6 +3566,7 @@
   ScriptAsset: !<reference> f4527795-011e-4260-9a51-651b39e7a2e3
   ScriptInputsDefault:
     instantiationDistance: true
+    apiInvocationDelaySeconds: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -3577,6 +3578,7 @@
       titleText: !<reference.Text> ac5952a9-557a-4215-86d1-b5dc97bde649
       inputText: !<reference.Text> 0cb63d35-5852-44e7-82f4-1669db1c1c36
       outputText: !<reference.Text> 9b72d11d-761b-4425-9fc7-a3f376b42fdf
+      apiInvocationDelaySeconds: !<float> 1000.000000
   ScriptTypes:
     "":
       {}
