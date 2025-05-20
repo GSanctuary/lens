@@ -1,4 +1,3 @@
-import { ScrollView } from "SpectaclesInteractionKit/Components/UI/ScrollView/ScrollView";
 import { Widget } from "../Widget";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { TaskResponse } from "../types/Sanctuary";
@@ -7,25 +6,17 @@ import { TaskListItem } from "./TaskListItem";
 @component
 export class TaskList extends Widget {
     @input
-    textPrefab: ObjectPrefab;
-
-    @input
     scrollView: SceneObject;
 
     private tasks: TaskResponse[] = [];
 
     override onAwake(): void {
-        const scrollViewComponent = this.scrollView.getComponent(
-            ScrollView.getTypeName()
-        );
-        if (!scrollViewComponent) {
-            throw new Error("ScrollView component not found");
-        }
         this.createEvent("OnStartEvent").bind(() => this.onStart());
     }
 
     override async onStart(): Promise<void> {
         super.onStart();
+        await this.hydrate();
         this.populateTasks();
     }
 
@@ -45,6 +36,7 @@ export class TaskList extends Widget {
             taskListItem.setName(task.name);
             taskListItem.setDate(task.createdAt.toLocaleString("en-US"));
             taskListItem.setTaskId(task.id);
+            taskListItem.addCompletionCallback(this.onTaskCompleted.bind(this));
         }
     }
 
@@ -53,5 +45,10 @@ export class TaskList extends Widget {
         this.tasks = this.tasks.sort(
             (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
         );
+    }
+
+    private onTaskCompleted(taskId: number): void {
+        this.tasks = this.tasks.filter((task) => task.id !== taskId);
+        this.populateTasks();
     }
 }

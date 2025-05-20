@@ -12,6 +12,8 @@ export class TaskListItem extends BaseScriptComponent {
     @input
     pinchButton: PinchButton;
 
+    private onCompletion: Array<(taskId: number) => void> = [];
+
     // Used to identify task when completing
     private taskId: number;
 
@@ -31,7 +33,16 @@ export class TaskListItem extends BaseScriptComponent {
         this.taskId = id;
     }
 
+    addCompletionCallback(callback: (taskId: number) => void) {
+        this.onCompletion.push(callback);
+    }
+
+    removeCompletionCallback(callback: (taskId: number) => void) {
+        this.onCompletion = this.onCompletion.filter((cb) => cb !== callback);
+    }
+
     private async completeTask() {
+        this.onCompletion.forEach((callback) => callback(this.taskId));
         const taskCompletion = await SanctuaryAPI.getInstance().completeTask(
             this.taskId
         );
