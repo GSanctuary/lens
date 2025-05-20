@@ -88,7 +88,7 @@ export class TaskList extends Widget {
             }
             taskListItem.removeCompletionCallback();
             taskListItem.setName(task.name);
-            taskListItem.setDate(task.createdAt.toLocaleString("en-US"));
+            taskListItem.setDate(task.createdAt.toLocaleDateString());
             taskListItem.setTaskId(task.id);
             taskListItem.addCompletionCallback(this.onTaskCompleted.bind(this));
         }
