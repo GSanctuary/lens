@@ -51,3 +51,31 @@ export const convertRawCompletionResponseToCompletionResponse = (
         updatedAt: new Date(rawCompletionResponse.updatedAt),
     };
 };
+
+export type RawTaskResponse = {
+    id: number;
+    createdAt: string;
+    updatedAt: string;
+    userId: number;
+    name: string;
+    completed: boolean;
+};
+
+export type TaskResponse = {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date;
+    userId: number;
+    name: string;
+    completed: boolean;
+};
+
+export const convertRawTaskResponseToTaskResponse = (
+    rawTaskResponse: RawTaskResponse
+): TaskResponse => {
+    return {
+        ...rawTaskResponse,
+        createdAt: new Date(rawTaskResponse.createdAt),
+        updatedAt: new Date(rawTaskResponse.updatedAt),
+    };
+};

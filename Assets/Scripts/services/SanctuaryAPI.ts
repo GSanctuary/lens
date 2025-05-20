@@ -3,8 +3,11 @@ import {
     Conversation,
     convertRawCompletionResponseToCompletionResponse,
     convertRawConversationToConversation,
+    convertRawTaskResponseToTaskResponse,
     RawCompletionResponse,
     RawConversation,
+    RawTaskResponse,
+    TaskResponse,
 } from "../types/Sanctuary";
 
 @component
@@ -129,6 +132,76 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return convertRawCompletionResponseToCompletionResponse(
             body.createdMessage
         );
+    }
+
+    async createTask(name: string): Promise<TaskResponse> {
+        if (!this.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        const request = new Request(`${this.baseUrl}/task`, {
+            method: "POST",
+            headers: this.headers,
+            body: JSON.stringify({ name }),
+        });
+
+        const response = await this.remoteServiceModule.fetch(request);
+
+        if (response.status !== 201) {
+            throw new Error("Failed to create task");
+        }
+
+        const body: { task: RawTaskResponse } = await response.json();
+
+        return convertRawTaskResponseToTaskResponse(body.task);
+    }
+
+    async getTasks(): Promise<TaskResponse[]> {
+        if (!this.apiKey) {
+            throw new Error("API key not set");
+        }
+        const request = new Request(`${this.baseUrl}/task`, {
+            method: "GET",
+            headers: this.headers,
+        });
+        const response = await this.remoteServiceModule.fetch(request);
+        if (response.status !== 200) {
+            throw new Error("Failed to fetch tasks");
+        }
+        const body: { tasks: RawTaskResponse[] } = await response.json();
+        return body.tasks.map(convertRawTaskResponseToTaskResponse);
+    }
+
+    async completeTask(taskId: number): Promise<boolean> {
+        if (!this.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        const request = new Request(`${this.baseUrl}/task/complete`, {
+            method: "PUT",
+            headers: this.headers,
+            body: JSON.stringify({ taskIds: [taskId] }),
+        });
+
+        const response = await this.remoteServiceModule.fetch(request);
+
+        return response.status === 200;
+    }
+
+    async completeTasks(taskIds: number[]): Promise<boolean> {
+        if (!this.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        const request = new Request(`${this.baseUrl}/task/complete`, {
+            method: "PUT",
+            headers: this.headers,
+            body: JSON.stringify({ taskIds }),
+        });
+
+        const response = await this.remoteServiceModule.fetch(request);
+
+        return response.status === 200;
     }
 
     private async healthCheck() {
