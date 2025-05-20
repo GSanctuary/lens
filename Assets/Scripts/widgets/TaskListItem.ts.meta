@@ -1,0 +1,48 @@
+- !<AssetImportMetadata/51fab87a-c351-4d82-923d-9dfd55b6fb4a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 12cddee3-eea9-49f4-99c9-a6ba75e97dc9
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 12cddee3-eea9-49f4-99c9-a6ba75e97dc9
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4041732b-7cfe-4623-8608-0d42b5b11ff2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4041732b-7cfe-4623-8608-0d42b5b11ff2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 5ffdee96-3566-449c-92a2-9c7705b8e35e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    dateText: false
+    nameText: false
+    pinchButton: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - nameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      dateText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      pinchButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Text nameText
+    - // @input Component.Text dateText
+    - // @input AssignableType pinchButton
