@@ -26,11 +26,13 @@ export class EventEmitter extends BaseScriptComponent {
         this.widgetRegistry = {
             [WidgetKind.AIConversation]: undefined,
             [WidgetKind.AI]: undefined,
+            [WidgetKind.TaskList]: undefined,
         };
 
         this.activeWidgets = {
             [WidgetKind.AIConversation]: undefined,
             [WidgetKind.AI]: undefined,
+            [WidgetKind.TaskList]: undefined,
         };
 
         EventEmitter.on(EventType.WidgetOpen, this.openWidget.bind(this));
