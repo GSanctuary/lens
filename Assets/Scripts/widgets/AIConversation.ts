@@ -22,7 +22,9 @@ export class AIConversation extends Widget {
 
     override async onStart(): Promise<void> {
         super.onStart();
-        this.newConversationButton.onButtonPinched.add(this.newConversation);
+        this.newConversationButton.onButtonPinched.add(
+            this.newConversation.bind(this)
+        );
         await this.hydrateAndPopulate();
     }
 
@@ -66,7 +68,7 @@ export class AIConversation extends Widget {
             );
             aiConversationItem.titleText.text = this.conversations[i].title;
             aiConversationItem.dateText.text =
-                this.conversations[i].createdAt.toLocaleString("en-US");
+                this.conversations[i].createdAt.toLocaleDateString();
             aiConversationItem.addButtonCallback(
                 this.handleButtonConversationClick(this.conversations[i])
             );

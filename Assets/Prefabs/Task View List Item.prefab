@@ -22,7 +22,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 48
-  Font: !<reference> a04f6bc5-fd7c-4ce5-9d5c-6d16a6218a25
+  Font: !<reference> fb83d9d2-0a8a-449c-a035-05fa232ccf78
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -32,7 +32,7 @@
   OverflowHorizontal: Overflow
   Fill: !<TextFill>
     Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.600000}
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
     Texture: !<reference> 00000000-0000-0000-0000-000000000000
     TileCount: 5.000000
     TileZone: Rect
@@ -139,8 +139,8 @@
   Children:
     []
   Components:
-    - !<own> c04d3991-ec61-45db-a0bd-5810571db745
     - !<own> 15fc9ceb-ec10-4150-aadd-c31101036dc6
+    - !<own> 440be9db-8688-4efa-bf62-0a84cb2dbdba
 - !<ScriptComponent/41618fce-9224-4a26-ab8a-befcbcba0d3a>
   PrefabRemaps:
     []
@@ -192,7 +192,7 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
-- !<ScreenTransform/5045a364-337b-4e61-89c7-8aab03d06ef1>
+- !<ScreenTransform/440be9db-8688-4efa-bf62-0a84cb2dbdba>
   PrefabRemaps:
     []
   Name: Screen Transform
@@ -216,15 +216,15 @@
   RawMode: true
   ForceBasic: true
   Anchor:
-    left: -0.825000
-    bottom: 0.200000
+    left: -0.900000
+    bottom: -0.400000
     right: 0.665100
-    top: 0.200000
+    top: -0.500000
   Offset:
     left: -0.000000
-    bottom: -1.000000
+    bottom: -0.750000
     right: 0.000000
-    top: 1.000000
+    top: 0.750000
 - !<ScriptComponent/81a990ca-7ce1-42de-acfd-57f4d6133f37>
   PrefabRemaps:
     []
@@ -279,8 +279,8 @@
   Children:
     []
   Components:
-    - !<own> 5045a364-337b-4e61-89c7-8aab03d06ef1
     - !<own> e13c50cf-80fb-467e-955d-b90842465dfb
+    - !<own> f60519d1-532c-401d-8660-a8dd7744f3a2
 - !<ScriptComponent/925f9dec-968c-4c4b-aab0-549f28ff2412>
   PrefabRemaps:
     []
@@ -402,39 +402,6 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
-- !<ScreenTransform/c04d3991-ec61-45db-a0bd-5810571db745>
-  PrefabRemaps:
-    []
-  Name: Screen Transform
-  Enabled: true
-  IsAdvanced: false
-  Constraints:
-    pinToLeft: false
-    pinToTop: false
-    pinToRight: false
-    pinToBottom: false
-    fixedWidth: false
-    fixedHeight: false
-    deactivatedFixedSprite: false
-    deactivatedFixedPivot: false
-  Pivot: {x: 0.000000, y: 0.000000}
-  Transform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    hasSegmentScaleCompensation: false
-  RawMode: true
-  ForceBasic: true
-  Anchor:
-    left: -0.825000
-    bottom: -0.500000
-    right: 0.665100
-    top: -0.500000
-  Offset:
-    left: -0.000000
-    bottom: -0.750000
-    right: 0.000000
-    top: 0.750000
 - !<ScriptComponent/c1e24746-570a-46d6-a2cc-f6aea6194c76>
   PrefabRemaps:
     []
@@ -586,7 +553,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 48
-  Font: !<reference> 711473f0-eaf8-4cdb-8d22-e1d2e07c6345
+  Font: !<reference> 8270c0f5-f8eb-460e-ba17-178ca31e5f85
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -664,6 +631,39 @@
   Components:
     - !<own> dd0f618e-fdd8-406f-9520-93a52de7d398
     - !<own> e03fc1a4-93d2-4c8d-a206-224e132914db
+- !<ScreenTransform/f60519d1-532c-401d-8660-a8dd7744f3a2>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -0.900000
+    bottom: 0.300000
+    right: 1.200000
+    top: 0.200000
+  Offset:
+    left: -0.000000
+    bottom: -1.000000
+    right: 0.000000
+    top: 1.000000
 - !<RenderMeshVisual/fde7df17-6092-4643-888e-c0645b7df754>
   PrefabRemaps:
     []

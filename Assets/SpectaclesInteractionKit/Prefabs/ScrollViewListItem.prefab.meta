@@ -146,9 +146,9 @@
   RawMode: true
   ForceBasic: true
   Anchor:
-    left: -0.825000
-    bottom: 0.200000
-    right: 0.665100
+    left: -0.900000
+    bottom: 0.300000
+    right: 1.200000
     top: 0.200000
   Offset:
     left: -0.000000
@@ -173,7 +173,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 48
-  Font: !<reference> a04f6bc5-fd7c-4ce5-9d5c-6d16a6218a25
+  Font: !<reference> fb83d9d2-0a8a-449c-a035-05fa232ccf78
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -183,7 +183,7 @@
   OverflowHorizontal: Overflow
   Fill: !<TextFill>
     Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.600000}
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
     Texture: !<reference> 00000000-0000-0000-0000-000000000000
     TileCount: 5.000000
     TileZone: Rect
@@ -278,8 +278,8 @@
   RawMode: true
   ForceBasic: true
   Anchor:
-    left: -0.825000
-    bottom: -0.500000
+    left: -0.900000
+    bottom: -0.400000
     right: 0.665100
     top: -0.500000
   Offset:
@@ -636,7 +636,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 48
-  Font: !<reference> 711473f0-eaf8-4cdb-8d22-e1d2e07c6345
+  Font: !<reference> 8270c0f5-f8eb-460e-ba17-178ca31e5f85
   LayoutRect:
     left: -7.500000
     bottom: -2.250000

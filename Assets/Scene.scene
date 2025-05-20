@@ -520,9 +520,9 @@
   RawMode: true
   ForceBasic: true
   Anchor:
-    left: -0.825000
-    bottom: 0.200000
-    right: 0.665100
+    left: -0.900000
+    bottom: 0.300000
+    right: 1.200000
     top: 0.200000
   Offset:
     left: -0.000000
@@ -1675,7 +1675,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 48
-  Font: !<reference> a04f6bc5-fd7c-4ce5-9d5c-6d16a6218a25
+  Font: !<reference> fb83d9d2-0a8a-449c-a035-05fa232ccf78
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -1685,7 +1685,7 @@
   OverflowHorizontal: Overflow
   Fill: !<TextFill>
     Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.600000}
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
     Texture: !<reference> 00000000-0000-0000-0000-000000000000
     TileCount: 5.000000
     TileZone: Rect
@@ -1845,39 +1845,6 @@
     - !<own> 4947ee5e-633d-428d-a739-7ccce0495d37
   Components:
     []
-- !<ScreenTransform/2edaea45-3e2d-41f5-b32c-010f14b03bbf>
-  PrefabRemaps:
-    []
-  Name: Screen Transform
-  Enabled: true
-  IsAdvanced: false
-  Constraints:
-    pinToLeft: false
-    pinToTop: false
-    pinToRight: false
-    pinToBottom: false
-    fixedWidth: false
-    fixedHeight: false
-    deactivatedFixedSprite: false
-    deactivatedFixedPivot: false
-  Pivot: {x: 0.000000, y: 0.000000}
-  Transform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    hasSegmentScaleCompensation: false
-  RawMode: true
-  ForceBasic: true
-  Anchor:
-    left: -0.825000
-    bottom: 0.200000
-    right: 0.665100
-    top: 0.200000
-  Offset:
-    left: -0.000000
-    bottom: -1.000000
-    right: 0.000000
-    top: 1.000000
 - !<SceneObject/2f4191ba-2e4c-48c4-a3b8-5340b404a98b>
   PrefabRemaps:
     []
@@ -2743,8 +2710,8 @@
     {}
   ScriptInputs:
     "":
-      defaultColor: !<Vec4> {x: 0.866667, y: 0.280003, z: 0.280003, w: 1.000000}
-      hoverColor: !<Vec4> {x: 0.964706, y: 0.206180, z: 0.883879, w: 1.000000}
+      defaultColor: !<Vec4> {x: 0.203922, y: 0.596078, z: 0.858824, w: 1.000000}
+      hoverColor: !<Vec4> {x: 0.160784, y: 0.341176, z: 0.725490, w: 1.000000}
       pinchedColor: !<Vec4> {x: 0.458824, y: 0.459998, z: 0.459998, w: 0.000000}
       disabledColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.000000}
       meshVisuals: !<reference.RenderMeshVisual[]>
@@ -4044,8 +4011,8 @@
   RawMode: true
   ForceBasic: true
   Anchor:
-    left: -0.825000
-    bottom: -0.500000
+    left: -0.900000
+    bottom: -0.400000
     right: 0.665100
     top: -0.500000
   Offset:
@@ -5027,7 +4994,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 48
-  Font: !<reference> a04f6bc5-fd7c-4ce5-9d5c-6d16a6218a25
+  Font: !<reference> fb83d9d2-0a8a-449c-a035-05fa232ccf78
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -5037,7 +5004,7 @@
   OverflowHorizontal: Overflow
   Fill: !<TextFill>
     Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.600000}
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
     Texture: !<reference> 00000000-0000-0000-0000-000000000000
     TileCount: 5.000000
     TileZone: Rect
@@ -5608,7 +5575,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 100
-  Font: !<reference> 709203b6-8b83-40d7-8dda-e5adc4fd2875
+  Font: !<reference> 8917ac20-a223-4514-a4af-97c8b2690aae
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -6032,7 +5999,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 100
-  Font: !<reference> 709203b6-8b83-40d7-8dda-e5adc4fd2875
+  Font: !<reference> 8917ac20-a223-4514-a4af-97c8b2690aae
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -6442,7 +6409,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 80
-  Font: !<reference> 709203b6-8b83-40d7-8dda-e5adc4fd2875
+  Font: !<reference> 0c3eb80b-2c90-4ef2-b628-41cc86f67abf
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -6560,8 +6527,8 @@
   Children:
     []
   Components:
-    - !<own> 2edaea45-3e2d-41f5-b32c-010f14b03bbf
     - !<own> dff46b8f-c9e5-49b2-883d-fc9f1e1ab32a
+    - !<own> e3f69250-85e5-4ed1-8e04-8a6e48c06156
 - !<ScriptComponent/b20d72db-7c35-43bb-99e4-8a8a113da36b>
   PrefabRemaps:
     []
@@ -7164,7 +7131,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 75
-  Font: !<reference> 711473f0-eaf8-4cdb-8d22-e1d2e07c6345
+  Font: !<reference> 0c3eb80b-2c90-4ef2-b628-41cc86f67abf
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -7174,7 +7141,7 @@
   OverflowHorizontal: Overflow
   Fill: !<TextFill>
     Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.700008}
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
     Texture: !<reference> 00000000-0000-0000-0000-000000000000
     TileCount: 5.000000
     TileZone: Rect
@@ -7647,8 +7614,8 @@
   Children:
     []
   Components:
-    - !<own> d5169be7-1565-4bd7-b72d-61913e9ffe27
     - !<own> 8e9c335d-18c5-4ce3-a3f6-472f34de9868
+    - !<own> f2087ca3-a433-46ab-9e71-e60eb87e2266
 - !<SceneObject/cca83b0d-92e2-47e3-8352-31461f4d6f68>
   PrefabRemaps:
     []
@@ -7789,39 +7756,6 @@
   ScriptTypes:
     "":
       {}
-- !<ScreenTransform/d5169be7-1565-4bd7-b72d-61913e9ffe27>
-  PrefabRemaps:
-    []
-  Name: Screen Transform
-  Enabled: true
-  IsAdvanced: false
-  Constraints:
-    pinToLeft: false
-    pinToTop: false
-    pinToRight: false
-    pinToBottom: false
-    fixedWidth: false
-    fixedHeight: false
-    deactivatedFixedSprite: false
-    deactivatedFixedPivot: false
-  Pivot: {x: 0.000000, y: 0.000000}
-  Transform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    hasSegmentScaleCompensation: false
-  RawMode: true
-  ForceBasic: true
-  Anchor:
-    left: -0.825000
-    bottom: -0.500000
-    right: 0.665100
-    top: -0.500000
-  Offset:
-    left: -0.000000
-    bottom: -0.750000
-    right: 0.000000
-    top: 0.750000
 - !<SceneObject/d5c89681-8248-448c-bae3-7f86b84efc15>
   PrefabRemaps:
     []
@@ -7962,7 +7896,9 @@
     - d5169be7-1565-4bd7-b72d-61913e9ffe27: c04d3991-ec61-45db-a0bd-5810571db745
     - d8b87576-858d-4880-a1f0-9b8171e9236e: f21f2563-a52f-47b2-aea9-489ad884c408
     - dff46b8f-c9e5-49b2-883d-fc9f1e1ab32a: e13c50cf-80fb-467e-955d-b90842465dfb
+    - e3f69250-85e5-4ed1-8e04-8a6e48c06156: f60519d1-532c-401d-8660-a8dd7744f3a2
     - efb57e80-7966-4374-919e-8918e7e6cae0: 3576d474-c538-4d86-beb1-c7dc3392f6c4
+    - f2087ca3-a433-46ab-9e71-e60eb87e2266: 440be9db-8688-4efa-bf62-0a84cb2dbdba
     - f5dbbdff-02cc-4987-b9e0-81dd8515cca4: b47adc2a-2a75-4a97-a1ce-6908f2f6755c
   Name: Task View List Item
   Enabled: false
@@ -8334,7 +8270,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 48
-  Font: !<reference> 711473f0-eaf8-4cdb-8d22-e1d2e07c6345
+  Font: !<reference> 8270c0f5-f8eb-460e-ba17-178ca31e5f85
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -8542,6 +8478,39 @@
     - !<own> 1a6cbd1f-9521-41de-adb5-3190c6ecdad9
   Components:
     []
+- !<ScreenTransform/e3f69250-85e5-4ed1-8e04-8a6e48c06156>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -0.900000
+    bottom: 0.300000
+    right: 1.200000
+    top: 0.200000
+  Offset:
+    left: -0.000000
+    bottom: -1.000000
+    right: 0.000000
+    top: 1.000000
 - !<SceneObject/e405cc07-59ce-4f95-8a8d-18bc16aa6b66>
   PrefabRemaps:
     []
@@ -8894,7 +8863,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 75
-  Font: !<reference> 711473f0-eaf8-4cdb-8d22-e1d2e07c6345
+  Font: !<reference> 0c3eb80b-2c90-4ef2-b628-41cc86f67abf
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -8904,7 +8873,7 @@
   OverflowHorizontal: Overflow
   Fill: !<TextFill>
     Mode: Solid
-    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 0.700008}
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
     Texture: !<reference> 00000000-0000-0000-0000-000000000000
     TileCount: 5.000000
     TileZone: Rect
@@ -9138,7 +9107,7 @@
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
   FontSize: 48
-  Font: !<reference> 711473f0-eaf8-4cdb-8d22-e1d2e07c6345
+  Font: !<reference> 8270c0f5-f8eb-460e-ba17-178ca31e5f85
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -9197,6 +9166,39 @@
     CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
+- !<ScreenTransform/f2087ca3-a433-46ab-9e71-e60eb87e2266>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: false
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: true
+  Anchor:
+    left: -0.900000
+    bottom: -0.400000
+    right: 0.665100
+    top: -0.500000
+  Offset:
+    left: -0.000000
+    bottom: -0.750000
+    right: 0.000000
+    top: 0.750000
 - !<SceneObject/f4fc35a3-7c67-4709-ad29-151c55f9a44f>
   PrefabRemaps:
     []
