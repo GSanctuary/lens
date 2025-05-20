@@ -28,10 +28,14 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    cacheEntryExpiration: false
     camera: false
     frame: false
     instantiationDistance: false
     kindString: false
+    nextPageButton: false
+    pageNumberText: false
+    previousPageButton: false
     scrollView: false
     voiceInputDelay: false
   ScriptTypesHidden:
@@ -45,6 +49,10 @@
       instantiationDistance: !<float> 100.000000
       voiceInputDelay: !<float> 1000.000000
       scrollView: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      cacheEntryExpiration: !<float> 0.000000
+      nextPageButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      previousPageButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      pageNumberText: !<reference.Text> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -55,3 +63,7 @@
     - // @input float instantiationDistance = 100
     - // @input float voiceInputDelay = 1000
     - // @input SceneObject scrollView
+    - // @input float cacheEntryExpiration
+    - // @input AssignableType_1 nextPageButton
+    - // @input AssignableType_2 previousPageButton
+    - // @input Component.Text pageNumberText

@@ -61,7 +61,7 @@ export type RawTaskResponse = {
     completed: boolean;
 };
 
-export type TaskResponse = {
+export type Task = {
     id: number;
     createdAt: Date;
     updatedAt: Date;
@@ -72,7 +72,7 @@ export type TaskResponse = {
 
 export const convertRawTaskResponseToTaskResponse = (
     rawTaskResponse: RawTaskResponse
-): TaskResponse => {
+): Task => {
     return {
         ...rawTaskResponse,
         createdAt: new Date(rawTaskResponse.createdAt),

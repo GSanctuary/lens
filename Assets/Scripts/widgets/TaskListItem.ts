@@ -12,13 +12,15 @@ export class TaskListItem extends BaseScriptComponent {
     @input
     pinchButton: PinchButton;
 
-    private onCompletion: Array<(taskId: number) => void> = [];
+    private onCompletion: ((taskId: number) => void) | undefined;
 
     // Used to identify task when completing
     private taskId: number;
 
     onAwake() {
-        this.pinchButton.onButtonPinched.add(this.completeTask.bind(this));
+        this.pinchButton.onButtonPinched.add(() => {
+            this.completeTask();
+        });
     }
 
     setName(name: string) {
@@ -34,15 +36,15 @@ export class TaskListItem extends BaseScriptComponent {
     }
 
     addCompletionCallback(callback: (taskId: number) => void) {
-        this.onCompletion.push(callback);
+        this.onCompletion = callback;
     }
 
-    removeCompletionCallback(callback: (taskId: number) => void) {
-        this.onCompletion = this.onCompletion.filter((cb) => cb !== callback);
+    removeCompletionCallback() {
+        this.onCompletion = undefined;
     }
 
     private async completeTask() {
-        this.onCompletion.forEach((callback) => callback(this.taskId));
+        print(`Called by ${this.taskId}`);
         const taskCompletion = await SanctuaryAPI.getInstance().completeTask(
             this.taskId
         );
@@ -51,6 +53,9 @@ export class TaskListItem extends BaseScriptComponent {
             print(`Task ${this.taskId} completed`);
         } else {
             print(`Failed to complete task ${this.taskId}`);
+        }
+        if (this.onCompletion) {
+            this.onCompletion(this.taskId);
         }
     }
 }

@@ -7,7 +7,7 @@ import {
     RawCompletionResponse,
     RawConversation,
     RawTaskResponse,
-    TaskResponse,
+    Task,
 } from "../types/Sanctuary";
 
 @component
@@ -133,7 +133,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
         );
     }
 
-    async createTask(name: string): Promise<TaskResponse> {
+    async createTask(name: string): Promise<Task> {
         if (!this.apiKey) {
             throw new Error("API key not set");
         }
@@ -155,20 +155,36 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return convertRawTaskResponseToTaskResponse(body.task);
     }
 
-    async getTasks(): Promise<TaskResponse[]> {
+    async getTasks(pageNumber: number = 1, pageSize: number = 10) {
         if (!this.apiKey) {
             throw new Error("API key not set");
         }
-        const request = new Request(`${this.baseUrl}/task`, {
-            method: "GET",
-            headers: this.headers,
-        });
+
+        if (pageNumber <= 0 || pageSize <= 0) {
+            pageNumber = 1;
+            pageSize = 10;
+        }
+
+        const request = new Request(
+            `${this.baseUrl}/task/?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+            {
+                method: "GET",
+                headers: this.headers,
+            }
+        );
         const response = await this.remoteServiceModule.fetch(request);
         if (response.status !== 200) {
             throw new Error("Failed to fetch tasks");
         }
-        const body: { tasks: RawTaskResponse[] } = await response.json();
-        return body.tasks.map(convertRawTaskResponseToTaskResponse);
+        const body: {
+            tasks: RawTaskResponse[];
+            page: number;
+            pageCount: number;
+        } = await response.json();
+        return {
+            tasks: body.tasks.map(convertRawTaskResponseToTaskResponse),
+            pageCount: body.pageCount,
+        };
     }
 
     async completeTask(taskId: number): Promise<boolean> {
