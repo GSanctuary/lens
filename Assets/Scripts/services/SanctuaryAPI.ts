@@ -183,7 +183,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
 
         const response = await this.remoteServiceModule.fetch(request);
 
-        return response.status === 200;
+        return response.status === 201;
     }
 
     async completeTasks(taskIds: number[]): Promise<boolean> {
