@@ -2,6 +2,11 @@ import { ContainerFrame } from "SpectaclesInteractionKit/Components/UI/Container
 import { EventEmitter } from "./EventEmitter";
 import { EventType } from "./types/Event";
 import { WidgetKind } from "./types/WidgetKind";
+import {
+    CancelToken,
+    clearTimeout,
+    setTimeout,
+} from "SpectaclesInteractionKit/Utils/FunctionTimingUtils";
 
 @component
 export class Widget extends BaseScriptComponent {
@@ -17,7 +22,12 @@ export class Widget extends BaseScriptComponent {
     @input
     instantiationDistance: number = 100;
 
+    @input
+    voiceInputDelay: number = 1000;
+
     kind: WidgetKind;
+
+    private voiceTimeoutToken: CancelToken | undefined;
 
     onAwake() {
         this.createEvent("OnStartEvent").bind(() => this.onStart());
@@ -36,6 +46,9 @@ export class Widget extends BaseScriptComponent {
                 break;
             case "AI":
                 this.kind = WidgetKind.AI;
+                break;
+            case "TaskList":
+                this.kind = WidgetKind.TaskList;
                 break;
             default:
                 break;
@@ -85,6 +98,17 @@ export class Widget extends BaseScriptComponent {
     }
 
     protected handleVoiceInput(input: string): void {
+        if (this.voiceTimeoutToken) {
+            clearTimeout(this.voiceTimeoutToken);
+        }
+
+        this.voiceTimeoutToken = setTimeout(() => {
+            this.handleVoiceInputCallback(input);
+        }, this.voiceInputDelay);
+    }
+
+    protected handleVoiceInputCallback(input: string): void {
         print(`Handling voice input: ${input}`);
+        this.voiceTimeoutToken = undefined;
     }
 }

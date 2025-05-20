@@ -1,11 +1,6 @@
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Conversation } from "../types/Sanctuary";
 import { Widget } from "../Widget";
-import {
-    CancelToken,
-    clearTimeout,
-    setTimeout,
-} from "SpectaclesInteractionKit/Utils/FunctionTimingUtils";
 
 @component
 export class AIView extends Widget {
@@ -18,11 +13,7 @@ export class AIView extends Widget {
     @input
     outputText: Text;
 
-    @input
-    apiInvocationDelaySeconds: number = 1000;
-
     private conversation: Conversation;
-    private timeoutId: CancelToken | undefined;
 
     open(args: Record<string, any>): Widget {
         const { title } = args;
@@ -41,14 +32,9 @@ export class AIView extends Widget {
         return this.deactivateWidget();
     }
 
-    protected override handleVoiceInput(input: string) {
-        if (this.timeoutId) {
-            clearTimeout(this.timeoutId);
-        }
+    protected override handleVoiceInputCallback(input: string) {
         this.inputText.text = input;
-        this.timeoutId = setTimeout(() => {
-            this.sendToAPI(input);
-        }, this.apiInvocationDelaySeconds);
+        this.sendToAPI(input);
         this.outputText.text = "Thinking...";
     }
 
@@ -66,6 +52,5 @@ export class AIView extends Widget {
         } catch (error) {
             print(`Error sending message: ${error}`);
         }
-        this.timeoutId = undefined;
     }
 }
