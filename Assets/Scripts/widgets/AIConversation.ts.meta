@@ -32,7 +32,6 @@
     kindString: false
     newConversationButton: false
     scrollView: false
-    textPrefab: false
   ScriptTypesHidden:
     {}
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
@@ -41,7 +40,6 @@
       frame: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
       camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
       instantiationDistance: !<float> 100.000000
-      textPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
       scrollView: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       newConversationButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
@@ -52,7 +50,6 @@
     - // @input AssignableType frame
     - // @input Component.Camera camera
     - // @input float instantiationDistance = 100
-    - // @input Asset.ObjectPrefab textPrefab
     - // @input SceneObject scrollView
     - // @input AssignableType_1 newConversationButton
   SetupScript:
