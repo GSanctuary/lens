@@ -127,8 +127,6 @@ export class SanctuaryAPI extends BaseScriptComponent {
         const body: { createdMessage: RawCompletionResponse } =
             await response.json();
 
-        print(JSON.stringify(body));
-
         return convertRawCompletionResponseToCompletionResponse(
             body.createdMessage
         );
