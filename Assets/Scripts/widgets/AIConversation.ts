@@ -10,8 +10,6 @@ import { AIConversationItem } from "./AIConversationItem";
 @component
 export class AIConversation extends Widget {
     @input
-    textPrefab: ObjectPrefab;
-    @input
     scrollView: SceneObject;
     @input newConversationButton: PinchButton;
 
