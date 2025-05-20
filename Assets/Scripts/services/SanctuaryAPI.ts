@@ -85,6 +85,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
 
     async getConversations(): Promise<Conversation[]> {
         if (!this.apiKey) {
+            print("API key not set");
             throw new Error("API key not set");
         }
 
