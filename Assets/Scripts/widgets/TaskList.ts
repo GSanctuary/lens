@@ -3,6 +3,7 @@ import { Widget } from "../Widget";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Task } from "../types/Sanctuary";
 import { TaskListItem } from "./TaskListItem";
+import { clamp } from "SpectaclesInteractionKit/Utils/mathUtils";
 
 type PageCacheEntry = {
     items: Task[];
@@ -22,6 +23,9 @@ export class TaskList extends Widget {
 
     @input
     previousPageButton: PinchButton;
+
+    @input
+    pageSize: number = 10;
 
     @input
     pageNumberText: Text;
@@ -48,15 +52,66 @@ export class TaskList extends Widget {
     private nextPage(): void {
         if (this.pageNumber >= this.maxPageNumber) return;
         this.pageNumber++;
-        this.formatPageNumber();
-        this.hydrateAndPopulate();
+        this.updatePage();
     }
 
     private previousPage(): void {
         if (this.pageNumber <= 1) return;
         this.pageNumber--;
+        this.updatePage();
+    }
+
+    private async updatePage(): Promise<void> {
+        const cacheEntry = this.pageCache[this.pageNumber];
+        if (cacheEntry && cacheEntry.expiration > Date.now()) {
+            this.tasks = cacheEntry.items;
+        } else {
+            await this.fetchEntry(this.pageNumber);
+        }
         this.formatPageNumber();
-        this.hydrateAndPopulate();
+        this.populateTasks();
+    }
+
+    private async fetchEntry(entryNumber: number): Promise<void> {
+        const { tasks: cachedTasks } =
+            await SanctuaryAPI.getInstance().getTasks(
+                entryNumber,
+                this.pageSize
+            );
+        this.pageCache[entryNumber] = {
+            items: cachedTasks.sort(
+                (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
+            ),
+            expiration: Date.now() + this.cacheEntryExpiration,
+        };
+    }
+
+    private repaginate(taskId: number): void {
+        let allTasks: Task[] = [];
+        for (let i = 1; i <= this.maxPageNumber; i++) {
+            const cacheEntry = this.pageCache[i];
+            if (cacheEntry) {
+                allTasks = allTasks.concat(cacheEntry.items);
+            }
+        }
+        const processedTasks = allTasks.filter((task) => task.id !== taskId);
+        this.maxPageNumber = Math.ceil(processedTasks.length / this.pageSize);
+        this.pageNumber = clamp(this.pageNumber, 1, this.maxPageNumber);
+
+        this.pageCache = {};
+
+        for (let i = 1; i <= this.maxPageNumber; i++) {
+            this.pageCache[i] = {
+                items: processedTasks.slice(
+                    (i - 1) * this.pageSize,
+                    i * this.pageSize
+                ),
+                expiration: Date.now() + this.cacheEntryExpiration,
+            };
+        }
+        this.tasks = this.pageCache[this.pageNumber]
+            ? this.pageCache[this.pageNumber].items
+            : [];
     }
 
     private formatPageNumber(): void {
@@ -86,7 +141,6 @@ export class TaskList extends Widget {
             if (!taskListItem) {
                 throw new Error("TaskListItem component not found");
             }
-            taskListItem.removeCompletionCallback();
             taskListItem.setName(task.name);
             taskListItem.setDate(task.createdAt.toLocaleDateString());
             taskListItem.setTaskId(task.id);
@@ -95,34 +149,31 @@ export class TaskList extends Widget {
     }
 
     protected override async hydrate(): Promise<void> {
-        const cacheEntry = this.pageCache[this.pageNumber];
-        if (cacheEntry && cacheEntry.expiration > Date.now()) {
-            print("Using cached tasks");
-            this.tasks = cacheEntry.items;
-            return;
-        }
-
         const { tasks, pageCount } = await SanctuaryAPI.getInstance().getTasks(
-            this.pageNumber
+            this.pageNumber,
+            this.pageSize
         );
         this.maxPageNumber = pageCount;
-        this.tasks = tasks;
-        this.tasks = this.tasks.sort(
-            (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
-        );
 
         this.pageCache[this.pageNumber] = {
-            items: this.tasks,
+            items: tasks.sort(
+                (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
+            ),
             expiration: Date.now() + this.cacheEntryExpiration,
         };
+
+        const promises: Promise<void>[] = [];
+
+        for (let i = 2; i <= this.maxPageNumber; i++) {
+            promises.push(this.fetchEntry(i));
+        }
+        await Promise.all(promises);
+        this.tasks = this.pageCache[this.pageNumber].items;
     }
 
     private onTaskCompleted(taskId: number): void {
-        this.tasks = this.tasks.filter((task) => task.id !== taskId);
+        this.repaginate(taskId);
+        this.formatPageNumber();
         this.populateTasks();
-        this.pageCache[this.pageNumber] = {
-            items: this.tasks,
-            expiration: Date.now() + this.cacheEntryExpiration,
-        };
     }
 }

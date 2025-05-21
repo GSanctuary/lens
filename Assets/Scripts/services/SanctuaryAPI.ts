@@ -180,10 +180,12 @@ export class SanctuaryAPI extends BaseScriptComponent {
             tasks: RawTaskResponse[];
             page: number;
             pageCount: number;
+            count: number;
         } = await response.json();
         return {
             tasks: body.tasks.map(convertRawTaskResponseToTaskResponse),
             pageCount: body.pageCount,
+            count: body.count,
         };
     }
 

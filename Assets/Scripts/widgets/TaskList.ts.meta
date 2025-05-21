@@ -35,6 +35,7 @@
     kindString: false
     nextPageButton: false
     pageNumberText: false
+    pageSize: false
     previousPageButton: false
     scrollView: false
     voiceInputDelay: false
@@ -52,6 +53,7 @@
       cacheEntryExpiration: !<float> 0.000000
       nextPageButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       previousPageButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      pageSize: !<float> 10.000000
       pageNumberText: !<reference.Text> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
@@ -66,4 +68,5 @@
     - // @input float cacheEntryExpiration
     - // @input AssignableType_1 nextPageButton
     - // @input AssignableType_2 previousPageButton
+    - // @input float pageSize = 10
     - // @input Component.Text pageNumberText
