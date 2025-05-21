@@ -4486,6 +4486,7 @@
       cacheEntryExpiration: !<float> 1800000.000000
       nextPageButton: !<MappingBased.AssignableType_1> 053a30b5-2eea-4c4a-a728-2220cbbd74a4
       previousPageButton: !<MappingBased.AssignableType_2> d7fcfcf9-e528-42f9-b9bc-d325f00bd3fc
+      pageSize: !<float> 1.000000
       pageNumberText: !<reference.Text> b0a17692-c566-478f-a6e7-ea3b3d77fe5b
   ScriptTypes:
     "":
