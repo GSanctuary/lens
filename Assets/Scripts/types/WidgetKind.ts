@@ -2,4 +2,5 @@ export enum WidgetKind {
     AIConversation = "AIConversation",
     AI = "AI",
     TaskList = "TaskList",
+    TaskCreation = "TaskCreation",
 }

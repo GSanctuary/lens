@@ -138,10 +138,14 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
+        if (name.trim() === "") {
+            throw new Error("Task name cannot be empty");
+        }
+
         const request = new Request(`${this.baseUrl}/task`, {
             method: "POST",
             headers: this.headers,
-            body: JSON.stringify({ name }),
+            body: JSON.stringify({ task: name }),
         });
 
         const response = await this.remoteServiceModule.fetch(request);

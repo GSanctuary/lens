@@ -22,17 +22,20 @@ export class EventEmitter extends BaseScriptComponent {
             [EventType.VoiceInput]: [],
             [EventType.WidgetOpen]: [],
             [EventType.WidgetClose]: [],
+            [EventType.TaskCreated]: [],
         };
         this.widgetRegistry = {
             [WidgetKind.AIConversation]: undefined,
             [WidgetKind.AI]: undefined,
             [WidgetKind.TaskList]: undefined,
+            [WidgetKind.TaskCreation]: undefined,
         };
 
         this.activeWidgets = {
             [WidgetKind.AIConversation]: undefined,
             [WidgetKind.AI]: undefined,
             [WidgetKind.TaskList]: undefined,
+            [WidgetKind.TaskCreation]: undefined,
         };
 
         EventEmitter.on(EventType.WidgetOpen, this.openWidget.bind(this));

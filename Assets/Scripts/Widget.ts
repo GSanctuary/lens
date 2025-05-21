@@ -38,21 +38,8 @@ export class Widget extends BaseScriptComponent {
             .getChild(0)
             .getComponent(ContainerFrame.getTypeName());
 
-        this.frame.onCloseButtonTriggerEvent.add(this.close);
-
-        switch (this.kindString) {
-            case "AIConversation":
-                this.kind = WidgetKind.AIConversation;
-                break;
-            case "AI":
-                this.kind = WidgetKind.AI;
-                break;
-            case "TaskList":
-                this.kind = WidgetKind.TaskList;
-                break;
-            default:
-                break;
-        }
+        this.frame.onCloseButtonTriggerEvent.add(this.close.bind(this));
+        this.kind = WidgetKind[this.kindString as keyof typeof WidgetKind];
         EventEmitter.registerWidget(this);
         this.registerEventHandlers();
     }

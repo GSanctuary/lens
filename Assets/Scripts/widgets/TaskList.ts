@@ -4,6 +4,9 @@ import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { Task } from "../types/Sanctuary";
 import { TaskListItem } from "./TaskListItem";
 import { clamp } from "SpectaclesInteractionKit/Utils/mathUtils";
+import { EventEmitter } from "../EventEmitter";
+import { EventType } from "../types/Event";
+import { WidgetKind } from "../types/WidgetKind";
 
 type PageCacheEntry = {
     items: Task[];
@@ -30,6 +33,9 @@ export class TaskList extends Widget {
     @input
     pageNumberText: Text;
 
+    @input
+    newTaskButton: PinchButton;
+
     private tasks: Task[] = [];
     private pageNumber: number = 1;
     private maxPageNumber: number = 1;
@@ -47,6 +53,47 @@ export class TaskList extends Widget {
         this.previousPageButton.onButtonPinched.add(
             this.previousPage.bind(this)
         );
+        this.newTaskButton.onButtonPinched.add(
+            this.openNewTaskWidget.bind(this)
+        );
+    }
+
+    protected override registerEventHandlers(): void {
+        super.registerEventHandlers();
+        EventEmitter.on(EventType.TaskCreated, this.addTask.bind(this));
+    }
+
+    private addTask(task: Task): void {
+        print(`Adding task ${task.name}`);
+        if (this.pageCache[this.maxPageNumber]) {
+            const newTasks = [
+                ...this.pageCache[this.maxPageNumber].items,
+                task,
+            ];
+            if (newTasks.length > this.pageSize) {
+                this.maxPageNumber++;
+                this.pageCache[this.maxPageNumber] = {
+                    items: [task],
+                    expiration: Date.now() + this.cacheEntryExpiration,
+                };
+            } else {
+                this.pageCache[this.maxPageNumber].items = newTasks;
+                this.pageCache[this.maxPageNumber].expiration =
+                    Date.now() + this.cacheEntryExpiration;
+            }
+        } else {
+            this.pageCache[this.maxPageNumber] = {
+                items: [task],
+                expiration: Date.now() + this.cacheEntryExpiration,
+            };
+        }
+
+        this.populateTasks();
+        this.formatPageNumber();
+    }
+
+    private openNewTaskWidget(): void {
+        EventEmitter.emit(EventType.WidgetOpen, WidgetKind.TaskCreation);
     }
 
     private nextPage(): void {
@@ -116,10 +163,10 @@ export class TaskList extends Widget {
 
     private formatPageNumber(): void {
         if (this.maxPageNumber <= 0) {
-            this.pageNumberText.text = "No tasks available";
+            this.pageNumberText.text = "0/0";
             return;
         }
-        this.pageNumberText.text = `Page ${this.pageNumber}/${this.maxPageNumber}`;
+        this.pageNumberText.text = `${this.pageNumber}/${this.maxPageNumber}`;
     }
 
     private async hydrateAndPopulate(): Promise<void> {

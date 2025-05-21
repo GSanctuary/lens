@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/b8a1e42c-cf60-4c3f-af2d-096cd24bc740>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 40a2d2f9-7db2-4bfa-acbf-88d7cac23aa4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 40a2d2f9-7db2-4bfa-acbf-88d7cac23aa4
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ef6db952-6341-47f9-9d8b-ae3fdd5702e9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ef6db952-6341-47f9-9d8b-ae3fdd5702e9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 73a2fb53-8fcf-496e-b0fa-64d0087bd653
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    camera: false
+    frame: false
+    instantiationDistance: false
+    kindString: false
+    titleText: false
+    voiceInputDelay: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - kindString: ""
+      frame: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      instantiationDistance: !<float> 100.000000
+      voiceInputDelay: !<float> 1000.000000
+      titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input string kindString
+    - // @input AssignableType frame
+    - // @input Component.Camera camera
+    - // @input float instantiationDistance = 100
+    - // @input float voiceInputDelay = 1000
+    - // @input Component.Text titleText
