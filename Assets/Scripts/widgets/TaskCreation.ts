@@ -1,3 +1,4 @@
+import { PinchButton } from "SpectaclesInteractionKit/Components/UI/PinchButton/PinchButton";
 import { EventEmitter } from "../EventEmitter";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { EventType } from "../types/Event";
@@ -10,7 +11,19 @@ export class TaskCreation extends Widget {
     titleText: Text;
 
     @input
+    statusText: Text;
+
+    @input
     voicePrefix: string;
+
+    @input
+    initialTaskNameValue: string;
+
+    @input
+    confirmButton: PinchButton;
+
+    @input
+    denyButton: PinchButton;
 
     onAwake(): void {
         this.createEvent("OnStartEvent").bind(() => this.onStart());
@@ -18,8 +31,10 @@ export class TaskCreation extends Widget {
 
     async onStart(): Promise<void> {
         super.onStart();
-        this.titleText.text = "Task Name";
+        this.reset();
         this.registerEventHandlers();
+        this.confirmButton.onButtonPinched.add(this.createTask.bind(this));
+        this.denyButton.onButtonPinched.add(this.reset.bind(this));
     }
 
     protected override setupVoicePrefixHandler(): VoicePrefixHandler {
@@ -32,16 +47,22 @@ export class TaskCreation extends Widget {
     protected override handleVoiceInput(input: string): boolean {
         if (!super.handleVoiceInput(input)) return;
         this.titleText.text = input;
+        this.statusText.text = "Processing...";
     }
 
     protected override handleVoiceInputCallback(input: string) {
         this.titleText.text = input;
-        this.createTask();
+        this.statusText.text = "";
+    }
+
+    private reset() {
+        this.titleText.text = this.initialTaskNameValue;
     }
 
     private async createTask(): Promise<void> {
         const taskName = this.titleText.text;
-        // Ensure task name (after prefix is stripped) is not empty
+        if (taskName === this.initialTaskNameValue) return;
+
         try {
             const task = await SanctuaryAPI.createTask(taskName);
             print(`Task created: ${task.name}`);
@@ -49,5 +70,7 @@ export class TaskCreation extends Widget {
         } catch (error) {
             print(`Error creating task: ${error}`);
         }
+
+        this.reset();
     }
 }

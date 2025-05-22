@@ -29,9 +29,13 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     camera: false
+    confirmButton: false
+    denyButton: false
     frame: false
+    initialTaskNameValue: false
     instantiationDistance: false
     kindString: false
+    statusText: false
     titleText: false
     voiceInputDelay: false
     voicePrefix: false
@@ -46,7 +50,11 @@
       instantiationDistance: !<float> 100.000000
       voiceInputDelay: !<float> 1000.000000
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       voicePrefix: ""
+      initialTaskNameValue: ""
+      confirmButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      denyButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -57,4 +65,8 @@
     - // @input float instantiationDistance = 100
     - // @input float voiceInputDelay = 1000
     - // @input Component.Text titleText
+    - // @input Component.Text statusText
     - // @input string voicePrefix
+    - // @input string initialTaskNameValue
+    - // @input AssignableType_1 confirmButton
+    - // @input AssignableType_2 denyButton
