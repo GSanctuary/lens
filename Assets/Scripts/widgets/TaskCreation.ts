@@ -19,6 +19,7 @@ export class TaskCreation extends Widget {
     }
 
     protected override handleVoiceInput(input: string): void {
+        if (!this.isWidgetEnabled) return;
         super.handleVoiceInput(input);
         this.titleText.text = input;
     }
@@ -31,7 +32,6 @@ export class TaskCreation extends Widget {
     private async createTask(): Promise<void> {
         const taskName = this.titleText.text;
         // Ensure task name (after prefix is stripped) is not empty
-
         try {
             const task = await SanctuaryAPI.createTask(taskName);
             print(`Task created: ${task.name}`);

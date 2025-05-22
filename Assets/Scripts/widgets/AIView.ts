@@ -33,6 +33,7 @@ export class AIView extends Widget {
     }
 
     protected override handleVoiceInput(input: string): void {
+        if (!this.isWidgetEnabled) return;
         super.handleVoiceInput(input);
         this.inputText.text = input;
     }

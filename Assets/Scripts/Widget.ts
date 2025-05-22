@@ -27,6 +27,7 @@ export class Widget extends BaseScriptComponent {
 
     kind: WidgetKind;
 
+    protected isWidgetEnabled: boolean = false;
     private voiceTimeoutToken: CancelToken | undefined;
 
     onAwake() {
@@ -51,12 +52,15 @@ export class Widget extends BaseScriptComponent {
     protected activateWidget(): Widget {
         this.frame.getSceneObject().enabled = true;
         this.placeInFrontOfCamera();
+        this.isWidgetEnabled = true;
+        print(`Widget ${this.kind} activated`);
         return this;
     }
 
     protected deactivateWidget(): Widget {
         EventEmitter.emit(EventType.WidgetClose, this.kind);
         this.frame.getSceneObject().enabled = false;
+        this.isWidgetEnabled = false;
         return this;
     }
 
@@ -85,6 +89,10 @@ export class Widget extends BaseScriptComponent {
     }
 
     protected handleVoiceInput(input: string): void {
+        if (!this.isWidgetEnabled) {
+            return;
+        }
+
         if (this.voiceTimeoutToken) {
             clearTimeout(this.voiceTimeoutToken);
         }
