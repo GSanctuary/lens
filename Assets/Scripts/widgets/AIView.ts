@@ -48,7 +48,7 @@ export class AIView extends Widget {
             throw new Error("Conversation is not set");
         }
         try {
-            const response = await SanctuaryAPI.getInstance().completion(
+            const response = await SanctuaryAPI.completion(
                 this.conversation.id,
                 input
             );

@@ -33,7 +33,7 @@ export class TaskCreation extends Widget {
         // Ensure task name (after prefix is stripped) is not empty
 
         try {
-            const task = await SanctuaryAPI.getInstance().createTask(taskName);
+            const task = await SanctuaryAPI.createTask(taskName);
             print(`Task created: ${task.name}`);
             EventEmitter.emit(EventType.TaskCreated, task);
         } catch (error) {

@@ -44,16 +44,16 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return this.instance;
     }
 
-    setAPIKey(apiKey: string) {
-        this.apiKey = apiKey;
-        this.headers["x-api-key"] = apiKey;
+    static setAPIKey(apiKey: string) {
+        this.instance.apiKey = apiKey;
+        this.instance.headers["x-api-key"] = apiKey;
     }
 
-    async getCredentials(): Promise<string> {
-        const request = new Request(`${this.baseUrl}/user`, {
+    static async getCredentials(): Promise<string> {
+        const request = new Request(`${this.instance.baseUrl}/user`, {
             method: "POST",
         });
-        const response = await this.remoteServiceModule.fetch(request);
+        const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 201) {
             throw new Error("Failed to initialize user");
@@ -64,18 +64,21 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return body.user.apiKey as string;
     }
 
-    async newConversation(title: string): Promise<Conversation> {
-        if (!this.apiKey) {
+    static async newConversation(title: string): Promise<Conversation> {
+        if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.baseUrl}/ai/conversation`, {
-            method: "POST",
-            body: JSON.stringify({ title }),
-            headers: this.headers,
-        });
+        const request = new Request(
+            `${this.instance.baseUrl}/ai/conversation`,
+            {
+                method: "POST",
+                body: JSON.stringify({ title }),
+                headers: this.instance.headers,
+            }
+        );
 
-        const response = await this.remoteServiceModule.fetch(request);
+        const response = await this.instance.remoteServiceModule.fetch(request);
         if (response.status !== 201) {
             throw new Error("Failed to create conversation");
         }
@@ -83,17 +86,20 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return convertRawConversationToConversation(body.conversation);
     }
 
-    async getConversations(): Promise<Conversation[]> {
-        if (!this.apiKey) {
+    static async getConversations(): Promise<Conversation[]> {
+        if (!this.instance.apiKey) {
             print("API key not set");
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.baseUrl}/ai/conversation`, {
-            method: "GET",
-            headers: this.headers,
-        });
-        const response = await this.remoteServiceModule.fetch(request);
+        const request = new Request(
+            `${this.instance.baseUrl}/ai/conversation`,
+            {
+                method: "GET",
+                headers: this.instance.headers,
+            }
+        );
+        const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 200) {
             throw new Error("Failed to fetch conversations");
@@ -105,21 +111,21 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return body.conversations.map(convertRawConversationToConversation);
     }
 
-    async completion(
+    static async completion(
         conversationId: number,
         prompt: string
     ): Promise<CompletionResponse> {
-        if (!this.apiKey) {
+        if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.baseUrl}/ai/completion`, {
+        const request = new Request(`${this.instance.baseUrl}/ai/completion`, {
             method: "POST",
             body: JSON.stringify({ prompt, conversationId }),
-            headers: this.headers,
+            headers: this.instance.headers,
         });
 
-        const response = await this.remoteServiceModule.fetch(request);
+        const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 201) {
             throw new Error("Failed to create completion");
@@ -133,8 +139,8 @@ export class SanctuaryAPI extends BaseScriptComponent {
         );
     }
 
-    async createTask(name: string): Promise<Task> {
-        if (!this.apiKey) {
+    static async createTask(name: string): Promise<Task> {
+        if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
 
@@ -142,13 +148,13 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("Task name cannot be empty");
         }
 
-        const request = new Request(`${this.baseUrl}/task`, {
+        const request = new Request(`${this.instance.baseUrl}/task`, {
             method: "POST",
-            headers: this.headers,
+            headers: this.instance.headers,
             body: JSON.stringify({ task: name }),
         });
 
-        const response = await this.remoteServiceModule.fetch(request);
+        const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 201) {
             throw new Error("Failed to create task");
@@ -159,8 +165,8 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return convertRawTaskResponseToTaskResponse(body.task);
     }
 
-    async getTasks(pageNumber: number = 1, pageSize: number = 10) {
-        if (!this.apiKey) {
+    static async getTasks(pageNumber: number = 1, pageSize: number = 10) {
+        if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
 
@@ -170,13 +176,13 @@ export class SanctuaryAPI extends BaseScriptComponent {
         }
 
         const request = new Request(
-            `${this.baseUrl}/task/?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+            `${this.instance.baseUrl}/task/?pageNumber=${pageNumber}&pageSize=${pageSize}`,
             {
                 method: "GET",
-                headers: this.headers,
+                headers: this.instance.headers,
             }
         );
-        const response = await this.remoteServiceModule.fetch(request);
+        const response = await this.instance.remoteServiceModule.fetch(request);
         if (response.status !== 200) {
             throw new Error("Failed to fetch tasks");
         }
@@ -193,34 +199,34 @@ export class SanctuaryAPI extends BaseScriptComponent {
         };
     }
 
-    async completeTask(taskId: number): Promise<boolean> {
-        if (!this.apiKey) {
+    static async completeTask(taskId: number): Promise<boolean> {
+        if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.baseUrl}/task/complete`, {
+        const request = new Request(`${this.instance.baseUrl}/task/complete`, {
             method: "PUT",
-            headers: this.headers,
+            headers: this.instance.headers,
             body: JSON.stringify({ taskIds: [taskId] }),
         });
 
-        const response = await this.remoteServiceModule.fetch(request);
+        const response = await this.instance.remoteServiceModule.fetch(request);
 
         return response.status === 201;
     }
 
-    async completeTasks(taskIds: number[]): Promise<boolean> {
-        if (!this.apiKey) {
+    static async completeTasks(taskIds: number[]): Promise<boolean> {
+        if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.baseUrl}/task/complete`, {
+        const request = new Request(`${this.instance.baseUrl}/task/complete`, {
             method: "PUT",
-            headers: this.headers,
+            headers: this.instance.headers,
             body: JSON.stringify({ taskIds }),
         });
 
-        const response = await this.remoteServiceModule.fetch(request);
+        const response = await this.instance.remoteServiceModule.fetch(request);
 
         return response.status === 200;
     }

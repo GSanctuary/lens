@@ -36,8 +36,7 @@ export class AIConversation extends Widget {
                   ).id
                 : 1;
         const conversationTitle = `Conversation ${maxId + 1}`;
-        SanctuaryAPI.getInstance()
-            .newConversation(conversationTitle)
+        SanctuaryAPI.newConversation(conversationTitle)
             .then((conversation) => {
                 print(`New conversation created: ${conversation.title}`);
                 this.conversations = [conversation, ...this.conversations];
@@ -87,8 +86,7 @@ export class AIConversation extends Widget {
     }
 
     protected override async hydrate(): Promise<void> {
-        this.conversations =
-            await SanctuaryAPI.getInstance().getConversations();
+        this.conversations = await SanctuaryAPI.getConversations();
         this.conversations = this.conversations.sort(
             (a, b) => -(a.createdAt.getTime() - b.createdAt.getTime())
         );

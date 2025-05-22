@@ -71,8 +71,7 @@ export class TaskList extends Widget {
                 task,
             ];
             if (newTasks.length > this.pageSize) {
-                this.maxPageNumber++;
-                this.pageCache[this.maxPageNumber] = {
+                this.pageCache[++this.maxPageNumber] = {
                     items: [task],
                     expiration: Date.now() + this.cacheEntryExpiration,
                 };
@@ -82,10 +81,12 @@ export class TaskList extends Widget {
                     Date.now() + this.cacheEntryExpiration;
             }
         } else {
-            this.pageCache[this.maxPageNumber] = {
+            this.pageCache[++this.maxPageNumber] = {
                 items: [task],
                 expiration: Date.now() + this.cacheEntryExpiration,
             };
+            this.pageNumber = this.maxPageNumber;
+            this.tasks = this.pageCache[this.pageNumber].items;
         }
 
         this.populateTasks();
@@ -120,11 +121,10 @@ export class TaskList extends Widget {
     }
 
     private async fetchEntry(entryNumber: number): Promise<void> {
-        const { tasks: cachedTasks } =
-            await SanctuaryAPI.getInstance().getTasks(
-                entryNumber,
-                this.pageSize
-            );
+        const { tasks: cachedTasks } = await SanctuaryAPI.getTasks(
+            entryNumber,
+            this.pageSize
+        );
         this.pageCache[entryNumber] = {
             items: cachedTasks.sort(
                 (a, b) => a.createdAt.getTime() - b.createdAt.getTime()
@@ -196,7 +196,7 @@ export class TaskList extends Widget {
     }
 
     protected override async hydrate(): Promise<void> {
-        const { tasks, pageCount } = await SanctuaryAPI.getInstance().getTasks(
+        const { tasks, pageCount } = await SanctuaryAPI.getTasks(
             this.pageNumber,
             this.pageSize
         );

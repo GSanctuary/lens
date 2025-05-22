@@ -18,12 +18,11 @@ export class Authenticator extends BaseScriptComponent {
             store.set(this.authKey, apiKey);
             print(`Generated API Key: ${apiKey}`);
         }
-        SanctuaryAPI.getInstance().setAPIKey(apiKey);
+        SanctuaryAPI.setAPIKey(apiKey);
         EventEmitter.activate();
     }
 
     private async generateAPIKey(): Promise<string> {
-        const sanctuaryAPI = SanctuaryAPI.getInstance();
-        return await sanctuaryAPI.getCredentials();
+        return await SanctuaryAPI.getCredentials();
     }
 }

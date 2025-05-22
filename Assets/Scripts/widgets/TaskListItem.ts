@@ -45,9 +45,7 @@ export class TaskListItem extends BaseScriptComponent {
 
     private async completeTask() {
         print(`Called by ${this.taskId}`);
-        const taskCompletion = await SanctuaryAPI.getInstance().completeTask(
-            this.taskId
-        );
+        const taskCompletion = await SanctuaryAPI.completeTask(this.taskId);
         // TODO: handle error more gracefully
         if (taskCompletion) {
             print(`Task ${this.taskId} completed`);
