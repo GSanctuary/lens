@@ -1,12 +1,16 @@
 import { EventEmitter } from "../EventEmitter";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { EventType } from "../types/Event";
+import { RemoveMethod, VoicePrefixHandler } from "../utils/VoicePrefixHandler";
 import { Widget } from "../Widget";
 
 @component
 export class TaskCreation extends Widget {
     @input
     titleText: Text;
+
+    @input
+    voicePrefix: string;
 
     onAwake(): void {
         this.createEvent("OnStartEvent").bind(() => this.onStart());
@@ -18,9 +22,15 @@ export class TaskCreation extends Widget {
         this.registerEventHandlers();
     }
 
-    protected override handleVoiceInput(input: string): void {
-        if (!this.isWidgetEnabled) return;
-        super.handleVoiceInput(input);
+    protected override setupVoicePrefixHandler(): VoicePrefixHandler {
+        return new VoicePrefixHandler(
+            this.voicePrefix,
+            RemoveMethod.RemoveBefore
+        );
+    }
+
+    protected override handleVoiceInput(input: string): boolean {
+        if (!super.handleVoiceInput(input)) return;
         this.titleText.text = input;
     }
 

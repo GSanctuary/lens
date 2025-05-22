@@ -34,6 +34,7 @@
     kindString: false
     titleText: false
     voiceInputDelay: false
+    voicePrefix: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -45,6 +46,7 @@
       instantiationDistance: !<float> 100.000000
       voiceInputDelay: !<float> 1000.000000
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      voicePrefix: ""
   ScriptTypes:
     -
       {}
@@ -55,3 +57,4 @@
     - // @input float instantiationDistance = 100
     - // @input float voiceInputDelay = 1000
     - // @input Component.Text titleText
+    - // @input string voicePrefix

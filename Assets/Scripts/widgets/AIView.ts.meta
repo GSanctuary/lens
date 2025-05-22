@@ -34,6 +34,7 @@
     outputText: false
     titleText: false
     voiceInputDelay: false
+    voicePrefix: false
   ScriptTypesHidden:
     {}
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
@@ -46,6 +47,7 @@
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       inputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       outputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      voicePrefix: ""
   ScriptTypes:
     -
       {}
@@ -58,6 +60,7 @@
     - // @input Component.Text titleText
     - // @input Component.Text inputText
     - // @input Component.Text outputText
+    - // @input string voicePrefix
   SetupScript:
     code: ""
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

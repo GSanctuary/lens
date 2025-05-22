@@ -7,6 +7,7 @@ import {
     clearTimeout,
     setTimeout,
 } from "SpectaclesInteractionKit/Utils/FunctionTimingUtils";
+import { RemoveMethod, VoicePrefixHandler } from "./utils/VoicePrefixHandler";
 
 @component
 export class Widget extends BaseScriptComponent {
@@ -28,6 +29,7 @@ export class Widget extends BaseScriptComponent {
     kind: WidgetKind;
 
     protected isWidgetEnabled: boolean = false;
+    protected voicePrefixHandler: VoicePrefixHandler;
     private voiceTimeoutToken: CancelToken | undefined;
 
     onAwake() {
@@ -41,8 +43,16 @@ export class Widget extends BaseScriptComponent {
 
         this.frame.onCloseButtonTriggerEvent.add(this.close.bind(this));
         this.kind = WidgetKind[this.kindString as keyof typeof WidgetKind];
+        this.voicePrefixHandler = this.setupVoicePrefixHandler();
         EventEmitter.registerWidget(this);
         this.registerEventHandlers();
+    }
+
+    protected setupVoicePrefixHandler(): VoicePrefixHandler {
+        return new VoicePrefixHandler(
+            this.kindString,
+            RemoveMethod.RemoveAfter
+        );
     }
 
     protected registerEventHandlers(): void {
@@ -88,18 +98,23 @@ export class Widget extends BaseScriptComponent {
         throw new Error("hydrate() method not implemented.");
     }
 
-    protected handleVoiceInput(input: string): void {
+    protected handleVoiceInput(input: string): boolean {
         if (!this.isWidgetEnabled) {
-            return;
+            return false;
         }
 
         if (this.voiceTimeoutToken) {
             clearTimeout(this.voiceTimeoutToken);
         }
 
+        if (!this.voicePrefixHandler.checkForPrefix(input)) return false;
+
         this.voiceTimeoutToken = setTimeout(() => {
-            this.handleVoiceInputCallback(input);
+            const cleanedInput = this.voicePrefixHandler.clean(input);
+            this.handleVoiceInputCallback(cleanedInput);
         }, this.voiceInputDelay);
+
+        return true;
     }
 
     protected handleVoiceInputCallback(input: string): void {

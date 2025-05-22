@@ -4647,6 +4647,7 @@
       titleText: !<reference.Text> ac5952a9-557a-4215-86d1-b5dc97bde649
       inputText: !<reference.Text> 0cb63d35-5852-44e7-82f4-1669db1c1c36
       outputText: !<reference.Text> 9b72d11d-761b-4425-9fc7-a3f376b42fdf
+      voicePrefix: jarvis
   ScriptTypes:
     "":
       {}
@@ -5086,7 +5087,6 @@
   ScriptAsset: !<reference> 40a2d2f9-7db2-4bfa-acbf-88d7cac23aa4
   ScriptInputsDefault:
     instantiationDistance: true
-    voiceInputDelay: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -5095,8 +5095,9 @@
       frame: !<MappingBased.AssignableType> 8ccf9ae6-1872-411d-8f6f-cc06a1ded9e8
       camera: !<reference.Camera> 00000000-0000-0065-0000-000000000065
       instantiationDistance: !<float> 100.000000
-      voiceInputDelay: !<float> 1000.000000
+      voiceInputDelay: !<float> 2000.000000
       titleText: !<reference.Text> a7f8b909-9b28-496b-84bd-52237e342d10
+      voicePrefix: create task
   ScriptTypes:
     "":
       {}
