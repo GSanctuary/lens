@@ -653,13 +653,13 @@
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
-  Text: Start talking...
+  Text: Ask Jarvis something
   Editable: false
   ShowEditingPreview: true
   TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
   SizeToFit: false
-  FontSize: 74
-  Font: !<reference> 709203b6-8b83-40d7-8dda-e5adc4fd2875
+  FontSize: 65
+  Font: !<reference> cd8843ba-dfe5-4006-9f92-0c1e770c36f3
   LayoutRect:
     left: -7.500000
     bottom: -2.250000
@@ -5154,6 +5154,7 @@
   ScriptInputsDefault:
     instantiationDistance: true
     voiceInputDelay: true
+    pageSize: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -5167,7 +5168,7 @@
       cacheEntryExpiration: !<float> 1800000.000000
       nextPageButton: !<MappingBased.AssignableType_1> 053a30b5-2eea-4c4a-a728-2220cbbd74a4
       previousPageButton: !<MappingBased.AssignableType_2> d7fcfcf9-e528-42f9-b9bc-d325f00bd3fc
-      pageSize: !<float> 1.000000
+      pageSize: !<float> 10.000000
       pageNumberText: !<reference.Text> b0a17692-c566-478f-a6e7-ea3b3d77fe5b
       newTaskButton: !<MappingBased.AssignableType_3> a36ab023-5c06-477e-8401-4d10d878a4f0
   ScriptTypes:
@@ -10759,7 +10760,7 @@
   PrefabRemaps:
     []
   Name: ContainerFrameUI
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 110.000000, y: -10.000000, z: -130.000000}

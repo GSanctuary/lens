@@ -86,9 +86,9 @@ export class TaskList extends Widget {
                 expiration: Date.now() + this.cacheEntryExpiration,
             };
             this.pageNumber = this.maxPageNumber;
-            this.tasks = this.pageCache[this.pageNumber].items;
         }
 
+        this.tasks = this.pageCache[this.pageNumber].items;
         this.populateTasks();
         this.formatPageNumber();
     }
