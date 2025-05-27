@@ -28,6 +28,7 @@
   ScriptInputsHidden:
     camera: false
     frame: false
+    includeInWidgetList: false
     instantiationDistance: false
     kindString: false
     newConversationButton: false
@@ -42,6 +43,7 @@
       camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
       instantiationDistance: !<float> 100.000000
       voiceInputDelay: !<float> 1000.000000
+      includeInWidgetList: true
       scrollView: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       newConversationButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
@@ -53,6 +55,7 @@
     - // @input Component.Camera camera
     - // @input float instantiationDistance = 100
     - // @input float voiceInputDelay = 1000
+    - // @input bool includeInWidgetList = true
     - // @input SceneObject scrollView
     - // @input AssignableType_1 newConversationButton
   SetupScript:

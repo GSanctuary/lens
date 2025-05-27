@@ -3,4 +3,5 @@ export enum EventType {
     WidgetOpen = "WidgetOpen",
     WidgetClose = "WidgetClose",
     TaskCreated = "TaskCreated",
+    WidgetRegistered = "WidgetRegistered",
 }

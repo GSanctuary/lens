@@ -1,0 +1,42 @@
+- !<AssetImportMetadata/23182484-656c-46b3-a8c0-23a8bdc56a7a>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b712301c-82ed-4661-9cdf-947d91990c23
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b712301c-82ed-4661-9cdf-947d91990c23
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e8b165c5-70b2-433c-882f-95a5224af5eb
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e8b165c5-70b2-433c-882f-95a5224af5eb>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 0387c1ca-5800-457a-9df9-677d2065fd18
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    widgetListContainer: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - widgetListContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject widgetListContainer

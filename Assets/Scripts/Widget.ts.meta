@@ -28,6 +28,7 @@
   ScriptInputsHidden:
     camera: false
     frame: false
+    includeInWidgetList: false
     instantiationDistance: false
     kindString: false
     voiceInputDelay: false
@@ -40,6 +41,7 @@
       camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
       instantiationDistance: !<float> 100.000000
       voiceInputDelay: !<float> 1000.000000
+      includeInWidgetList: true
   ScriptTypes:
     -
       {}
@@ -49,6 +51,7 @@
     - // @input Component.Camera camera
     - // @input float instantiationDistance = 100
     - // @input float voiceInputDelay = 1000
+    - // @input bool includeInWidgetList = true
   SetupScript:
     code: ""
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

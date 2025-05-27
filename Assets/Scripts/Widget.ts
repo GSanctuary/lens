@@ -26,6 +26,9 @@ export class Widget extends BaseScriptComponent {
     @input
     voiceInputDelay: number = 1000;
 
+    @input
+    includeInWidgetList: boolean = true;
+
     kind: WidgetKind;
 
     protected isWidgetEnabled: boolean = false;
@@ -44,7 +47,7 @@ export class Widget extends BaseScriptComponent {
         this.frame.onCloseButtonTriggerEvent.add(this.close.bind(this));
         this.kind = WidgetKind[this.kindString as keyof typeof WidgetKind];
         this.voicePrefixHandler = this.setupVoicePrefixHandler();
-        EventEmitter.registerWidget(this);
+        EventEmitter.registerWidget(this, this.includeInWidgetList);
         this.registerEventHandlers();
     }
 

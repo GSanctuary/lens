@@ -28,6 +28,7 @@
   ScriptInputsHidden:
     camera: false
     frame: false
+    includeInWidgetList: false
     inputText: false
     instantiationDistance: false
     kindString: false
@@ -44,6 +45,7 @@
       camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
       instantiationDistance: !<float> 100.000000
       voiceInputDelay: !<float> 1000.000000
+      includeInWidgetList: true
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       inputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       outputText: !<reference.Text> 00000000-0000-0000-0000-000000000000
@@ -57,6 +59,7 @@
     - // @input Component.Camera camera
     - // @input float instantiationDistance = 100
     - // @input float voiceInputDelay = 1000
+    - // @input bool includeInWidgetList = true
     - // @input Component.Text titleText
     - // @input Component.Text inputText
     - // @input Component.Text outputText

@@ -22,10 +22,12 @@ export class AIConversation extends Widget {
 
     override async onStart(): Promise<void> {
         super.onStart();
-        this.newConversationButton.onButtonPinched.add(
-            this.newConversation.bind(this)
-        );
-        await this.hydrateAndPopulate();
+        await this.initializeWidget();
+    }
+
+    override open(args: Record<string, any>): Widget {
+        this.initializeWidget();
+        return this.activateWidget();
     }
 
     newConversation(): void {
@@ -45,6 +47,13 @@ export class AIConversation extends Widget {
             .catch((error) => {
                 print(`Error creating new conversation: ${error}`);
             });
+    }
+
+    private async initializeWidget(): Promise<void> {
+        this.newConversationButton.onButtonPinched.add(
+            this.newConversation.bind(this)
+        );
+        await this.hydrateAndPopulate();
     }
 
     private async hydrateAndPopulate(): Promise<void> {

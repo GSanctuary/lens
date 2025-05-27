@@ -23,6 +23,7 @@ export class EventEmitter extends BaseScriptComponent {
             [EventType.WidgetOpen]: [],
             [EventType.WidgetClose]: [],
             [EventType.TaskCreated]: [],
+            [EventType.WidgetRegistered]: [],
         };
         this.widgetRegistry = {
             [WidgetKind.AIConversation]: undefined,
@@ -74,7 +75,7 @@ export class EventEmitter extends BaseScriptComponent {
         }
     }
 
-    static registerWidget(widget: Widget) {
+    static registerWidget(widget: Widget, includeInWidgetList: boolean = true) {
         try {
             if (!this.instance.widgetRegistry[widget.kind]) {
                 this.instance.widgetRegistry[widget.kind] = widget;
@@ -85,6 +86,13 @@ export class EventEmitter extends BaseScriptComponent {
         } catch (error) {
             print(`Error registering widget: ${error}`);
         }
+
+        if (!includeInWidgetList) return;
+        EventEmitter.emit(
+            EventType.WidgetRegistered,
+            widget.kindString,
+            widget.kind
+        );
     }
 
     private openWidget(widgetKind: WidgetKind, args: Record<string, any>) {

@@ -32,6 +32,7 @@
     confirmButton: false
     denyButton: false
     frame: false
+    includeInWidgetList: false
     initialTaskNameValue: false
     instantiationDistance: false
     kindString: false
@@ -49,6 +50,7 @@
       camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
       instantiationDistance: !<float> 100.000000
       voiceInputDelay: !<float> 1000.000000
+      includeInWidgetList: true
       titleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       voicePrefix: ""
@@ -64,6 +66,7 @@
     - // @input Component.Camera camera
     - // @input float instantiationDistance = 100
     - // @input float voiceInputDelay = 1000
+    - // @input bool includeInWidgetList = true
     - // @input Component.Text titleText
     - // @input Component.Text statusText
     - // @input string voicePrefix

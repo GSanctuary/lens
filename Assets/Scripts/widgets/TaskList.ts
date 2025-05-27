@@ -48,6 +48,20 @@ export class TaskList extends Widget {
 
     override async onStart(): Promise<void> {
         super.onStart();
+        this.initializeWidget();
+    }
+
+    protected override registerEventHandlers(): void {
+        super.registerEventHandlers();
+        EventEmitter.on(EventType.TaskCreated, this.addTask.bind(this));
+    }
+
+    override open(args: Record<string, any>): Widget {
+        this.initializeWidget();
+        return super.open(args);
+    }
+
+    private async initializeWidget(): Promise<void> {
         await this.hydrateAndPopulate();
         this.nextPageButton.onButtonPinched.add(this.nextPage.bind(this));
         this.previousPageButton.onButtonPinched.add(
@@ -56,11 +70,6 @@ export class TaskList extends Widget {
         this.newTaskButton.onButtonPinched.add(
             this.openNewTaskWidget.bind(this)
         );
-    }
-
-    protected override registerEventHandlers(): void {
-        super.registerEventHandlers();
-        EventEmitter.on(EventType.TaskCreated, this.addTask.bind(this));
     }
 
     private addTask(task: Task): void {
