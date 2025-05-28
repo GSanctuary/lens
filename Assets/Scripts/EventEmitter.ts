@@ -12,6 +12,9 @@ export class EventEmitter extends BaseScriptComponent {
 
     private isActive: boolean = false;
 
+    // Events that should run regardless of EE activation state
+    private priveligedEvents: EventType[] = [EventType.WidgetRegistered];
+
     onAwake() {
         if (EventEmitter.instance) {
             this.destroy();
@@ -60,7 +63,7 @@ export class EventEmitter extends BaseScriptComponent {
     }
 
     static emit(eventName: EventType, ...args: any[]) {
-        if (!this.instance.isActive) {
+        if (!this.shouldEmit(eventName)) {
             print(
                 `EventEmitter is not active. Event ${eventName} not emitted.`
             );
@@ -92,6 +95,13 @@ export class EventEmitter extends BaseScriptComponent {
             EventType.WidgetRegistered,
             widget.kindString,
             widget.kind
+        );
+    }
+
+    private static shouldEmit(eventType: EventType): boolean {
+        return (
+            this.instance.isActive ||
+            this.instance.priveligedEvents.includes(eventType)
         );
     }
 

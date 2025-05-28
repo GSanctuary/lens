@@ -1,3 +1,4 @@
+import { CancelToken } from "SpectaclesInteractionKit/Utils/FunctionTimingUtils";
 import { PinchButton } from "../../SpectaclesInteractionKit/Components/UI/PinchButton/PinchButton";
 import { EventEmitter } from "../EventEmitter";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
@@ -14,6 +15,7 @@ export class AIConversation extends Widget {
     @input newConversationButton: PinchButton;
 
     private conversations: Conversation[] = [];
+    private isCreatingNewConversation: boolean = false;
 
     override onAwake(): void {
         print("AIConversation awake");
@@ -31,6 +33,10 @@ export class AIConversation extends Widget {
     }
 
     newConversation(): void {
+        if (this.isCreatingNewConversation) {
+            print("Already creating a new conversation");
+            return;
+        }
         const maxId =
             this.conversations.length > 0
                 ? this.conversations.reduce((acc, curr) =>
@@ -38,11 +44,13 @@ export class AIConversation extends Widget {
                   ).id
                 : 1;
         const conversationTitle = `Conversation ${maxId + 1}`;
+        this.isCreatingNewConversation = true;
         SanctuaryAPI.newConversation(conversationTitle)
             .then((conversation) => {
                 print(`New conversation created: ${conversation.title}`);
                 this.conversations = [conversation, ...this.conversations];
                 this.populateConversations();
+                this.isCreatingNewConversation = false;
             })
             .catch((error) => {
                 print(`Error creating new conversation: ${error}`);

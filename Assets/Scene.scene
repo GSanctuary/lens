@@ -16,7 +16,6 @@
     - !<own> d8b87576-858d-4880-a1f0-9b8171e9236e
     - !<own> 9e6cc489-f7af-4f7e-9600-e143798b012c
     - !<own> 674092fc-7bbf-4e35-884e-1b548a5dc71a
-    - !<own> ed94a5f2-961b-47ca-ab84-50e6c9a9e5b1
     - !<own> de9b1c21-20a9-4019-bc11-f82e33da988c
     - !<own> 4b988144-6ccc-4cb0-afa6-caf4de0a9cf4
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
@@ -3581,7 +3580,7 @@
   Enabled: false
   Layers: 1
   LocalTransform:
-    position: {x: 0.000000, y: 0.600000, z: 0.000000}
+    position: {x: 0.000000, y: 0.300000, z: 0.000000}
     rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
@@ -11538,7 +11537,6 @@
     yAlways: true
     worldSnapping: true
     isFollowing: true
-    showCloseButton: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -11564,7 +11562,7 @@
       showFollowButton: true
       useFOVFollow: true
       isFollowing: false
-      showCloseButton: true
+      showCloseButton: false
       _enableInteractionPlane: true
   ScriptTypes:
     "":
@@ -11697,21 +11695,6 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
-- !<SceneObject/ed94a5f2-961b-47ca-ab84-50e6c9a9e5b1>
-  PrefabRemaps:
-    []
-  Name: Object 0
-  Enabled: true
-  Layers: 1
-  LocalTransform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    hasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    []
 - !<Text/eda9c8fa-e31f-4e32-b6e3-aebb3e7819b2>
   PrefabRemaps:
     []
