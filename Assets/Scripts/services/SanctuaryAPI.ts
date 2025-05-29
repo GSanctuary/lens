@@ -50,12 +50,16 @@ export class SanctuaryAPI extends BaseScriptComponent {
     }
 
     static async getCredentials(): Promise<string> {
-        const request = new Request(`${this.instance.baseUrl}/user`, {
-            method: "POST",
-        });
+        const request = new Request(
+            `${this.instance.baseUrl}/user/credential`,
+            {
+                method: "POST",
+            }
+        );
         const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 201) {
+            print("Failed to initialize user");
             throw new Error("Failed to initialize user");
         }
 

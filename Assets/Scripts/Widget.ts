@@ -21,7 +21,7 @@ export class Widget extends BaseScriptComponent {
     camera: Camera;
 
     @input
-    instantiationDistance: number = 100;
+    instantiationDistance: number = 10;
 
     @input
     voiceInputDelay: number = 1000;
@@ -84,13 +84,7 @@ export class Widget extends BaseScriptComponent {
         const cameraForward = cameraTransform.forward;
 
         const newPosition = cameraPosition.add(
-            cameraForward.scale(
-                new vec3(
-                    -this.instantiationDistance,
-                    0,
-                    -this.instantiationDistance
-                )
-            )
+            cameraForward.scale(new vec3(0, 0, -this.instantiationDistance))
         );
         widgetTransform.setWorldPosition(newPosition);
     }

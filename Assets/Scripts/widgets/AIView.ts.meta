@@ -57,7 +57,7 @@
     - // @input string kindString
     - // @input AssignableType frame
     - // @input Component.Camera camera
-    - // @input float instantiationDistance = 100
+    - // @input float instantiationDistance = 10
     - // @input float voiceInputDelay = 1000
     - // @input bool includeInWidgetList = true
     - // @input Component.Text titleText
