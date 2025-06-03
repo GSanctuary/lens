@@ -1,4 +1,4 @@
-# Sancutary
+# Sanctuary
 
 Effortlessly blend your digital and physical world to enhance productivity and inspire collaboration by unlocking the untapped power of spaces.
 
@@ -46,7 +46,7 @@ $ git clone https://github.com/GSanctuary/lens.git
 1. Open the lens with Lens Studio (File -> Open Project).
 2. See [this link](https://developers.snap.com/spectacles/get-started/start-building/test-lens-on-spectacles) for how to run a Lens on Spectacles.
 
-# Project Structure
+## Project Structure
 
 The `Assets/` folder contains our projects assets you'll be interacting with the most. Here's a breakdown of each folder within `Assets/`
 
