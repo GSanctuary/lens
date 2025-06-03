@@ -24,6 +24,10 @@ export class TextDisplay extends BaseScriptComponent {
         );
     }
 
+    enableContainerFrame() {
+        this.containerFrame.getSceneObject().enabled = true;
+    }
+
     close() {
         this.closeEvent.invoke();
     }

@@ -112,6 +112,7 @@ export class StickyNoteWidget extends Widget {
         textDisplay.onClose.bind(() => {
             this.removeNote(note.id);
         });
+        textDisplay.enableContainerFrame();
 
         this.renderedNotes.push({
             note,
