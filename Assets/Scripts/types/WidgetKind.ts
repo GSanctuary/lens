@@ -3,4 +3,5 @@ export enum WidgetKind {
     AI = "AI",
     TaskList = "TaskList",
     TaskCreation = "TaskCreation",
+    StickyNote = "StickyNote",
 }
