@@ -79,3 +79,31 @@ export const convertRawTaskResponseToTaskResponse = (
         updatedAt: new Date(rawTaskResponse.updatedAt),
     };
 };
+
+export type RawStickyNoteResponse = {
+    id: number;
+    createdAt: string;
+    updatedAt: string;
+    userId: number;
+    content: string;
+    metadata: Record<string, any>;
+};
+
+export type StickyNote = {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date;
+    userId: number;
+    content: string;
+    metadata: Record<string, any>;
+};
+
+export const convertRawStickyNoteResponseToStickyNote = (
+    rawStickyNoteResponse: RawStickyNoteResponse
+): StickyNote => {
+    return {
+        ...rawStickyNoteResponse,
+        createdAt: new Date(rawStickyNoteResponse.createdAt),
+        updatedAt: new Date(rawStickyNoteResponse.updatedAt),
+    };
+};
