@@ -7,6 +7,7 @@ import {
     convertRawTaskResponseToTaskResponse,
     RawCompletionResponse,
     RawConversation,
+    RawStickyNoteResponse,
     RawTaskResponse,
     StickyNote,
     Task,
@@ -264,6 +265,79 @@ export class SanctuaryAPI extends BaseScriptComponent {
         const body = await response.json();
 
         return convertRawStickyNoteResponseToStickyNote(body.note);
+    }
+
+    static async updateStickyNote(
+        noteId: number,
+        content: string,
+        metadata: Record<string, any> = {}
+    ): Promise<boolean> {
+        if (!this.instance.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        if (content.trim() === "") {
+            throw new Error("Sticky note content cannot be empty");
+        }
+
+        const payload = {
+            noteId,
+            content,
+            metadata,
+        };
+
+        const request = new Request(`${this.instance.baseUrl}/sticky/`, {
+            method: "PUT",
+            headers: this.instance.headers,
+            body: JSON.stringify(payload),
+        });
+
+        const response = await this.instance.remoteServiceModule.fetch(request);
+
+        if (response.status !== 200) {
+            throw new Error("Failed to update sticky note");
+        }
+
+        return true;
+    }
+
+    static async getStickyNotes(): Promise<StickyNote[]> {
+        if (!this.instance.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        const request = new Request(`${this.instance.baseUrl}/sticky`, {
+            method: "GET",
+            headers: this.instance.headers,
+        });
+
+        const response = await this.instance.remoteServiceModule.fetch(request);
+
+        if (response.status !== 200) {
+            throw new Error("Failed to fetch sticky notes");
+        }
+
+        const body: { notes: RawStickyNoteResponse[] } = await response.json();
+
+        return body.notes.map(convertRawStickyNoteResponseToStickyNote);
+    }
+
+    static async deleteStickyNote(noteId: number): Promise<boolean> {
+        if (!this.instance.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        const request = new Request(
+            `${this.instance.baseUrl}/sticky?id=${noteId}`,
+            {
+                method: "DELETE",
+                headers: this.instance.headers,
+            }
+        );
+
+        const response = await this.instance.remoteServiceModule.fetch(request);
+
+        return response.status === 200;
     }
 
     private async healthCheck() {
