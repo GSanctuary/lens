@@ -3,10 +3,12 @@ import {
     Conversation,
     convertRawCompletionResponseToCompletionResponse,
     convertRawConversationToConversation,
+    convertRawStickyNoteResponseToStickyNote,
     convertRawTaskResponseToTaskResponse,
     RawCompletionResponse,
     RawConversation,
     RawTaskResponse,
+    StickyNote,
     Task,
 } from "../types/Sanctuary";
 
@@ -233,6 +235,35 @@ export class SanctuaryAPI extends BaseScriptComponent {
         const response = await this.instance.remoteServiceModule.fetch(request);
 
         return response.status === 200;
+    }
+
+    static async createStickyNote(
+        content: string,
+        metadata: Record<string, any> = {}
+    ): Promise<StickyNote> {
+        if (!this.instance.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        if (content.trim() === "") {
+            throw new Error("Sticky note content cannot be empty");
+        }
+
+        const request = new Request(`${this.instance.baseUrl}/sticky`, {
+            method: "POST",
+            headers: this.instance.headers,
+            body: JSON.stringify({ content, metadata }),
+        });
+
+        const response = await this.instance.remoteServiceModule.fetch(request);
+
+        if (response.status !== 201) {
+            throw new Error("Failed to create sticky note");
+        }
+
+        const body = await response.json();
+
+        return convertRawStickyNoteResponseToStickyNote(body.note);
     }
 
     private async healthCheck() {
