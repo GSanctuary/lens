@@ -27,18 +27,24 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     baseUrl: false
+    prodUrl: false
     remoteServiceModule: false
+    useProd: false
   ScriptTypesHidden:
     {}
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - baseUrl: ""
+      prodUrl: ""
+      useProd: false
       remoteServiceModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input string baseUrl
+    - // @input string prodUrl
+    - // @input bool useProd
     - // @input Asset.InternetModule remoteServiceModule
   SetupScript:
     code: ""

@@ -6910,6 +6910,8 @@
   ScriptInputs:
     "":
       baseUrl: "https://bf1b-205-175-106-91.ngrok-free.app"
+      prodUrl: "https://sanctuary-backend-three.vercel.app/"
+      useProd: true
       remoteServiceModule: !<reference.InternetModule> a1eac110-0527-48d2-84d5-1390427ce8b8
   ScriptTypes:
     "":
@@ -10100,7 +10102,7 @@
   PrefabRemaps:
     []
   Name: Sticky Notes
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}

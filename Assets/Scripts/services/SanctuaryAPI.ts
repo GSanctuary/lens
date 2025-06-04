@@ -19,6 +19,12 @@ export class SanctuaryAPI extends BaseScriptComponent {
     baseUrl: string;
 
     @input
+    prodUrl: string;
+
+    @input
+    useProd: boolean = false;
+
+    @input
     remoteServiceModule: InternetModule;
 
     private static instance: SanctuaryAPI;
@@ -33,11 +39,17 @@ export class SanctuaryAPI extends BaseScriptComponent {
             return;
         }
         SanctuaryAPI.instance = this;
-        this.healthCheck();
+        SanctuaryAPI.healthCheck();
     }
 
     onDestroy() {
         SanctuaryAPI.instance = null;
+    }
+
+    private static url(): string {
+        return this.instance.useProd
+            ? this.instance.prodUrl
+            : this.instance.baseUrl;
     }
 
     static getInstance(): SanctuaryAPI {
@@ -53,12 +65,9 @@ export class SanctuaryAPI extends BaseScriptComponent {
     }
 
     static async getCredentials(): Promise<string> {
-        const request = new Request(
-            `${this.instance.baseUrl}/user/credential`,
-            {
-                method: "POST",
-            }
-        );
+        const request = new Request(`${this.url()}/user/credential`, {
+            method: "POST",
+        });
         const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 201) {
@@ -76,14 +85,11 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
-        const request = new Request(
-            `${this.instance.baseUrl}/ai/conversation`,
-            {
-                method: "POST",
-                body: JSON.stringify({ title }),
-                headers: this.instance.headers,
-            }
-        );
+        const request = new Request(`${this.url()}/ai/conversation`, {
+            method: "POST",
+            body: JSON.stringify({ title }),
+            headers: this.instance.headers,
+        });
 
         const response = await this.instance.remoteServiceModule.fetch(request);
         if (response.status !== 201) {
@@ -99,13 +105,10 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
-        const request = new Request(
-            `${this.instance.baseUrl}/ai/conversation`,
-            {
-                method: "GET",
-                headers: this.instance.headers,
-            }
-        );
+        const request = new Request(`${this.url()}/ai/conversation`, {
+            method: "GET",
+            headers: this.instance.headers,
+        });
         const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 200) {
@@ -126,7 +129,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.instance.baseUrl}/ai/completion`, {
+        const request = new Request(`${this.url()}/ai/completion`, {
             method: "POST",
             body: JSON.stringify({ prompt, conversationId }),
             headers: this.instance.headers,
@@ -155,7 +158,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("Task name cannot be empty");
         }
 
-        const request = new Request(`${this.instance.baseUrl}/task`, {
+        const request = new Request(`${this.url()}/task`, {
             method: "POST",
             headers: this.instance.headers,
             body: JSON.stringify({ task: name }),
@@ -183,7 +186,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
         }
 
         const request = new Request(
-            `${this.instance.baseUrl}/task/?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+            `${this.url()}/task/?pageNumber=${pageNumber}&pageSize=${pageSize}`,
             {
                 method: "GET",
                 headers: this.instance.headers,
@@ -211,7 +214,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.instance.baseUrl}/task/complete`, {
+        const request = new Request(`${this.url()}/task/complete`, {
             method: "PUT",
             headers: this.instance.headers,
             body: JSON.stringify({ taskIds: [taskId] }),
@@ -227,7 +230,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.instance.baseUrl}/task/complete`, {
+        const request = new Request(`${this.url()}/task/complete`, {
             method: "PUT",
             headers: this.instance.headers,
             body: JSON.stringify({ taskIds }),
@@ -250,7 +253,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("Sticky note content cannot be empty");
         }
 
-        const request = new Request(`${this.instance.baseUrl}/sticky`, {
+        const request = new Request(`${this.url()}/sticky`, {
             method: "POST",
             headers: this.instance.headers,
             body: JSON.stringify({ content, metadata }),
@@ -286,7 +289,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
             metadata,
         };
 
-        const request = new Request(`${this.instance.baseUrl}/sticky/`, {
+        const request = new Request(`${this.url()}/sticky/`, {
             method: "PUT",
             headers: this.instance.headers,
             body: JSON.stringify(payload),
@@ -306,7 +309,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
-        const request = new Request(`${this.instance.baseUrl}/sticky`, {
+        const request = new Request(`${this.url()}/sticky`, {
             method: "GET",
             headers: this.instance.headers,
         });
@@ -327,22 +330,19 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("API key not set");
         }
 
-        const request = new Request(
-            `${this.instance.baseUrl}/sticky?id=${noteId}`,
-            {
-                method: "DELETE",
-                headers: this.instance.headers,
-            }
-        );
+        const request = new Request(`${this.url()}/sticky?id=${noteId}`, {
+            method: "DELETE",
+            headers: this.instance.headers,
+        });
 
         const response = await this.instance.remoteServiceModule.fetch(request);
 
         return response.status === 200;
     }
 
-    private async healthCheck() {
-        const request = new Request(`${this.baseUrl}/test`);
-        const response = await this.remoteServiceModule.fetch(request);
+    private static async healthCheck() {
+        const request = new Request(`${this.url()}/test`);
+        const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 200) {
             throw new Error("Failed to connect to the server");
