@@ -28,6 +28,13 @@ export class TextDisplay extends BaseScriptComponent {
         this.containerFrame.getSceneObject().enabled = true;
     }
 
+    setFramePosition(position: vec3) {
+        this.containerFrame
+            .getSceneObject()
+            .getTransform()
+            .setWorldPosition(position);
+    }
+
     close() {
         this.closeEvent.invoke();
     }
