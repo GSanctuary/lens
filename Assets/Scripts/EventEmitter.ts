@@ -13,7 +13,7 @@ export class EventEmitter extends BaseScriptComponent {
     private isActive: boolean = false;
 
     // Events that should run regardless of EE activation state
-    private priveligedEvents: EventType[] = [EventType.WidgetRegistered];
+    private privilegedEvents: EventType[] = [EventType.WidgetRegistered];
 
     onAwake() {
         if (EventEmitter.instance) {
@@ -103,7 +103,7 @@ export class EventEmitter extends BaseScriptComponent {
     private static shouldEmit(eventType: EventType): boolean {
         return (
             this.instance.isActive ||
-            this.instance.priveligedEvents.includes(eventType)
+            this.instance.privilegedEvents.includes(eventType)
         );
     }
 
