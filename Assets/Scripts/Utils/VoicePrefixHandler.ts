@@ -33,7 +33,7 @@ export class VoicePrefixHandler {
     clean(input: string, includePrefix: boolean = true): string {
         const handler = this.removeMethodHandlers[this.removeMethod];
         if (handler) {
-            return handler(input, includePrefix);
+            return handler(input.trim().toLowerCase(), includePrefix);
         }
     }
 
@@ -49,7 +49,6 @@ export class VoicePrefixHandler {
                 match.index + (includePrefix ? match[0].length : 0)
             );
             result = this.strip(result);
-            print(`Result: ${result}`);
             return result;
         }
         return input;
@@ -62,7 +61,10 @@ export class VoicePrefixHandler {
     ): string {
         const match = this.regex.exec(input);
         if (match) {
-            return input.substring(0, match.index + (includePrefix ? 0 : 1));
+            return input.substring(
+                0,
+                match.index + (includePrefix ? 0 : match[0].length)
+            );
         }
         return input;
     }
