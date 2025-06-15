@@ -3309,11 +3309,11 @@
   PrefabRemaps:
     []
   Name: ContainerFrameUI
-  Enabled: false
+  Enabled: true
   Layers: 1
   LocalTransform:
-    position: {x: 110.000000, y: -10.000000, z: -130.000000}
-    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
   Children:
@@ -5726,8 +5726,8 @@
   Enabled: false
   Layers: 1
   LocalTransform:
-    position: {x: 110.000000, y: -10.000000, z: -130.000000}
-    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
   Children:
@@ -6909,7 +6909,7 @@
     {}
   ScriptInputs:
     "":
-      baseUrl: "https://2ad6-73-53-36-137.ngrok-free.app"
+      baseUrl: "https://a92a-73-53-36-137.ngrok-free.app"
       prodUrl: "https://sanctuary-backend-three.vercel.app/"
       useProd: false
       remoteServiceModule: !<reference.InternetModule> a1eac110-0527-48d2-84d5-1390427ce8b8
@@ -11062,6 +11062,7 @@
     instantiationDistance: true
     voiceInputDelay: true
     includeInWidgetList: true
+    initialText: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -11075,6 +11076,7 @@
       createStickyNoteButton: !<MappingBased.AssignableType_1> e9c6cbef-9823-4366-ae0c-f5a8853ae79c
       voicePreviewText: !<reference.Text> 75c5199a-8c93-4c08-9fc1-b0f0a74124a8
       textDisplayPrefab: !<reference.ObjectPrefab> 37203699-b288-41ce-a2de-3669c0d6f1e8
+      initialText: "Say 'Note ...'"
   ScriptTypes:
     "":
       {}

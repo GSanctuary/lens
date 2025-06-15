@@ -32,6 +32,7 @@
     createStickyNoteButton: false
     frame: false
     includeInWidgetList: false
+    initialText: false
     instantiationDistance: false
     kindString: false
     textDisplayPrefab: false
@@ -51,6 +52,7 @@
       createStickyNoteButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       voicePreviewText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       textDisplayPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      initialText: "Say 'Note ...'"
   ScriptTypes:
     -
       {}
@@ -64,3 +66,4 @@
     - // @input AssignableType_1 createStickyNoteButton
     - // @input Component.Text voicePreviewText
     - // @input Asset.ObjectPrefab textDisplayPrefab
+    - "// @input string initialText = \"Say 'Note ...'\""

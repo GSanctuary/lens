@@ -27,6 +27,9 @@ export class StickyNoteWidget extends Widget {
     @input
     textDisplayPrefab: ObjectPrefab;
 
+    @input
+    initialText: string = "Say 'Note ...'";
+
     private stickyNotes: StickyNote[] = [];
     private renderedNotes: RenderedNote[] = [];
 
@@ -41,6 +44,8 @@ export class StickyNoteWidget extends Widget {
         this.createStickyNoteButton.onButtonPinched.add(
             this.createStickyNote.bind(this)
         );
+        this.hydrate();
+        this.voicePreviewText.text = this.initialText;
     }
 
     protected override async hydrate(): Promise<void> {
@@ -118,7 +123,15 @@ export class StickyNoteWidget extends Widget {
             },
         };
         this.renderNote(newNote, metadata);
-        this.voicePreviewText.text = "Say 'Note ...'"; // Clear the preview text
+        SanctuaryAPI.createStickyNote(content, metadata)
+            .then((createdNote) => {
+                newNote.id = createdNote.id; // Update the ID with the one from the API
+                newNote.userId = createdNote.userId; // Update the user ID
+            })
+            .catch((error) => {
+                print(`Error creating sticky note: ${error}`);
+            });
+        this.voicePreviewText.text = this.initialText; // Reset the input text
     }
 
     private validateMetadata(metadata: Record<string, any>): boolean {
