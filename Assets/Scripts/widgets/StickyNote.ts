@@ -3,6 +3,7 @@ import { Widget } from "../Widget";
 import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { StickyNote } from "../types/Sanctuary";
 import { TextDisplay } from "./TextDisplay";
+import { RemoveMethod, VoicePrefixHandler } from "../utils/VoicePrefixHandler";
 
 type Metadata = {
     position: { x: number; y: number; z: number };
@@ -21,6 +22,9 @@ export class StickyNoteWidget extends Widget {
     createStickyNoteButton: PinchButton;
 
     @input
+    voicePreviewText: Text;
+
+    @input
     textDisplayPrefab: ObjectPrefab;
 
     private stickyNotes: StickyNote[] = [];
@@ -33,6 +37,10 @@ export class StickyNoteWidget extends Widget {
 
     override async onStart(): Promise<void> {
         super.onStart();
+        this.registerEventHandlers();
+        this.createStickyNoteButton.onButtonPinched.add(
+            this.createStickyNote.bind(this)
+        );
     }
 
     protected override async hydrate(): Promise<void> {
@@ -40,12 +48,77 @@ export class StickyNoteWidget extends Widget {
 
         for (const note of this.stickyNotes) {
             if (!this.validateMetadata(note.metadata)) continue;
-            this.renderNote(note);
+            this.renderNote(note, note.metadata as Metadata);
         }
     }
 
-    private onTurnOff(): void {
-        print("Turning off StickyNoteWidget");
+    protected override setupVoicePrefixHandler(): VoicePrefixHandler {
+        return new VoicePrefixHandler(
+            this.kindString,
+            RemoveMethod.RemoveBefore
+        );
+    }
+
+    protected override handleVoiceInputCallback(input: string): void {
+        this.voicePreviewText.text = input;
+    }
+
+    private async onTurnOff(): Promise<void> {
+        for (const renderedNote of this.renderedNotes) {
+            await SanctuaryAPI.createStickyNote(renderedNote.note.content, {
+                position: renderedNote.display
+                    .getTransform()
+                    .getLocalPosition(),
+                rotation: renderedNote.display
+                    .getTransform()
+                    .getLocalRotation(),
+                scale: renderedNote.display.getTransform().getLocalScale(),
+            } as Metadata);
+        }
+    }
+
+    private createStickyNote(): void {
+        const content = this.voicePreviewText.text.trim();
+
+        print(`Creating sticky note with content: ${content}`);
+
+        const newNote: StickyNote = {
+            id: Date.now(), // Temporary ID, will be replaced by API
+            content: content,
+            metadata: {
+                position: { x: 0, y: 0, z: 0 },
+                rotation: { x: 0, y: 0, z: 0 },
+                scale: { x: 1, y: 1, z: 1 },
+            },
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            userId: -1, // Temporary user ID, will be replaced by API
+        };
+        this.stickyNotes.push(newNote);
+
+        const transform = this.frame.getTransform();
+        const position = transform.getWorldPosition();
+        const rotation = transform.getWorldRotation();
+        const scale = transform.getWorldScale();
+        const metadata: Metadata = {
+            position: {
+                x: position.x,
+                y: position.y,
+                z: position.z,
+            },
+            rotation: {
+                x: rotation.x,
+                y: rotation.y,
+                z: rotation.z,
+            },
+            scale: {
+                x: scale.x,
+                y: scale.y,
+                z: scale.z,
+            },
+        };
+        this.renderNote(newNote, metadata);
+        this.voicePreviewText.text = "Say 'Note ...'"; // Clear the preview text
     }
 
     private validateMetadata(metadata: Record<string, any>): boolean {
@@ -74,32 +147,18 @@ export class StickyNoteWidget extends Widget {
         return true;
     }
 
-    private renderNote(note: StickyNote): void {
+    private renderNote(note: StickyNote, metadata: Metadata): void {
+        print(`Rendering note: ${JSON.stringify(metadata)}`);
         const stickyNoteDisplay = this.textDisplayPrefab.instantiate(null);
         const transform = stickyNoteDisplay.getTransform();
-        const metadata = note.metadata as Metadata;
 
-        transform.setLocalPosition(
+        transform.setWorldPosition(
             new vec3(
                 metadata.position.x,
                 metadata.position.y,
                 metadata.position.z
             )
         );
-
-        transform.setLocalRotation(
-            new quat(
-                metadata.rotation.x,
-                metadata.rotation.y,
-                metadata.rotation.z,
-                1 // Assuming no rotation around w-axis
-            )
-        );
-
-        transform.setLocalScale(
-            new vec3(metadata.scale.x, metadata.scale.y, metadata.scale.z)
-        );
-
         const textDisplay = stickyNoteDisplay.getComponent(
             TextDisplay.getTypeName()
         );
@@ -113,11 +172,40 @@ export class StickyNoteWidget extends Widget {
             this.removeNote(note.id);
         });
         textDisplay.enableContainerFrame();
+        textDisplay.setFramePosition(
+            new vec3(
+                metadata.position.x,
+                metadata.position.y,
+                metadata.position.z
+            )
+        );
 
         this.renderedNotes.push({
             note,
             display: stickyNoteDisplay,
         });
+
+        print(
+            `Instantiated coords: ${JSON.stringify({
+                position: {
+                    x: transform.getWorldPosition().x,
+                    y: transform.getWorldPosition().y,
+                    z: transform.getWorldPosition().z,
+                },
+                rotation: {
+                    x: transform.getWorldRotation().x,
+                    y: transform.getWorldRotation().y,
+                    z: transform.getWorldRotation().z,
+                },
+                scale: {
+                    x: transform.getWorldScale().x,
+                    y: transform.getWorldScale().y,
+                    z: transform.getWorldScale().z,
+                },
+            })}`
+        );
+
+        print(`Rendered note: ${JSON.stringify(metadata)}`);
     }
 
     private async removeNote(noteId: number): Promise<void> {
