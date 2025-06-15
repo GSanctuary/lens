@@ -9,7 +9,7 @@ export class TextDisplay extends BaseScriptComponent {
     text: Text;
 
     @input
-    private containerFrame: ContainerFrame;
+    containerFrame: ContainerFrame;
 
     private closeEvent: Event = new Event();
     public onClose = this.closeEvent.publicApi();
@@ -37,5 +37,6 @@ export class TextDisplay extends BaseScriptComponent {
 
     close() {
         this.closeEvent.invoke();
+        this.getSceneObject().destroy();
     }
 }

@@ -44,8 +44,22 @@ export class StickyNoteWidget extends Widget {
         this.createStickyNoteButton.onButtonPinched.add(
             this.createStickyNote.bind(this)
         );
-        this.hydrate();
         this.voicePreviewText.text = this.initialText;
+    }
+
+    override open(args: Record<string, any>): Widget {
+        if (this.renderedNotes.length > 0) {
+            this.toggleStickyNotes();
+        } else {
+            this.hydrate();
+        }
+        return super.open(args);
+    }
+
+    override close(): Widget {
+        this.syncStickyNotes();
+        this.toggleStickyNotes();
+        return super.close();
     }
 
     protected override async hydrate(): Promise<void> {
@@ -68,17 +82,51 @@ export class StickyNoteWidget extends Widget {
         this.voicePreviewText.text = input;
     }
 
-    private async onTurnOff(): Promise<void> {
+    private async syncStickyNotes(): Promise<void> {
         for (const renderedNote of this.renderedNotes) {
-            await SanctuaryAPI.createStickyNote(renderedNote.note.content, {
-                position: renderedNote.display
-                    .getTransform()
-                    .getLocalPosition(),
-                rotation: renderedNote.display
-                    .getTransform()
-                    .getLocalRotation(),
-                scale: renderedNote.display.getTransform().getLocalScale(),
-            } as Metadata);
+            const transform = renderedNote.display.getTransform();
+            const position = transform.getWorldPosition();
+            const rotation = transform.getWorldRotation();
+            const scale = transform.getWorldScale();
+
+            const metadata: Metadata = {
+                position: {
+                    x: position.x,
+                    y: position.y,
+                    z: position.z,
+                },
+                rotation: {
+                    x: rotation.x,
+                    y: rotation.y,
+                    z: rotation.z,
+                },
+                scale: {
+                    x: scale.x,
+                    y: scale.y,
+                    z: scale.z,
+                },
+            };
+            await SanctuaryAPI.updateStickyNote(
+                renderedNote.note.id,
+                renderedNote.note.content,
+                metadata
+            );
+            print(
+                `Updated sticky note with ID: ${
+                    renderedNote.note.id
+                } and metadata: ${JSON.stringify(metadata)}`
+            );
+        }
+    }
+
+    private async onTurnOff(): Promise<void> {
+        await this.syncStickyNotes();
+    }
+
+    private toggleStickyNotes(): void {
+        for (const note of this.renderedNotes) {
+            const display = note.display;
+            display.enabled = !display.enabled;
         }
     }
 
@@ -122,16 +170,23 @@ export class StickyNoteWidget extends Widget {
                 z: scale.z,
             },
         };
-        this.renderNote(newNote, metadata);
         SanctuaryAPI.createStickyNote(content, metadata)
             .then((createdNote) => {
                 newNote.id = createdNote.id; // Update the ID with the one from the API
                 newNote.userId = createdNote.userId; // Update the user ID
+                this.renderNote(newNote, metadata);
+                this.voicePreviewText.text = this.initialText; // Reset the input text
             })
             .catch((error) => {
                 print(`Error creating sticky note: ${error}`);
             });
-        this.voicePreviewText.text = this.initialText; // Reset the input text
+    }
+
+    private closeStickyNote(noteId: number): () => void {
+        return () => {
+            print(`Closing sticky note with ID: ${noteId}`);
+            this.removeNote(noteId);
+        };
     }
 
     private validateMetadata(metadata: Record<string, any>): boolean {
@@ -193,9 +248,11 @@ export class StickyNoteWidget extends Widget {
             )
         );
 
+        textDisplay.onClose.add(this.closeStickyNote(note.id).bind(this));
+
         this.renderedNotes.push({
             note,
-            display: stickyNoteDisplay,
+            display: textDisplay.containerFrame.getSceneObject(),
         });
 
         print(
@@ -225,6 +282,9 @@ export class StickyNoteWidget extends Widget {
         await SanctuaryAPI.deleteStickyNote(noteId);
         this.stickyNotes = this.stickyNotes.filter(
             (note) => note.id !== noteId
+        );
+        this.renderedNotes = this.renderedNotes.filter(
+            (renderedNote) => renderedNote.note.id !== noteId
         );
     }
 }
