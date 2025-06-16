@@ -5,6 +5,7 @@ import {
     convertRawConversationToConversation,
     convertRawStickyNoteResponseToStickyNote,
     convertRawTaskResponseToTaskResponse,
+    CurrentWeather,
     RawCompletionResponse,
     RawConversation,
     RawStickyNoteResponse,
@@ -338,6 +339,31 @@ export class SanctuaryAPI extends BaseScriptComponent {
         const response = await this.instance.remoteServiceModule.fetch(request);
 
         return response.status === 200;
+    }
+
+    static async getCurrentWeather(
+        latitude: number,
+        longitude: number
+    ): Promise<CurrentWeather> {
+        if (!this.instance.apiKey) {
+            throw new Error("API key not set");
+        }
+        const request = new Request(
+            `${this.url()}/weather/current?latitude=${latitude}&longitude=${longitude}`,
+            {
+                method: "GET",
+                headers: this.instance.headers,
+            }
+        );
+        const response = await this.instance.remoteServiceModule.fetch(request);
+
+        if (response.status !== 200) {
+            throw new Error("Failed to fetch current weather");
+        }
+
+        const body = await response.json();
+
+        return body as CurrentWeather;
     }
 
     private static async healthCheck() {
