@@ -1,0 +1,42 @@
+- !<AssetImportMetadata/5c7c7f76-fc07-4ba9-b765-5b1dea2dbff2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e95a49bd-5106-4f74-8905-95a331665ba1
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e95a49bd-5106-4f74-8905-95a331665ba1
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 070b67b9-db41-4462-8120-7bfae5895cce
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/070b67b9-db41-4462-8120-7bfae5895cce>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 9ee634f6-5c26-4352-8d12-38b195571d6b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    locationRefetchIntervalSeconds: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - locationRefetchIntervalSeconds: !<float> 60.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input float locationRefetchIntervalSeconds = 60
