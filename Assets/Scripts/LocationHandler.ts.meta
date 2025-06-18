@@ -39,4 +39,4 @@
     -
       {}
   InputLines:
-    - // @input float locationRefetchIntervalSeconds = 60
+    - // @input float locationRefetchIntervalSeconds = 600

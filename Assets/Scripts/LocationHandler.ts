@@ -47,11 +47,11 @@ export class LocationExample extends BaseScriptComponent {
                         this.timestamp = geoPosition.timestamp;
                         PersistentStorageManager.getInstance().set(
                             "latitude",
-                            this.latitude
+                            `${this.latitude}`
                         );
                         PersistentStorageManager.getInstance().set(
                             "longitude",
-                            this.longitude
+                            `${this.longitude}`
                         );
                     }
                 },
