@@ -3,7 +3,7 @@ import { PersistentStorageManager } from "./utils/PersistentStorageManager";
 require("LensStudio:RawLocationModule");
 
 @component
-export class LocationExample extends BaseScriptComponent {
+export class LocationHandler extends BaseScriptComponent {
     @input
     locationRefetchIntervalSeconds: number = 600;
 
