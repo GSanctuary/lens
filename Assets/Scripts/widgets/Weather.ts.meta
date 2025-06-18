@@ -29,6 +29,7 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     camera: false
+    conditionText: false
     frame: false
     includeInWidgetList: false
     instantiationDistance: false
@@ -49,6 +50,7 @@
       includeInWidgetList: true
       locationText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       temperatureText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      conditionText: !<reference.Text> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -61,3 +63,4 @@
     - // @input bool includeInWidgetList = true
     - // @input Component.Text locationText
     - // @input Component.Text temperatureText
+    - // @input Component.Text conditionText

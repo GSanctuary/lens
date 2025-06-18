@@ -11,6 +11,9 @@ export class Weather extends Widget {
     @input
     temperatureText: Text;
 
+    @input
+    conditionText: Text;
+
     onAwake() {
         this.createEvent("OnStartEvent").bind(this.onStart.bind(this));
     }
@@ -31,6 +34,7 @@ export class Weather extends Widget {
     private updateUI(weatherData: CurrentWeather): void {
         this.locationText.text = weatherData.location.name;
         this.temperatureText.text = `${weatherData.current.feelslike_c}°C`;
+        this.conditionText.text = weatherData.current.condition.text;
     }
 
     private getLatitudeAndLongitude(): { latitude: number; longitude: number } {
