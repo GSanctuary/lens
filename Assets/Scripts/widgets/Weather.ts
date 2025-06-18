@@ -14,8 +14,24 @@ export class Weather extends Widget {
     @input
     conditionText: Text;
 
+    @input
+    textures: Texture[];
+
+    @input
+    weatherImageDisplay: Image;
+
+    @input
+    showAdvanced: boolean = false;
+
+    @input
+    @showIf("showAdvanced")
+    weatherUrlPrefix: string = "//cdn.weatherapi.com/weather/64x64/";
+
+    private weatherIconMap: Record<string, Texture> = {};
+
     onAwake() {
         this.createEvent("OnStartEvent").bind(this.onStart.bind(this));
+        this.initializeWeatherIconMap();
     }
 
     onStart() {
@@ -30,10 +46,33 @@ export class Weather extends Widget {
         this.updateUI(weatherData);
     }
 
+    private initializeWeatherIconMap(): void {
+        for (const texture of this.textures) {
+            const iconName = texture.name.toLowerCase();
+            const [time, code] = iconName.split("_");
+            this.weatherIconMap[`${time}/${code}.png`] = texture;
+        }
+    }
+
+    private removePrefixFromURL(url: string): string {
+        if (this.weatherUrlPrefix && url.startsWith(this.weatherUrlPrefix)) {
+            return url.slice(this.weatherUrlPrefix.length);
+        }
+        return url;
+    }
+
     private updateUI(weatherData: CurrentWeather): void {
         this.locationText.text = weatherData.location.name;
         this.temperatureText.text = `${weatherData.current.feelslike_c}°C`;
         this.conditionText.text = weatherData.current.condition.text;
+
+        const iconUrl = this.removePrefixFromURL(
+            weatherData.current.condition.icon
+        );
+        const iconTexture = this.weatherIconMap[iconUrl];
+        if (iconTexture) {
+            this.weatherImageDisplay.mainPass.baseTex = iconTexture;
+        }
     }
 
     private getLatitudeAndLongitude(): { latitude: number; longitude: number } {

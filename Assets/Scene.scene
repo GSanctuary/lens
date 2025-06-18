@@ -1827,6 +1827,8 @@
   ScriptInputsDefault:
     voiceInputDelay: true
     includeInWidgetList: true
+    showAdvanced: true
+    weatherUrlPrefix: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -1840,6 +1842,106 @@
       locationText: !<reference.Text> 379aa5a7-7505-4559-9bfe-b6857e7c2575
       temperatureText: !<reference.Text> af588042-dad1-4404-92c0-631e07a7b812
       conditionText: !<reference.Text> 5966e7ad-9448-4563-9176-93b31a02b77f
+      textures: !<reference.Texture[]>
+        - !<reference> 5e307970-5ccd-460f-915e-aa4d8e376fda
+        - !<reference> 63b54bac-2dab-433a-9b89-9cc2eecb8c41
+        - !<reference> d235223f-71c1-4352-88e8-0791c509cded
+        - !<reference> 91d14a84-32b6-4603-9ff8-7948da5ea0ae
+        - !<reference> 4e179d3f-0a78-4002-9c5c-ddee059af3ec
+        - !<reference> aef2e889-eab3-4c17-b44b-85234ff54237
+        - !<reference> 89588ca5-388e-4ca8-a0b9-53297e5b8472
+        - !<reference> 3a9e2c54-e71b-4161-a9e8-150a5e20a32b
+        - !<reference> 3e902c0e-e534-4a47-9b41-dece5b4f31d1
+        - !<reference> 18c8a13a-4782-4320-be1c-25ee3a29d848
+        - !<reference> b5733171-7906-4045-a941-169604abe2a9
+        - !<reference> 08b4756b-10e3-4857-96cc-811492ba2cff
+        - !<reference> 75e67572-3a2c-4632-9993-eaa96f38df5d
+        - !<reference> b8ce0340-7e88-4651-9d72-bbb7b94a0122
+        - !<reference> 3f814f8c-69fc-49ea-bbb0-3608424fc571
+        - !<reference> 58ed92e9-6774-49bd-adb0-e85f4045a05f
+        - !<reference> d329c426-7bd8-471b-93f9-49ef26c7e762
+        - !<reference> 46bd570d-660d-4449-88cc-90144f9fb4bc
+        - !<reference> 7fa088e4-380b-49fb-88a7-cccc41dfe885
+        - !<reference> a7b8b0ae-d923-4f76-888a-d72894dc433f
+        - !<reference> 2691cbfd-46b4-46f0-b7ab-d8cd2fc3fd37
+        - !<reference> d9ea9a83-c19f-42a4-8d39-ad6c1353fea1
+        - !<reference> 0862516f-578b-46ab-8709-624f2f599a01
+        - !<reference> 84bc4c5a-4540-4dc0-b1fb-1ba97dd77dd0
+        - !<reference> 91dde858-c7be-439a-9667-ae9ac14ca7dc
+        - !<reference> 2808e8fb-f258-4893-a3b2-19076d2fb566
+        - !<reference> e2bc9d85-738f-4150-81bf-911870f8a16b
+        - !<reference> 0d40fe8a-d3a9-480c-b29c-722f75d8e161
+        - !<reference> b36af498-f457-4a4a-bfa7-923d23c0e842
+        - !<reference> 3ba39299-d977-4c99-80c5-f3955f33709f
+        - !<reference> 616e445b-9e6d-45c5-b07c-e4f6a249c903
+        - !<reference> 16d306b6-8b33-47b4-9547-131bbb7b56ff
+        - !<reference> bcb2c35d-7bcd-4743-becf-942d0348575a
+        - !<reference> cf4da476-d5a2-419e-a84d-43acef45ad5a
+        - !<reference> ec004afe-3946-4d64-a5ac-223c63525a7c
+        - !<reference> cfbc43e7-84ec-41b8-994f-710b7b89f22b
+        - !<reference> bea260ad-29d1-432d-8ee5-5f8f1df1c6d9
+        - !<reference> cab091f1-1752-4fbf-ad85-992a242a6e9e
+        - !<reference> 0425694b-dc04-4954-8e3c-125f8accdcbf
+        - !<reference> d267dc7c-c904-4649-8234-2378909dd0cf
+        - !<reference> 7c94ae5d-6bbd-4ce2-a981-46d56e1458db
+        - !<reference> 437fa5ec-8c49-4f94-95bd-fb31633b1c88
+        - !<reference> 24b40123-8dd7-4cc5-8932-468154b3710d
+        - !<reference> b9422018-0c40-4adc-84ea-050cf9d0aa37
+        - !<reference> 0372a688-1ac7-45ec-984f-e1fb010ad464
+        - !<reference> 2830f298-0ba1-4809-8f8b-2caeb84bb2e4
+        - !<reference> 231baeb3-6006-4a49-ac98-ccfccfc19702
+        - !<reference> 19edcd97-f544-4103-8147-f28fd90f266a
+        - !<reference> 9ef39671-d2e1-44cf-a5b0-a688f1264719
+        - !<reference> 34fd7e26-1a85-4ac4-b4ae-8ca54babc9bd
+        - !<reference> 6ba7daa4-813e-40be-863b-7f07dfe65d75
+        - !<reference> c9786510-34ad-4454-aede-b77acba3454e
+        - !<reference> 9be2c6e2-28da-40b9-a4f0-da053c5b2b84
+        - !<reference> 7806bec0-74f5-485f-9c39-ad996cb31d03
+        - !<reference> 5929709b-8fc8-4ff5-b57f-993c90d0be02
+        - !<reference> 7f2c42ed-bf8d-4fc1-920e-151b772c72a7
+        - !<reference> 9fa8fb63-d65c-4667-a9f8-5a809e62f311
+        - !<reference> e65f56bb-84aa-4a30-b129-0bae377c7668
+        - !<reference> 353dc90a-f6b3-4425-b349-0971b3891839
+        - !<reference> e83bdf9d-be3f-41ce-bff7-9fa5ab9b8068
+        - !<reference> 26d44bbe-b954-45ac-af1b-34072adbef8f
+        - !<reference> aaf0e92c-2e41-4f3b-8918-aca991893cc7
+        - !<reference> d21c62c2-46b1-4762-9697-fe8cda41e38b
+        - !<reference> 240c4e3b-043e-49ca-ae6b-22c515b32a92
+        - !<reference> 83bc2805-4122-432f-88f6-d9d25b9bb2ef
+        - !<reference> 6d1c00eb-f24a-41db-ad24-ef8abfe574c5
+        - !<reference> 265f6f1c-3037-4b11-a758-cb3c8f054bba
+        - !<reference> 1241ecbb-5c46-4552-b8ce-ca33fa395f11
+        - !<reference> d017f6a5-ed7f-44d0-9908-6f3d86cb7229
+        - !<reference> 3320f2a2-4a2d-4da1-97a9-8b0fd63a6b06
+        - !<reference> 16df95f4-17ee-48f2-9ffd-75486f2eb2bf
+        - !<reference> a50fc1e6-9a1e-4a43-826c-d5ac458a91e2
+        - !<reference> d2e4e788-1cfa-4cac-8044-2d7084da47e0
+        - !<reference> 48065320-dc4b-405e-8d2c-cef5d46839c7
+        - !<reference> 5b346445-8770-46a3-ac90-b8d2cac4b6cc
+        - !<reference> fa5508da-c3e2-44b6-afc6-4c465916b4aa
+        - !<reference> 007cd2cf-dac6-4b99-84e4-c51805b5e0aa
+        - !<reference> 36f5a6c8-0071-4079-9adc-5e944b3a02b8
+        - !<reference> 38f459db-a60b-4640-9afa-70565386c1ae
+        - !<reference> b7648990-3ab3-4444-ac36-1d8e207bd7ad
+        - !<reference> eaacd9ce-0b4e-4aca-8065-49a9ebab195d
+        - !<reference> 97524864-544f-4fdc-a0ff-1c385bd3b040
+        - !<reference> 4b20bad4-2092-49b1-8b04-c326fb22f8dd
+        - !<reference> 6a6f8e7a-cc35-4245-9208-cf23b465520f
+        - !<reference> d3942424-b5b0-40f4-8f72-098fed54af97
+        - !<reference> b8fbf8c2-8c88-49d1-ae54-13393f28f3f9
+        - !<reference> 0a3849e4-2940-4dac-97a6-d0ee17036ef9
+        - !<reference> f813f580-fb39-41b0-9d3b-d37656c87f5f
+        - !<reference> e0c59ae8-7f61-418e-ab94-b25fec878466
+        - !<reference> f56fe2f8-8677-48a7-a1b5-89662970f8e9
+        - !<reference> f5e66639-9be1-4f92-8384-f984df92839b
+        - !<reference> d2da8e7d-5e36-476d-b77a-b7d14816ab86
+        - !<reference> 6af0b908-a478-43c7-855f-7e13d028ce09
+        - !<reference> b523b608-59c3-409e-b4da-70614f28495d
+        - !<reference> f4190c10-219d-4041-b42d-b77750a69d32
+        - !<reference> a35cd2b7-4ab8-4710-ad1b-a0b51929a069
+      weatherImageDisplay: !<reference.Image> 41225b79-cd80-4063-9a8a-56e249f7575a
+      showAdvanced: false
+      weatherUrlPrefix: //cdn.weatherapi.com/weather/64x64/
   ScriptTypes:
     "":
       {}
@@ -7203,7 +7305,7 @@
     {}
   ScriptInputs:
     "":
-      baseUrl: "https://94f5-73-53-36-137.ngrok-free.app"
+      baseUrl: "https://78ba-73-53-36-137.ngrok-free.app"
       prodUrl: "https://sanctuary-backend-three.vercel.app/"
       useProd: false
       remoteServiceModule: !<reference.InternetModule> a1eac110-0527-48d2-84d5-1390427ce8b8
@@ -12252,7 +12354,7 @@
   PrefabRemaps:
     []
   Name: ContainerFrameUI
-  Enabled: true
+  Enabled: false
   Layers: 1
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}

@@ -35,8 +35,12 @@
     instantiationDistance: false
     kindString: false
     locationText: false
+    showAdvanced: false
     temperatureText: false
+    textures: false
     voiceInputDelay: false
+    weatherImageDisplay: false
+    weatherUrlPrefix: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -51,6 +55,11 @@
       locationText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       temperatureText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       conditionText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      textures: !<reference.Texture[]>
+        []
+      weatherImageDisplay: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      showAdvanced: false
+      weatherUrlPrefix: //cdn.weatherapi.com/weather/64x64/
   ScriptTypes:
     -
       {}
@@ -64,3 +73,7 @@
     - // @input Component.Text locationText
     - // @input Component.Text temperatureText
     - // @input Component.Text conditionText
+    - "// @input Asset.Texture[] textures"
+    - // @input Component.Image weatherImageDisplay
+    - // @input bool showAdvanced
+    - '// @input string weatherUrlPrefix = "//cdn.weatherapi.com/weather/64x64/" {"showIf":"showAdvanced"}'
