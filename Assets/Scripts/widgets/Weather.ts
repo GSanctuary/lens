@@ -55,7 +55,7 @@ export class Weather extends Widget {
     }
 
     private removePrefixFromURL(url: string): string {
-        if (this.weatherUrlPrefix && url.startsWith(this.weatherUrlPrefix)) {
+        if (url.startsWith(this.weatherUrlPrefix)) {
             return url.slice(this.weatherUrlPrefix.length);
         }
         return url;
