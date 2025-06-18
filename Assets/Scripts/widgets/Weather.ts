@@ -27,7 +27,6 @@ export class Weather extends Widget {
         const { latitude: lat, longitude: lon } =
             this.getLatitudeAndLongitude();
         const weatherData = await SanctuaryAPI.getCurrentWeather(lat, lon);
-        print(JSON.stringify(weatherData, null, 2));
         this.updateUI(weatherData);
     }
 
