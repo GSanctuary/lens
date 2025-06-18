@@ -34,6 +34,7 @@ export class EventEmitter extends BaseScriptComponent {
             [WidgetKind.TaskList]: undefined,
             [WidgetKind.TaskCreation]: undefined,
             [WidgetKind.Note]: undefined,
+            [WidgetKind.Weather]: undefined,
         };
 
         this.activeWidgets = {
@@ -42,6 +43,7 @@ export class EventEmitter extends BaseScriptComponent {
             [WidgetKind.TaskList]: undefined,
             [WidgetKind.TaskCreation]: undefined,
             [WidgetKind.Note]: undefined,
+            [WidgetKind.Weather]: undefined,
         };
 
         EventEmitter.on(EventType.WidgetOpen, this.openWidget.bind(this));
