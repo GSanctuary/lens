@@ -22,6 +22,7 @@
     - !<own> 1f3f48a7-b1b6-49c3-8e04-39477995880c
     - !<own> de9b1c21-20a9-4019-bc11-f82e33da988c
     - !<own> c9b9cf04-7943-42b0-875e-86b436dadb8b
+    - !<own> 313a7375-2edb-4d27-a9f9-cd15aad8f854
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       []
@@ -2694,6 +2695,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/313a7375-2edb-4d27-a9f9-cd15aad8f854>
+  PrefabRemaps:
+    []
+  Name: AnchorModule
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f760c4d7-0844-4b18-8db4-e9b295fa11d4
 - !<SceneObject/31c18d59-e5ee-4790-a045-d57f08b12600>
   PrefabRemaps:
     []
@@ -13642,6 +13658,26 @@
   BlendNormals: false
   BlendShapes:
     Pinch: 0.000000
+- !<ScriptComponent/f760c4d7-0844-4b18-8db4-e9b295fa11d4>
+  PrefabRemaps:
+    []
+  Name: AnchorModule
+  Enabled: true
+  ScriptAsset: !<reference> d7365b94-dd04-4655-bd5f-87a7de3148bb
+  ScriptInputsDefault:
+    useLocalStorage: true
+    debug: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      storage: !<reference.LocationCloudStorageModule> 1c366a0d-33b2-4975-a10e-f585351a45d6
+      connectedLensModule: !<reference.ConnectedLensModule> 4bf13da4-7083-488a-9102-3c9fda684fe7
+      useLocalStorage: true
+      debug: true
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/f7dad4fc-0650-4ec0-9a76-78404479afd5>
   PrefabRemaps:
     []
