@@ -1,0 +1,42 @@
+- !<AssetImportMetadata/458e1677-fc39-4dfd-96a2-b41958bbdb38>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> b8962878-6e95-4206-8b22-a5167c9230b4
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> b8962878-6e95-4206-8b22-a5167c9230b4
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5f0ae386-071d-4a07-b98f-aed9eb2e6d53
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5f0ae386-071d-4a07-b98f-aed9eb2e6d53>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6618cce8-e9ad-4966-99c5-e571dfaf88fb
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    roomDetectionInterfaceContainer: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - roomDetectionInterfaceContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject roomDetectionInterfaceContainer

@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/c694548e-e45a-41e2-b161-4401a9a4d3f2>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 22a7d16b-742d-4fd6-95a7-f8b94e80ce4e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 22a7d16b-742d-4fd6-95a7-f8b94e80ce4e
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 5c554cb2-88c1-4a76-842a-57f6de25d338
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/5c554cb2-88c1-4a76-842a-57f6de25d338>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 0b921daa-ac55-4495-b016-7abce71f0389
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    beginScanButton: false
+    endScanButton: false
+    roomScanInterfaceContainer: false
+    scanAccuracyText: false
+    scannerUnit: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - roomScanInterfaceContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      beginScanButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      endScanButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      scanAccuracyText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      scannerUnit: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject roomScanInterfaceContainer
+    - // @input AssignableType beginScanButton
+    - // @input AssignableType_1 endScanButton
+    - // @input Component.Text scanAccuracyText
+    - // @input AssignableType_2 scannerUnit

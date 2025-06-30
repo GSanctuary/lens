@@ -1,0 +1,42 @@
+- !<AssetImportMetadata/ed5d613e-23c4-41de-a37a-f9f6f0e1d8ff>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 91d5b72f-4310-4e66-9a41-836b32992973
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 91d5b72f-4310-4e66-9a41-836b32992973
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> e5035da5-75cd-49e2-8aa9-febab2817bd7
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/e5035da5-75cd-49e2-8aa9-febab2817bd7>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 28925c11-7522-4192-a9ec-b1932f3a4601
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    anchorModule: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - anchorModule: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType anchorModule

@@ -1,0 +1,45 @@
+- !<AssetImportMetadata/0fd23d9f-78e9-a412-78b3-89210bbc137e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 61419d75-74f1-47a0-895e-cf2882b0c0cc
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 61419d75-74f1-47a0-895e-cf2882b0c0cc
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  AssetDataMap:
+    TypeScriptAsset: !<own> 8c95f984-180e-4d70-9fbc-60cd739a024a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+  ExtraData:
+    {}
+- !<TypeScriptAssetData/8c95f984-180e-4d70-9fbc-60cd739a024a>
+  SvgIcon: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: a31b0e2e-ac74-4311-8cfa-21f7dbaf8e9e
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    logLimit: false
+    loggerOutput: false
+  ScriptTypesHidden:
+    {}
+  DefaultScriptInputs:
+    - logLimit: !<float> 10.000000
+      loggerOutput: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input float logLimit = 10
+    - // @input Component.Text loggerOutput
+  SetupScript:
+    code: ""
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
