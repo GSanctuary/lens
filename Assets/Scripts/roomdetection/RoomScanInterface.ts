@@ -1,13 +1,15 @@
 import { PinchButton } from "SpectaclesInteractionKit/Components/UI/PinchButton/PinchButton";
 import { Widget } from "../Widget";
 import { Scanner } from "./Scanner";
+import { RoomCreationInterface } from "./RoomCreationInterface";
+import { ContainerFrame } from "SpectaclesInteractionKit/Components/UI/ContainerFrame/ContainerFrame";
 
 @component
 export class RoomScanInterface extends BaseScriptComponent {
     private allowEndScan: boolean;
 
     @input
-    roomScanInterfaceContainer: SceneObject;
+    roomScanInterfaceContainer: ContainerFrame;
 
     @input
     beginScanButton: PinchButton;
@@ -16,13 +18,23 @@ export class RoomScanInterface extends BaseScriptComponent {
     endScanButton: PinchButton;
 
     @input
+    backButton: PinchButton;
+
+    @input
     scanAccuracyText: Text;
 
     @input 
     scannerUnit: Scanner;
 
+    @input
+    roomCreationInstace: RoomCreationInterface;
+
+    @input
+    camera: Camera;
+
     onAwake() {
-      // setup default button states
+
+      // set up events and scanner bool
       this.allowEndScan = false;
       this.createEvent('UpdateEvent').bind(this.onUpdate.bind(this));
       this.createEvent("OnStartEvent").bind(() => this.onStart());
@@ -33,21 +45,51 @@ export class RoomScanInterface extends BaseScriptComponent {
       this.endScanButton.onButtonPinched.add(this.onEndScanButton.bind(this));
     }
 
-    onScanButton() {
+    activateAndPlace(position: vec3) {
+        // position stuff
+        const frameTransform = this.roomScanInterfaceContainer.getSceneObject().getTransform();
+        const placePosition = position;
+
+        // scanner stuff
+        this.allowEndScan = false;
+
+        // activate and set follow
+        this.roomScanInterfaceContainer.getSceneObject().enabled = true;
+        this.roomScanInterfaceContainer.enabled = true;
+        this.roomScanInterfaceContainer.setIsFollowing(true);
+
+        frameTransform.setWorldPosition(placePosition);
+    }
+
+    protected endScanAndDeactivate() {
+      if(this.allowEndScan){
+        this.scannerUnit.endScan();
+      }
+      this.roomScanInterfaceContainer.getSceneObject().enabled = false;
+      print('Room Scan Interface Deactivated')
+    }
+
+    protected onScanButton() {
       this.scannerUnit.startScan();
       this.allowEndScan = true;
     }
     
-    onEndScanButton() {
+    protected onEndScanButton() {
       if(this.allowEndScan){
-        this.scannerUnit.endScan();
+        this.endScanAndDeactivate();
+        this.roomCreationInstace.activateAndPlaceWithData(this.scannerUnit.getFinalScanData(), this.roomScanInterfaceContainer.getSceneObject().getTransform().getWorldPosition());
       }else{
         print('Error: you must start a scan first before pressing end scan')
       }
       this.allowEndScan = false;
     }
 
+    protected onBackButton() {
+      print('Back Button Pressed');
+    }
+
     onUpdate() {
-      this.scanAccuracyText.text = this.allowEndScan ? this.scannerUnit.getScanPercentage().toString() : 'scan accuracy';
+      const scanAccuracy = this.scannerUnit.getScanPercentage().toString();
+      this.scanAccuracyText.text = this.allowEndScan ? scanAccuracy == "NaN" ? "No data yet" : "Scan deviation: " + scanAccuracy : 'scan accuracy';
     }
 }

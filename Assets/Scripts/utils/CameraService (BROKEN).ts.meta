@@ -1,0 +1,54 @@
+- !<AssetImportMetadata/4f4dcf2e-41e8-4845-adeb-0fb6d8ba9603>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2ee81ee7-a440-4164-9e90-2bc269814d51
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2ee81ee7-a440-4164-9e90-2bc269814d51
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7fb79448-e70b-4657-b6e9-cdd0237d4815
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7fb79448-e70b-4657-b6e9-cdd0237d4815>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4f4c1da1-6e68-4390-ac16-b20c2193c37d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    deviceCamTexture: false
+    editorCamera: false
+    screenCropTexture: false
+    specsLeftCamera: false
+    specsRightCamera: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - editorCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      specsLeftCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      specsRightCamera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      screenCropTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+      deviceCamTexture: !<reference.Texture> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Camera editorCamera
+    - // @input Component.Camera specsLeftCamera
+    - // @input Component.Camera specsRightCamera
+    - // @input Asset.Texture screenCropTexture
+    - // @input Asset.Texture deviceCamTexture

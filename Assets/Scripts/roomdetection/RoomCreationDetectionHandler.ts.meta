@@ -29,14 +29,17 @@
   MaxVisibility: Editable
   ScriptInputsHidden:
     anchorModule: false
+    prefab: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - anchorModule: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      prefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input AssignableType anchorModule
+    - // @input Asset.ObjectPrefab prefab
