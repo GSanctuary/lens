@@ -129,3 +129,45 @@ export type CurrentWeather = {
         feelslike_f: number;
     };
 };
+
+// Recipe-related types
+export type Recipe = {
+    id: string;
+    title: string;
+    description: string;
+    ingredients: Ingredient[];
+    instructions: Instruction[];
+    prepTime: number; // in minutes
+    cookTime: number; // in minutes
+    servings: number;
+    difficulty: 'easy' | 'medium' | 'hard';
+    cuisine: string;
+    tags: string[];
+};
+
+export type Ingredient = {
+    id: string;
+    name: string;
+    amount: number;
+    unit: string;
+    checked: boolean;
+    notes?: string;
+};
+
+export type Instruction = {
+    id: string;
+    stepNumber: number;
+    description: string;
+    timeRequired?: number; // in minutes
+    tips?: string;
+};
+
+export type Timer = {
+    id: string;
+    name: string;
+    duration: number; // in seconds
+    remainingTime: number; // in seconds
+    isRunning: boolean;
+    isCompleted: boolean;
+    position: vec3; // 3D position in space
+};

@@ -12,6 +12,7 @@ import {
     RawTaskResponse,
     StickyNote,
     Task,
+    Recipe,
 } from "../types/Sanctuary";
 
 @component
@@ -364,6 +365,54 @@ export class SanctuaryAPI extends BaseScriptComponent {
         const body = await response.json();
 
         return body as CurrentWeather;
+    }
+
+    static async getRecipe(query: string): Promise<Recipe> {
+        if (!this.instance.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        // Create a temporary conversation for recipe search
+        const conversation = await this.newConversation("Recipe Search");
+        
+        const prompt = `Find a recipe for: ${query}. Return the response in the following JSON format:
+{
+  "id": "unique_id",
+  "title": "Recipe Title",
+  "description": "Brief description",
+  "ingredients": [
+    {
+      "id": "ingredient_1",
+      "name": "Ingredient Name",
+      "amount": 2,
+      "unit": "cups",
+      "checked": false
+    }
+  ],
+  "instructions": [
+    {
+      "id": "step_1",
+      "stepNumber": 1,
+      "description": "Step description",
+      "timeRequired": 5
+    }
+  ],
+  "prepTime": 15,
+  "cookTime": 30,
+  "servings": 4,
+  "difficulty": "medium",
+  "cuisine": "Italian",
+  "tags": ["pasta", "dinner"]
+}`;
+
+        const completion = await this.completion(conversation.id, prompt);
+        
+        try {
+            const recipeData = JSON.parse(completion.response);
+            return recipeData as Recipe;
+        } catch (error) {
+            throw new Error("Failed to parse recipe data from AI response");
+        }
     }
 
     private static async healthCheck() {

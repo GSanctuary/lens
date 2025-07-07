@@ -34,6 +34,7 @@ export class EventEmitter extends BaseScriptComponent {
             [WidgetKind.TaskList]: undefined,
             [WidgetKind.TaskCreation]: undefined,
             [WidgetKind.Note]: undefined,
+            [WidgetKind.CookingAssistant]: undefined,
             [WidgetKind.Weather]: undefined,
         };
 
@@ -43,6 +44,7 @@ export class EventEmitter extends BaseScriptComponent {
             [WidgetKind.TaskList]: undefined,
             [WidgetKind.TaskCreation]: undefined,
             [WidgetKind.Note]: undefined,
+            [WidgetKind.CookingAssistant]: undefined,
             [WidgetKind.Weather]: undefined,
         };
 
