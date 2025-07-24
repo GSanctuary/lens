@@ -16,6 +16,8 @@
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
 - !<TypeScriptAssetData/42592e89-1a03-4111-a6f8-52724f0b5177>
   SvgIcon: ""
+  SetupScript:
+    code: ""
   Description: ""
   InternalVersion: 0
   VersionMajor: 0
@@ -34,6 +36,7 @@
     voiceInputDelay: false
   ScriptTypesHidden:
     {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - kindString: ""
@@ -52,6 +55,3 @@
     - // @input float instantiationDistance = 10
     - // @input float voiceInputDelay = 1000
     - // @input bool includeInWidgetList = true
-  SetupScript:
-    code: ""
-  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

@@ -1,21 +1,23 @@
 - !<AssetImportMetadata/d3b82b5d-ff06-9af2-f0fe-3bab2c1645c8>
-  ImporterSettings: !<AssetImporterSettings>
-    {}
   ImportedAssetIds:
     TypeScriptAsset: !<reference> fa8d58de-519f-43c1-a79d-1bfa5fdecfb0
   ImporterName: TypeScriptAssetImporter
   PrimaryAsset: !<reference> fa8d58de-519f-43c1-a79d-1bfa5fdecfb0
   PackageType: NotAPackage
-  AssetDataMap:
-    TypeScriptAsset: !<own> a87395f7-1364-45eb-b950-10fed667ddb1
   PackagePolicy: CannotBeUnpacked
-  DependentFiles:
-    []
-  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
   ExtraData:
     {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a87395f7-1364-45eb-b950-10fed667ddb1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
 - !<TypeScriptAssetData/a87395f7-1364-45eb-b950-10fed667ddb1>
-  Icon: ""
+  SvgIcon: ""
+  SetupScript:
+    code: ""
   Description: ""
   InternalVersion: 0
   VersionMajor: 0
@@ -36,6 +38,8 @@
     spherecastRadii: false
   ScriptTypesHidden:
     {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - _drawDebug: false
       sphereCastEnabled: false
@@ -73,8 +77,3 @@
     - '// @ui {"widget":"group_start", "label":"MouseInteractor"}'
     - '// @input float mouseTargetingMode = 2 {"hint":"Sets the return value of MouseInteractor.activeTargetingMode for cases where non-indirect targeting needs to be tested specifically. Useful whenever your code has checks for interactor.activeTargetingMode === TargetingMode.X.", "widget":"combobox", "values":[{"label":"Direct", "value":1}, {"label":"Indirect", "value":2}, {"label":"All", "value":3}, {"label":"Poke", "value":4}]}'
     - '// @ui {"widget":"group_end"}'
-  SvgIcon: ""
-  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
-  SetupScript:
-    code: ""
-  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

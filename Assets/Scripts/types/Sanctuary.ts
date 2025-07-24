@@ -4,6 +4,7 @@ export type RawConversation = {
     updatedAt: string;
     userId: number;
     title: string;
+    anchorId: string;
 };
 
 export type Conversation = {
@@ -12,6 +13,7 @@ export type Conversation = {
     updatedAt: Date;
     userId: number;
     title: string;
+    anchorId: string;
 };
 
 export const convertRawConversationToConversation = (
@@ -59,6 +61,7 @@ export type RawTaskResponse = {
     userId: number;
     name: string;
     completed: boolean;
+    anchorId: string;
 };
 
 export type Task = {
@@ -68,6 +71,7 @@ export type Task = {
     userId: number;
     name: string;
     completed: boolean;
+    anchorId: string;
 };
 
 export const convertRawTaskResponseToTaskResponse = (
@@ -87,6 +91,7 @@ export type RawStickyNoteResponse = {
     userId: number;
     content: string;
     metadata: Record<string, any>;
+    anchorId: string;
 };
 
 export type StickyNote = {
@@ -96,6 +101,7 @@ export type StickyNote = {
     userId: number;
     content: string;
     metadata: Record<string, any>;
+    anchorId: string;
 };
 
 export const convertRawStickyNoteResponseToStickyNote = (
@@ -132,34 +138,11 @@ export type CurrentWeather = {
 
 // Recipe-related types
 export type Recipe = {
-    id: string;
-    title: string;
-    description: string;
-    ingredients: Ingredient[];
-    instructions: Instruction[];
-    prepTime: number; // in minutes
-    cookTime: number; // in minutes
-    servings: number;
-    difficulty: 'easy' | 'medium' | 'hard';
-    cuisine: string;
-    tags: string[];
-};
-
-export type Ingredient = {
-    id: string;
+    id: number;
     name: string;
-    amount: number;
-    unit: string;
-    checked: boolean;
-    notes?: string;
-};
-
-export type Instruction = {
-    id: string;
-    stepNumber: number;
-    description: string;
-    timeRequired?: number; // in minutes
-    tips?: string;
+    description?: string;
+    ingredients: string[];
+    steps: string[]
 };
 
 export type Timer = {
@@ -170,4 +153,19 @@ export type Timer = {
     isRunning: boolean;
     isCompleted: boolean;
     position: vec3; // 3D position in space
+};
+
+// Room :(
+export type Room = {
+    position: [number, number, number];
+    scale: [number, number];
+    widgets?: {
+        aiConversations: number[];
+        recipes: number[];
+        task: number[];
+        stickyNotes: number[];
+    };
+    name: string;
+    anchorId: string;
+    rotation: number;
 };

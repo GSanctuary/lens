@@ -13,6 +13,7 @@ import {
     StickyNote,
     Task,
     Recipe,
+    Room,
 } from "../types/Sanctuary";
 
 @component
@@ -82,14 +83,14 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return body.user.apiKey as string;
     }
 
-    static async newConversation(title: string): Promise<Conversation> {
+    static async newConversation(title: string, anchorId: string): Promise<Conversation> {
         if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
 
         const request = new Request(`${this.url()}/ai/conversation`, {
             method: "POST",
-            body: JSON.stringify({ title }),
+            body: JSON.stringify({ title, anchorId }),
             headers: this.instance.headers,
         });
 
@@ -151,7 +152,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
         );
     }
 
-    static async createTask(name: string): Promise<Task> {
+    static async createTask(name: string, anchorId: string): Promise<Task> {
         if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
@@ -163,7 +164,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
         const request = new Request(`${this.url()}/task`, {
             method: "POST",
             headers: this.instance.headers,
-            body: JSON.stringify({ task: name }),
+            body: JSON.stringify({ task: name, anchorId }),
         });
 
         const response = await this.instance.remoteServiceModule.fetch(request);
@@ -245,7 +246,8 @@ export class SanctuaryAPI extends BaseScriptComponent {
 
     static async createStickyNote(
         content: string,
-        metadata: Record<string, any> = {}
+        metadata: Record<string, any> = {},
+        anchorId: string,
     ): Promise<StickyNote> {
         if (!this.instance.apiKey) {
             throw new Error("API key not set");
@@ -258,7 +260,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
         const request = new Request(`${this.url()}/sticky`, {
             method: "POST",
             headers: this.instance.headers,
-            body: JSON.stringify({ content, metadata }),
+            body: JSON.stringify({ content, metadata, anchorId }),
         });
 
         const response = await this.instance.remoteServiceModule.fetch(request);
@@ -367,52 +369,82 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return body as CurrentWeather;
     }
 
-    static async getRecipe(query: string): Promise<Recipe> {
+    static async getRecipe(query: string, anchorId: string): Promise<Recipe> {
         if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
 
-        // Create a temporary conversation for recipe search
-        const conversation = await this.newConversation("Recipe Search");
-        
-        const prompt = `Find a recipe for: ${query}. Return the response in the following JSON format:
-{
-  "id": "unique_id",
-  "title": "Recipe Title",
-  "description": "Brief description",
-  "ingredients": [
-    {
-      "id": "ingredient_1",
-      "name": "Ingredient Name",
-      "amount": 2,
-      "unit": "cups",
-      "checked": false
-    }
-  ],
-  "instructions": [
-    {
-      "id": "step_1",
-      "stepNumber": 1,
-      "description": "Step description",
-      "timeRequired": 5
-    }
-  ],
-  "prepTime": 15,
-  "cookTime": 30,
-  "servings": 4,
-  "difficulty": "medium",
-  "cuisine": "Italian",
-  "tags": ["pasta", "dinner"]
-}`;
+        if (query.trim() === "") {
+            throw new Error("Recipe name cannot be empty");
+        }
 
-        const completion = await this.completion(conversation.id, prompt);
+        const request = new Request(`${this.url()}/cook/`, {
+            method: "POST",
+            headers: this.instance.headers,
+            body: JSON.stringify({
+                recipeName: query,
+                anchorId,
+            }),
+        });
+
+        const response = await this.instance.remoteServiceModule.fetch(request);
+
+        if (response.status !== 200) {
+            throw new Error("Failed to create recipe");
+        }
         
         try {
-            const recipeData = JSON.parse(completion.response);
-            return recipeData as Recipe;
+            return await response.json() as Recipe;
         } catch (error) {
             throw new Error("Failed to parse recipe data from AI response");
         }
+    } 
+
+    static async getRoom(anchorId: string): Promise<Room> {
+        if (!this.instance.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        if (anchorId.trim() === "") {
+            throw new Error("Anchor ID cannot be empty");
+        }
+
+        const request = new Request(`${this.url()}/rooms?anchorId=${anchorId}`, {
+            method: "GET",
+            headers: this.instance.headers,
+        });
+
+        const response = await this.instance.remoteServiceModule.fetch(request);
+
+        if (response.status !== 200) {
+            throw new Error("Failed to fetch room");
+        }
+        
+        try {
+            return await response.json() as Room;
+        } catch (error) {
+            throw new Error("Failed to parse room");
+        }
+    }
+
+    static async createRoom(room: Room): Promise<boolean> {
+        if (!this.instance.apiKey) {
+            throw new Error("API key not set");
+        }
+
+        const request = new Request(`${this.url()}/rooms/`, {
+            method: "POST",
+            headers: this.instance.headers,
+            body: JSON.stringify(room),
+        });
+
+        const response = await this.instance.remoteServiceModule.fetch(request);
+
+        if (response.status !== 200) {
+            throw new Error("Failed to create room");
+        }
+        
+        return true
     }
 
     private static async healthCheck() {
