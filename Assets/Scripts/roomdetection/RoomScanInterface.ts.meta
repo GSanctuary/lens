@@ -33,6 +33,7 @@
     camera: false
     endScanButton: false
     roomCreationInstace: false
+    roomDetectionInstance: false
     roomScanInterfaceContainer: false
     scanAccuracyText: false
     scannerUnit: false
@@ -48,6 +49,7 @@
       scanAccuracyText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       scannerUnit: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
       roomCreationInstace: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      roomDetectionInstance: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
       camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
@@ -60,4 +62,5 @@
     - // @input Component.Text scanAccuracyText
     - // @input AssignableType_4 scannerUnit
     - // @input AssignableType_5 roomCreationInstace
+    - // @input AssignableType_6 roomDetectionInstance
     - // @input Component.Camera camera

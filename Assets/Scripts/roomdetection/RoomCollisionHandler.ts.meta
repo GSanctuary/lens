@@ -1,20 +1,20 @@
-- !<AssetImportMetadata/ed5d613e-23c4-41de-a37a-f9f6f0e1d8ff>
+- !<AssetImportMetadata/c450a2c3-0e3b-492a-9605-7d48c89a28a6>
   ImportedAssetIds:
-    TypeScriptAsset: !<reference> 91d5b72f-4310-4e66-9a41-836b32992973
+    TypeScriptAsset: !<reference> c4b06946-96b0-429d-8a82-eb4a4d5abe18
   ImporterName: TypeScriptAssetImporter
-  PrimaryAsset: !<reference> 91d5b72f-4310-4e66-9a41-836b32992973
+  PrimaryAsset: !<reference> c4b06946-96b0-429d-8a82-eb4a4d5abe18
   PackageType: NotAPackage
   PackagePolicy: CannotBeUnpacked
   ExtraData:
     {}
   AssetDataMap:
-    TypeScriptAsset: !<own> e5035da5-75cd-49e2-8aa9-febab2817bd7
+    TypeScriptAsset: !<own> da9a23c2-524e-4da1-bd3a-7ee73d64bd0d
   DependentFiles:
     []
   ImporterSettings: !<AssetImporterSettings>
     {}
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
-- !<TypeScriptAssetData/e5035da5-75cd-49e2-8aa9-febab2817bd7>
+- !<TypeScriptAssetData/da9a23c2-524e-4da1-bd3a-7ee73d64bd0d>
   SvgIcon: ""
   SetupScript:
     code: ""
@@ -23,23 +23,23 @@
   VersionMajor: 0
   VersionMinor: 0
   VersionPatch: 0
-  ComponentUid: 28925c11-7522-4192-a9ec-b1932f3a4601
+  ComponentUid: 6c5ee404-2249-4bb1-aea2-aa386bbe1a99
   ExportUid: 00000000-0000-0000-0000-000000000000
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
-    anchorModule: false
-    roomPrefab: false
+    collider: false
+    roomDetectionInterfaceInstance: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
-    - anchorModule: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
-      roomPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+    - collider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      roomDetectionInterfaceInstance: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
-    - // @input AssignableType anchorModule
-    - // @input Asset.ObjectPrefab roomPrefab
+    - // @input Component.ColliderComponent collider
+    - // @input AssignableType roomDetectionInterfaceInstance

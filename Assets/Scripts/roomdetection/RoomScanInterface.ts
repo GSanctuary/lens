@@ -3,6 +3,7 @@ import { Widget } from "../Widget";
 import { Scanner } from "./Scanner";
 import { RoomCreationInterface } from "./RoomCreationInterface";
 import { ContainerFrame } from "SpectaclesInteractionKit/Components/UI/ContainerFrame/ContainerFrame";
+import { RoomDetectionInterface } from "./RoomDetectionInterface";
 
 @component
 export class RoomScanInterface extends BaseScriptComponent {
@@ -30,10 +31,12 @@ export class RoomScanInterface extends BaseScriptComponent {
     roomCreationInstace: RoomCreationInterface;
 
     @input
+    roomDetectionInstance: RoomDetectionInterface;
+
+    @input
     camera: Camera;
 
     onAwake() {
-
       // set up events and scanner bool
       this.allowEndScan = false;
       this.createEvent('UpdateEvent').bind(this.onUpdate.bind(this));
@@ -41,6 +44,7 @@ export class RoomScanInterface extends BaseScriptComponent {
     }
 
     onStart() {
+      this.roomScanInterfaceContainer.getSceneObject().enabled = true;
       this.beginScanButton.onButtonPinched.add(this.onScanButton.bind(this));
       this.endScanButton.onButtonPinched.add(this.onEndScanButton.bind(this));
     }
@@ -61,7 +65,7 @@ export class RoomScanInterface extends BaseScriptComponent {
         frameTransform.setWorldPosition(placePosition);
     }
 
-    protected endScanAndDeactivate() {
+    endScanAndDeactivate() {
       if(this.allowEndScan){
         this.scannerUnit.endScan();
       }
@@ -85,7 +89,8 @@ export class RoomScanInterface extends BaseScriptComponent {
     }
 
     protected onBackButton() {
-      print('Back Button Pressed');
+      this.endScanAndDeactivate();
+      this.roomDetectionInstance.activateAndPlace(this.roomScanInterfaceContainer.getSceneObject().getTransform().getWorldPosition());
     }
 
     onUpdate() {

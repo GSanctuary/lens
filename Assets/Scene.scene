@@ -24,12 +24,17 @@
     - !<own> c9b9cf04-7943-42b0-875e-86b436dadb8b
     - !<own> 313a7375-2edb-4d27-a9f9-cd15aad8f854
     - !<own> 4b38a6b1-2999-492c-9c4b-ed7b91f0fcc8
+    - !<own> 8194b96c-1fa5-4e89-b9e7-ef13a3ef4e61
     - !<own> 56ec5a23-4305-4d97-928e-f8250a23101c
     - !<own> c926a9a5-a35f-4eba-a9e2-58a97d8b6c73
-    - !<own> 5da27dc6-09e8-42d2-9767-98805cabbab5
+    - !<own> 3eb6ef56-302a-4d3e-af1c-dfcc5a6a1c80
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
-      []
+      - |
+        id: 1
+        name: Room Detection Layer
+        color: 0
+
     HasOrtho: true
   RenderOutput: !<reference> 923415f5-4245-4675-ade1-6d69d6d23e71
   RenderPreviewOutput: !<reference> 923415f5-4245-4675-ade1-6d69d6d23e71
@@ -40,7 +45,7 @@
     []
   Name: Camera Object
   Enabled: true
-  Layers: 1
+  Layers: 2
   LocalTransform:
     position: {x: 0.000000, y: 0.000000, z: 0.000000}
     rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
@@ -51,6 +56,7 @@
   Components:
     - !<own> 00000000-0000-0065-0000-000000000065
     - !<own> 4446f9da-083f-4c3c-8f75-bd96d371072b
+    - !<own> cba7060a-9736-4471-98f4-97351795e951
 - !<Camera/00000000-0000-0065-0000-000000000065>
   PrefabRemaps:
     []
@@ -97,7 +103,7 @@
     - !<own> 00056e79-b066-62ca-0000-000000001406
     - !<own> 0005641c-028d-4630-0000-000000014b56
   Components:
-    []
+    - !<own> 65d5da3e-34f9-4980-a683-f0ad5080df37
 - !<SceneObject/0005641c-028d-4630-0000-000000014b56>
   PrefabRemaps:
     []
@@ -876,6 +882,82 @@
   ScriptTypes:
     "":
       {}
+- !<Text/0ee91c03-1b1c-4bf2-903a-854c88bfe966>
+  PrefabRemaps:
+    []
+  Name: Text
+  Enabled: true
+  RenderOrder: 1
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Text: "Current Room:"
+  Editable: false
+  ShowEditingPreview: true
+  TouchHandler: !<reference> 00000000-0000-0000-0000-000000000000
+  SizeToFit: false
+  FontSize: 74
+  Font: !<reference> 709203b6-8b83-40d7-8dda-e5adc4fd2875
+  LayoutRect:
+    left: -7.500000
+    bottom: -2.250000
+    right: 7.500000
+    top: 2.250000
+  OverflowVertical: Overflow
+  OverflowHorizontal: Overflow
+  Fill: !<TextFill>
+    Mode: Solid
+    Color: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    Texture: !<reference> 00000000-0000-0000-0000-000000000000
+    TileCount: 5.000000
+    TileZone: Rect
+    TextureStretch: FitWidth
+  Outline: !<OutlineSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Size: 0.250000
+  Dropshadow: !<DropshadowSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    OffsetX: 0.250000
+    OffsetY: 0.250000
+  Background: !<BackgroundSettings>
+    Enabled: false
+    Fill: !<TextFill>
+      Mode: Solid
+      Color: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}
+      Texture: !<reference> 00000000-0000-0000-0000-000000000000
+      TileCount: 5.000000
+      TileZone: Rect
+      TextureStretch: FitWidth
+    Margins:
+      left: 0.000000
+      bottom: 0.000000
+      right: 0.000000
+      top: 0.000000
+    CornerRadius: 0.000000
+  AdvancedLayout: !<TextAdvancedLayout>
+    ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+    LetterSpacing: 0.000000
+    LineSpacing: 1.000000
+    CapitalizationOverride: None
+  DepthTest: false
+  TwoSided: false
 - !<SceneObject/0f270189-6698-4829-be80-c9bda93f4929>
   PrefabRemaps:
     []
@@ -2180,21 +2262,6 @@
   ScriptTypes:
     "":
       {}
-- !<SceneObject/24282dcc-30af-4666-82ef-6dd5cd372814>
-  PrefabRemaps:
-    []
-  Name: Room
-  Enabled: true
-  Layers: 1
-  LocalTransform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 10.000000, y: 10.000000, z: 10.000000}
-    hasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> c0af6014-bfca-467f-aef8-f27a73c20f64
 - !<RenderMeshVisual/24e576eb-ba27-43d8-ab08-c1f41bc60d03>
   PrefabRemaps:
     []
@@ -3949,6 +4016,21 @@
   Components:
     - !<own> 9c0c150b-6797-4519-8eee-32a5a841df5e
     - !<own> 5669fef2-b17b-4a7a-bf2c-043ff2da7261
+- !<SceneObject/3eb6ef56-302a-4d3e-af1c-dfcc5a6a1c80>
+  PrefabRemaps:
+    []
+  Name: RoomDetectionInterface
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: -59.477722, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> bd5189f8-54b1-47fd-84b1-434c6071a1b0
+  Components:
+    - !<own> 8b4aed50-f6f1-4b00-a524-dd20bda61d36
 - !<ColliderComponent/3f5fa24a-7613-45c8-9d5b-fb19915ac0a2>
   PrefabRemaps:
     []
@@ -5879,21 +5961,6 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
-- !<SceneObject/5da27dc6-09e8-42d2-9767-98805cabbab5>
-  PrefabRemaps:
-    []
-  Name: Room Prefab
-  Enabled: true
-  Layers: 1
-  LocalTransform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    hasSegmentScaleCompensation: false
-  Children:
-    - !<own> 24282dcc-30af-4666-82ef-6dd5cd372814
-  Components:
-    []
 - !<ScriptComponent/5de6612c-9146-4551-9921-9ea9fe914c91>
   PrefabRemaps:
     []
@@ -6240,6 +6307,24 @@
   ScriptTypes:
     "":
       {}
+- !<ColliderComponent/65d5da3e-34f9-4980-a683-f0ad5080df37>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> a87dd417-03a1-4ef9-a2c9-25f292181288
+  OverlapFilter: !<reference> a87dd417-03a1-4ef9-a2c9-25f292181288
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<SceneObject/669be982-6c99-4c3f-b7de-49ebdae5df64>
   PrefabRemaps:
     []
@@ -6863,6 +6948,53 @@
       _triggerStartAudioTrack: !<reference.AudioTrackAsset> edad7d53-55da-40b1-9025-fad0e7207862
       _playAudioOnTriggerEnd: true
       _triggerEndAudioTrack: !<reference.AudioTrackAsset> 82028831-1631-4d7b-b548-ff6be4e0a2ba
+  ScriptTypes:
+    "":
+      {}
+- !<ScriptComponent/70c7ee30-b014-42b6-baab-b860e6de12b7>
+  PrefabRemaps:
+    []
+  Name: ContainerFrame
+  Enabled: true
+  ScriptAsset: !<reference> 94ea82ba-1d42-4617-b71f-c92262f5960b
+  ScriptInputsDefault:
+    border: true
+    constantPadding: true
+    allowScaling: true
+    autoScaleContent: true
+    isContentInteractable: true
+    allowTranslation: true
+    xAlways: true
+    yAlways: true
+    worldSnapping: true
+    isFollowing: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      autoShowHide: false
+      innerSize: !<Vec2> {x: 16.000000, y: 28.000000}
+      border: !<float> 4.000000
+      constantPadding: !<Vec2> {x: 0.000000, y: 0.000000}
+      allowScaling: true
+      autoScaleContent: true
+      isContentInteractable: false
+      allowTranslation: true
+      minimumSize: !<Vec2> {x: 8.000000, y: 8.000000}
+      maximumSize: !<Vec2> {x: 200.000000, y: 200.000000}
+      useBillboarding: true
+      xOnTranslate: true
+      xAlways: false
+      yOnTranslate: true
+      yAlways: false
+      useSnapping: true
+      itemSnapping: true
+      worldSnapping: false
+      showFollowButton: true
+      useFOVFollow: true
+      isFollowing: false
+      showCloseButton: false
+      _enableInteractionPlane: true
   ScriptTypes:
     "":
       {}
@@ -7876,6 +8008,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/8194b96c-1fa5-4e89-b9e7-ef13a3ef4e61>
+  PrefabRemaps:
+    []
+  Name: RoomCreationDetectionHandler
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> ddb20359-c571-4c18-a317-a2c2310d2249
 - !<ScriptComponent/820468d8-19dd-491a-ab04-78498ee6930b>
   PrefabRemaps:
     []
@@ -8810,6 +8957,24 @@
     - !<own> 10d30454-8162-497e-8f83-7733bca7fb84
     - !<own> 97a4454d-08ad-43d1-be36-915db0d2767f
     - !<own> 923be756-ded3-4339-a159-4d5d1f4ec361
+- !<ScriptComponent/8b4aed50-f6f1-4b00-a524-dd20bda61d36>
+  PrefabRemaps:
+    []
+  Name: RoomDetectionInterface
+  Enabled: true
+  ScriptAsset: !<reference> b8962878-6e95-4206-8b22-a5167c9230b4
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      roomDetectionInterfaceContainer: !<MappingBased.AssignableType> 70c7ee30-b014-42b6-baab-b860e6de12b7
+      currentRoomText: !<reference.Text> 0ee91c03-1b1c-4bf2-903a-854c88bfe966
+      roomScanInstance: !<MappingBased.AssignableType_1> 9b995af5-b820-496e-9c88-4ed1948df8aa
+  ScriptTypes:
+    "":
+      {}
 - !<ScriptComponent/8ba2feb4-0647-4df4-8a71-1c98df73ec54>
   PrefabRemaps:
     []
@@ -9837,6 +10002,7 @@
       scanAccuracyText: !<reference.Text> eab23db0-8938-4630-90fb-10d7b9269e03
       scannerUnit: !<MappingBased.AssignableType_4> 1ccef65a-44b1-459a-8cb9-5ad6a7a5e500
       roomCreationInstace: !<MappingBased.AssignableType_5> 9e9c7b86-a73c-4031-bf0a-341be702ecf6
+      roomDetectionInstance: !<MappingBased.AssignableType_6> 8b4aed50-f6f1-4b00-a524-dd20bda61d36
       camera: !<reference.Camera> 00000000-0000-0065-0000-000000000065
   ScriptTypes:
     "":
@@ -10093,8 +10259,8 @@
       confirmButton: !<MappingBased.AssignableType_1> aec8fd7b-961e-4363-8f9b-0882ed212a2b
       backButton: !<MappingBased.AssignableType_2> e74cc7a2-dc6a-457e-8b79-a500e659e420
       roomScannerInstance: !<MappingBased.AssignableType_3> 9b995af5-b820-496e-9c88-4ed1948df8aa
-      roomPrefab: !<reference.ObjectPrefab> 1e1347ad-a26c-4713-997c-02434ba2cb99
-      room: !<reference.SceneObject> 24282dcc-30af-4666-82ef-6dd5cd372814
+      roomDetectionInstance: !<MappingBased.AssignableType_4> 8b4aed50-f6f1-4b00-a524-dd20bda61d36
+      roomDetectionCreationHandlerInstance: !<MappingBased.AssignableType_5> ddb20359-c571-4c18-a317-a2c2310d2249
       camera: !<reference.Camera> 00000000-0000-0065-0000-000000000065
   ScriptTypes:
     "":
@@ -12258,6 +12424,21 @@
   ScriptTypes:
     "":
       {}
+- !<SceneObject/bd5189f8-54b1-47fd-84b1-434c6071a1b0>
+  PrefabRemaps:
+    []
+  Name: ContainerFrameUI
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 55.000000, y: -5.000000, z: -65.000000}
+    rotation: {x: 0.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> ca9fa5c5-0750-43bd-879a-f3556b5d8230
+  Components:
+    - !<own> 70c7ee30-b014-42b6-baab-b860e6de12b7
 - !<ScriptComponent/bde69f1c-4943-4e27-b5e0-5c60d3f1ff04>
   PrefabRemaps:
     []
@@ -12386,26 +12567,6 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
-- !<RenderMeshVisual/c0af6014-bfca-467f-aef8-f27a73c20f64>
-  PrefabRemaps:
-    []
-  Name: Render Mesh Visual
-  Enabled: true
-  RenderOrder: 0
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Materials:
-    - !<reference> a1127952-2b90-417a-a08b-b9aa6d8709b1
-  Mesh: !<reference> 5f20d470-9c5d-4bab-a14b-db0c8e97474e
-  Skin: !<reference> 00000000-0000-0000-0000-000000000000
-  BlendShapesEnabled: true
-  BlendNormals: false
-  BlendShapes:
-    {}
 - !<Text/c0c65410-885f-4500-9766-5d745f208c9b>
   PrefabRemaps:
     []
@@ -12837,6 +12998,21 @@
     - !<own> 45b0f5da-16f2-4b36-812f-8878cd59e7c3
   Components:
     - !<own> 3c3c1f75-5ecc-4cf6-9a5d-1c8cc641d608
+- !<SceneObject/c6e329a5-3504-4fcc-a193-c95d7ae56109>
+  PrefabRemaps:
+    []
+  Name: Current Room Display Text
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 14.000000, z: 1.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 0ee91c03-1b1c-4bf2-903a-854c88bfe966
 - !<SceneObject/c7e95ec2-3ec1-4e74-9069-4b060eca8b2f>
   PrefabRemaps:
     []
@@ -12981,7 +13157,7 @@
 - !<SceneObject/c926a9a5-a35f-4eba-a9e2-58a97d8b6c73>
   PrefabRemaps:
     []
-  Name: Room Detection UI
+  Name: RoomScannerInterface
   Enabled: true
   Layers: 1
   LocalTransform:
@@ -13065,6 +13241,21 @@
     bottom: -2.500000
     right: -0.000001
     top: 2.500000
+- !<SceneObject/ca9fa5c5-0750-43bd-879a-f3556b5d8230>
+  PrefabRemaps:
+    []
+  Name: Controls
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> c6e329a5-3504-4fcc-a193-c95d7ae56109
+  Components:
+    []
 - !<ScreenTransform/cb6c2d7f-7748-4b82-83de-ebbe327dabee>
   PrefabRemaps:
     []
@@ -13131,6 +13322,24 @@
     bottom: 0.000000
     right: 0.000000
     top: 0.000000
+- !<ColliderComponent/cba7060a-9736-4471-98f4-97351795e951>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Sphere>
+    FitVisual: true
+    Radius: 6.000000
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> a87dd417-03a1-4ef9-a2c9-25f292181288
+  OverlapFilter: !<reference> a87dd417-03a1-4ef9-a2c9-25f292181288
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: false
+  ShowCollider: false
 - !<ScriptComponent/cbacd6fb-4dc2-45c3-b7cb-a32c34cff965>
   PrefabRemaps:
     []
@@ -14023,6 +14232,23 @@
   Components:
     - !<own> 194cd990-5a5f-4161-be4e-9a5df60f4cdd
     - !<own> 5a7c9189-cfba-48e3-ab3c-836f4df39f0b
+- !<ScriptComponent/ddb20359-c571-4c18-a317-a2c2310d2249>
+  PrefabRemaps:
+    []
+  Name: RoomCreationDetectionHandler
+  Enabled: true
+  ScriptAsset: !<reference> 91d5b72f-4310-4e66-9a41-836b32992973
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      anchorModule: !<MappingBased.AssignableType> f760c4d7-0844-4b18-8db4-e9b295fa11d4
+      roomPrefab: !<reference.ObjectPrefab> 2e4d9d73-909a-4c0b-aca5-b5f244b3adb2
+  ScriptTypes:
+    "":
+      {}
 - !<Text/de0d91fa-aa71-42aa-a056-97a7278a1c2b>
   PrefabRemaps:
     []

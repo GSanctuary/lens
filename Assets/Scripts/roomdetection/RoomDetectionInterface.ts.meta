@@ -28,15 +28,21 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
+    currentRoomText: false
     roomDetectionInterfaceContainer: false
+    roomScanInstance: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
-    - roomDetectionInterfaceContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+    - roomDetectionInterfaceContainer: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      currentRoomText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      roomScanInstance: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
-    - // @input SceneObject roomDetectionInterfaceContainer
+    - // @input AssignableType roomDetectionInterfaceContainer
+    - // @input Component.Text currentRoomText
+    - // @input AssignableType_1 roomScanInstance

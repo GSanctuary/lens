@@ -2,6 +2,8 @@ import { ContainerFrame } from "SpectaclesInteractionKit/Components/UI/Container
 import { PinchButton } from "SpectaclesInteractionKit/Components/UI/PinchButton/PinchButton";
 import { RoomScanInterface } from "./RoomScanInterface";
 import { VoicePrefixHandler } from "../utils/VoicePrefixHandler";
+import { RoomCreationDetectionHandler } from "./RoomCreationDetectionHandler";
+import { RoomDetectionInterface } from "./RoomDetectionInterface";
 
 @component
 export class RoomCreationInterface extends BaseScriptComponent {
@@ -20,10 +22,10 @@ export class RoomCreationInterface extends BaseScriptComponent {
     roomScannerInstance: RoomScanInterface;
 
     @input
-    roomPrefab: ObjectPrefab;
+    roomDetectionInstance: RoomDetectionInterface;
 
     @input
-    room: SceneObject;
+    roomDetectionCreationHandlerInstance: RoomCreationDetectionHandler;
 
     @input
     camera: Camera;
@@ -60,12 +62,10 @@ export class RoomCreationInterface extends BaseScriptComponent {
     }
 
     protected onConfirmButton() {
-        print("center: " + this.scannedData[0] + " scale X: " + this.scannedData[1] + " scale z: " + this.scannedData[2] + " yaw deg: " + this.scannedData[3]);
-        const newRoom = this.roomPrefab.instantiate(this.room);
-        newRoom.enabled = true;
-        newRoom.getTransform().setWorldPosition(this.scannedData[0]);
-        newRoom.getTransform().setWorldScale(new vec3(this.scannedData[1]/4, 10, this.scannedData[2]/4));
-        newRoom.getTransform().setLocalRotation(quat.fromEulerAngles(0,this.scannedData[3],0))
+        this.roomDetectionCreationHandlerInstance.createRoom(this.scannedData, "testRoom");
+        this.deactivate();
+        this.roomDetectionInstance.activateAndPlace(this.roomCreationInterfaceContainer.getSceneObject().getTransform().getWorldPosition());
+        this.roomDetectionInstance.updateCurrentRoom("TEST")
     }
 
     protected onBackButton() {

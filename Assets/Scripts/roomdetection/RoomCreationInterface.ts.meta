@@ -31,9 +31,9 @@
     backButton: false
     camera: false
     confirmButton: false
-    room: false
     roomCreationInterfaceContainer: false
-    roomPrefab: false
+    roomDetectionCreationHandlerInstance: false
+    roomDetectionInstance: false
     roomScannerInstance: false
   ScriptTypesHidden:
     {}
@@ -44,8 +44,8 @@
       confirmButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       backButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
       roomScannerInstance: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
-      roomPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
-      room: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      roomDetectionInstance: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      roomDetectionCreationHandlerInstance: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
       camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
@@ -55,6 +55,6 @@
     - // @input AssignableType_1 confirmButton
     - // @input AssignableType_2 backButton
     - // @input AssignableType_3 roomScannerInstance
-    - // @input Asset.ObjectPrefab roomPrefab
-    - // @input SceneObject room
+    - // @input AssignableType_4 roomDetectionInstance
+    - // @input AssignableType_5 roomDetectionCreationHandlerInstance
     - // @input Component.Camera camera

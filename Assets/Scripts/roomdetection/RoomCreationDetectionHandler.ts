@@ -11,7 +11,8 @@ import { AnchorModule } from 'Spatial Anchors.lspkg/AnchorModule';
 export class RoomCreationDetectionHandler extends BaseScriptComponent {
   @input anchorModule: AnchorModule;
 
-  @input prefab: ObjectPrefab;
+  @input
+  roomPrefab: ObjectPrefab;
 
   private anchorSession?: AnchorSession;
 
@@ -41,11 +42,8 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
 
   async createRoom(scanData: [vec3, number, number, number], name: string) {
     const anchorPos = scanData[0];
-    const roomRotationDeg = scanData[1];
-    const roomScaleX = scanData[2];
-    const roomScaleY = scanData[3];
 
-    // Compute the anchor position 5 units in front of user
+    // Compute the anchor position
     let anchorPosition = mat4.fromTranslation(anchorPos);
 
     // Create the anchor
@@ -55,7 +53,7 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
     print(anchor.id);
 
     // Create the object and attach it to the anchor
-    //this.createNewRoom(anchor);
+    this.associatePrefabWithRoomAnchor(anchor, scanData);
 
     // Save the anchor so it's loaded in future sessions
     try {
@@ -65,18 +63,29 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
     }
   }
 
-  private onExistingRoomDetected(anchor: Anchor) {}
+  private onExistingRoomDetected(anchor: Anchor) {
+    // call backend for data and call below method
 
-  private createNewRoom(anchor: Anchor) {
-    // Create a new object from the prefab
-    let object: SceneObject = this.prefab.instantiate(this.getSceneObject());
-    object.setParent(this.getSceneObject());
+  }
 
-    // Associate the anchor with the object by adding an AnchorComponent to the
-    // object and setting the anchor in the AnchorComponent.
-    let anchorComponent = object.createComponent(
-      AnchorComponent.getTypeName()
+  private associatePrefabWithRoomAnchor(anchor: Anchor, data: [vec3, number, number, number]) {
+    // Create a wrapper object
+    const roomWrapper = global.scene.createSceneObject("RoomWrapper");
+    
+    // Set anchor component
+    let anchorComponent = roomWrapper.createComponent(
+        AnchorComponent.getTypeName()
     ) as AnchorComponent;
     anchorComponent.anchor = anchor;
-  }
+    
+    // Instantiate the prefab as a child of the wrapper
+    const newRoom = this.roomPrefab.instantiate(roomWrapper);
+    newRoom.enabled = true;
+    newRoom.getChild(0).name = anchor.id;
+    
+    // Apply transforms to child
+    newRoom.getTransform().setLocalPosition(new vec3(0,-42,0)); // Keep at anchor position
+    newRoom.getTransform().setLocalScale(new vec3(data[1]/9, 28, data[2]/9));
+    newRoom.getTransform().setLocalRotation(quat.fromEulerAngles(0, data[3], 0));
+}
 }

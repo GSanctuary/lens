@@ -1,10 +1,28 @@
-- !<ObjectPrefab/1e1347ad-a26c-4713-997c-02434ba2cb99>
+- !<ObjectPrefab/2e4d9d73-909a-4c0b-aca5-b5f244b3adb2>
   PackagePath: ""
   objects:
-    - !<own> a487101f-e831-4cca-bae5-30bf335fe445
+    - !<own> c1fa7ec4-f274-4f7d-8994-d6a330824f54
   LazyLoading: false
   RetainAssets: true
-- !<RenderMeshVisual/1d703e50-ef1d-42ef-a4d3-6e3be725e6f2>
+- !<ColliderComponent/0056bde2-e14f-460d-914d-36f27554303b>
+  PrefabRemaps:
+    []
+  Name: Physics Collider
+  Enabled: true
+  Shape: !<Box>
+    FitVisual: true
+    Size: {x: 15.000000, y: 15.000000, z: 15.000000}
+  Matter: !<reference> 00000000-0000-0000-0000-000000000000
+  Filter: !<reference> a87dd417-03a1-4ef9-a2c9-25f292181288
+  OverlapFilter: !<reference> a87dd417-03a1-4ef9-a2c9-25f292181288
+  WorldSettings: !<reference> 00000000-0000-0000-0000-000000000000
+  EnableSmoothing: false
+  PositionTension: 30.000000
+  RotationTension: 30.000000
+  ForceCompound: false
+  Intangible: true
+  ShowCollider: true
+- !<RenderMeshVisual/030697bd-6bfa-4141-ae82-5530f4ad2fcb>
   PrefabRemaps:
     []
   Name: Render Mesh Visual
@@ -24,7 +42,7 @@
   BlendNormals: false
   BlendShapes:
     {}
-- !<SceneObject/5fc433a7-3e93-48b3-b388-f5abc768974e>
+- !<SceneObject/047d5504-ab35-4b71-b34e-ae91a9e7e034>
   PrefabRemaps:
     []
   Name: Room
@@ -38,8 +56,27 @@
   Children:
     []
   Components:
-    - !<own> 1d703e50-ef1d-42ef-a4d3-6e3be725e6f2
-- !<SceneObject/a487101f-e831-4cca-bae5-30bf335fe445>
+    - !<own> 030697bd-6bfa-4141-ae82-5530f4ad2fcb
+    - !<own> 0056bde2-e14f-460d-914d-36f27554303b
+    - !<own> 8e534bf8-7291-4ad6-b448-7e2aeaf385e3
+- !<ScriptComponent/8e534bf8-7291-4ad6-b448-7e2aeaf385e3>
+  PrefabRemaps:
+    []
+  Name: RoomCollisionHandler
+  Enabled: true
+  ScriptAsset: !<reference> c4b06946-96b0-429d-8a82-eb4a4d5abe18
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      collider: !<reference.ColliderComponent> 0056bde2-e14f-460d-914d-36f27554303b
+      roomDetectionInterfaceInstance: !<MappingBased.AssignableType> 8b4aed50-f6f1-4b00-a524-dd20bda61d36
+  ScriptTypes:
+    "":
+      {}
+- !<SceneObject/c1fa7ec4-f274-4f7d-8994-d6a330824f54>
   PrefabRemaps:
     []
   Name: Room Prefab
@@ -51,6 +88,6 @@
     scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     hasSegmentScaleCompensation: false
   Children:
-    - !<own> 5fc433a7-3e93-48b3-b388-f5abc768974e
+    - !<own> 047d5504-ab35-4b71-b34e-ae91a9e7e034
   Components:
     []
