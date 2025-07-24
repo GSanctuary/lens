@@ -16,6 +16,8 @@
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
 - !<TypeScriptAssetData/ead202ab-a77d-492c-8736-ecae2753a407>
   SvgIcon: ""
+  SetupScript:
+    code: ""
   Description: ""
   InternalVersion: 0
   VersionMajor: 0
@@ -38,6 +40,7 @@
     voicePrefix: false
   ScriptTypesHidden:
     {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - kindString: ""
@@ -64,6 +67,3 @@
     - // @input Component.Text inputText
     - // @input Component.Text outputText
     - // @input string voicePrefix
-  SetupScript:
-    code: ""
-  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

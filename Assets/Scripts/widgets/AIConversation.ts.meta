@@ -16,6 +16,8 @@
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
 - !<TypeScriptAssetData/0a5270a1-e5ee-490c-bab4-e808b143fffe>
   SvgIcon: ""
+  SetupScript:
+    code: ""
   Description: ""
   InternalVersion: 0
   VersionMajor: 0
@@ -36,6 +38,7 @@
     voiceInputDelay: false
   ScriptTypesHidden:
     {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - kindString: ""
@@ -58,6 +61,3 @@
     - // @input bool includeInWidgetList = true
     - // @input SceneObject scrollView
     - // @input AssignableType_1 newConversationButton
-  SetupScript:
-    code: ""
-  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

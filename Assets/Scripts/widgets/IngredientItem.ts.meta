@@ -1,0 +1,48 @@
+- !<AssetImportMetadata/16ded45a-2dd2-4234-8f59-05994561de33>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 0c525f13-6b54-428c-b24f-ac9732bce448
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 0c525f13-6b54-428c-b24f-ac9732bce448
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 13e148fd-2c05-4cb8-98d0-e41d6d2503dd
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/13e148fd-2c05-4cb8-98d0-e41d6d2503dd>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: ccc09eb5-9b4b-438e-a4b7-493b941b1b37
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    checkboxButton: false
+    checkboxText: false
+    ingredientText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - ingredientText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      checkboxButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      checkboxText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Text ingredientText
+    - // @input AssignableType checkboxButton
+    - // @input Component.Text checkboxText

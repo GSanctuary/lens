@@ -1,0 +1,57 @@
+- !<AssetImportMetadata/04a3247c-dd23-453c-b4af-619d57c9d2f4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c1c4cfcd-ee42-4558-bd53-f5bd9e6149d2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c1c4cfcd-ee42-4558-bd53-f5bd9e6149d2
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a2094c00-9a71-41a6-9b1c-c4372ff3306f
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a2094c00-9a71-41a6-9b1c-c4372ff3306f>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 47d3afaf-feab-4f7d-aa52-a6699ddb66c6
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    deleteButton: false
+    pauseButton: false
+    resetButton: false
+    startButton: false
+    timeDisplayText: false
+    timerNameText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - timerNameText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      timeDisplayText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      startButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      pauseButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      resetButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      deleteButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Text timerNameText
+    - // @input Component.Text timeDisplayText
+    - // @input AssignableType startButton
+    - // @input AssignableType_1 pauseButton
+    - // @input AssignableType_2 resetButton
+    - // @input AssignableType_3 deleteButton
