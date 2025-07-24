@@ -16,6 +16,8 @@
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
 - !<TypeScriptAssetData/2c4e9adf-8764-42a3-aa5b-514d617c1865>
   SvgIcon: ""
+  SetupScript:
+    code: ""
   Description: ""
   InternalVersion: 0
   VersionMajor: 0
@@ -29,6 +31,7 @@
     {}
   ScriptTypesHidden:
     {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     -
@@ -38,6 +41,3 @@
       {}
   InputLines:
     []
-  SetupScript:
-    code: ""
-  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

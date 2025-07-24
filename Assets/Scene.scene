@@ -141,8 +141,6 @@
   DecayType: None
   DecayLimit: false
   DecayRange: 40.000000
-  UseEstimation: false
-  EstimationIntensity: !<float> 1.000000
 - !<SceneObject/00056e79-b066-62ca-0000-000000001406>
   PrefabRemaps:
     []
@@ -191,8 +189,6 @@
   DecayType: None
   DecayLimit: false
   DecayRange: 40.000000
-  UseEstimation: false
-  EstimationIntensity: !<float> 1.000000
 - !<SceneObject/001c2ef2-0a95-4d1f-adc2-ff4fb0571bee>
   PrefabRemaps:
     []
@@ -615,6 +611,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -626,6 +623,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -803,6 +801,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -814,6 +813,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -991,6 +991,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -1002,6 +1003,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -1416,9 +1418,6 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-  Size:
-    x: !<float> 1.000000
-    y: !<float> 1.000000
 - !<SceneObject/1b5b9df2-4e47-417a-86d2-19b1b7160c21>
   PrefabRemaps:
     []
@@ -1521,9 +1520,6 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-  Size:
-    x: !<float> 1.000000
-    y: !<float> 1.000000
 - !<Skin/1c106c76-7e60-42f1-aeb9-f5473f469846>
   PrefabRemaps:
     []
@@ -1744,9 +1740,6 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-  Size:
-    x: !<float> 1.000000
-    y: !<float> 1.000000
 - !<ScriptComponent/20d0d5bd-f09e-46a6-ab5c-fdff5a0c66af>
   PrefabRemaps:
     []
@@ -2335,7 +2328,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<Text/2ac78f77-190f-4ffa-a3f1-90884dd1ca70>
@@ -2524,6 +2516,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -2535,6 +2528,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -2901,7 +2895,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<ScriptComponent/34e8c92e-e6f0-496f-b221-b31c7422b4c6>
@@ -3122,6 +3115,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -3133,6 +3127,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -3215,7 +3210,6 @@
     LetterSpacing: 0.050000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<ScriptComponent/3848a19b-ebe6-434f-a770-3d37730a2f98>
@@ -3867,6 +3861,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -3878,6 +3873,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -3960,7 +3956,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/4a872888-5fb7-4030-ab77-c5cfabc0513c>
@@ -4482,6 +4477,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -4493,6 +4489,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -5276,6 +5273,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -5287,6 +5285,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -5304,6 +5303,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -5315,6 +5315,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -6533,6 +6534,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -6544,6 +6546,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -6738,7 +6741,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/7ec69ad0-8143-4651-8cc8-79b3623c0f12>
@@ -7130,7 +7132,6 @@
     LetterSpacing: 0.050000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/861d5424-1bda-460e-84ed-0d52218d4d6a>
@@ -7305,7 +7306,7 @@
     {}
   ScriptInputs:
     "":
-      baseUrl: "https://78ba-73-53-36-137.ngrok-free.app"
+      baseUrl: "http://localhost:3000"
       prodUrl: "https://sanctuary-backend-three.vercel.app/"
       useProd: false
       remoteServiceModule: !<reference.InternetModule> a1eac110-0527-48d2-84d5-1390427ce8b8
@@ -7875,7 +7876,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/8eafd094-eee0-40ac-ac73-7ec7fe2c6bf3>
@@ -8234,6 +8234,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -8245,6 +8246,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -8576,7 +8578,6 @@
     LetterSpacing: 0.050000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<ScriptComponent/9d350bd4-e24f-420d-bd6e-fb08f909b57c>
@@ -8606,6 +8607,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -8617,6 +8619,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -8762,6 +8765,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -8773,6 +8777,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -9304,7 +9309,6 @@
     LetterSpacing: 0.050000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/a8ea6114-42bc-42b8-b2ce-cc6e5583964c>
@@ -9885,7 +9889,6 @@
     LetterSpacing: 0.050000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<ScriptComponent/b194883f-9023-4e73-b292-c2be31f85e08>
@@ -10031,6 +10034,7 @@
   ScriptAsset: !<reference> f9b29b39-ec8c-41bd-8b53-769ae9b818b8
   ScriptInputsDefault:
     selectVisual: true
+    handMeshRenderOrder: true
     autoJointMapping: true
     wrist: true
     thumbToWrist: true
@@ -10059,7 +10063,9 @@
     pinkyUpperJoint: true
     pinkyTip: true
     shouldThumbPokeGlow: true
+    tipGlowRenderOrder: true
     occluderEnabled: true
+    gradientQuadRenderOrder: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -10068,6 +10074,7 @@
       selectVisual: Default
       handInteractor: !<MappingBased.AssignableType> b194883f-9023-4e73-b292-c2be31f85e08
       handMesh: !<reference.RenderMeshVisual> 17070125-8bfc-48f2-8c16-3cc0f2be0abc
+      handMeshRenderOrder: !<float> 9999.000000
       root: !<reference.SceneObject> 2ba4e8a2-2f24-4eb8-aa3d-b2e11104b7b1
       autoJointMapping: true
       wrist: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
@@ -10105,9 +10112,11 @@
       tapProximityThreshold: !<float> 8.000000
       pinchTexture: !<reference.Texture> 3391429c-5c74-4b5c-b9fc-4ad3ba30bda4
       tapTexture: !<reference.Texture> e33d2c7f-1d12-4250-92fb-433c25ce1923
+      tipGlowRenderOrder: !<float> 10000.000000
       occluderEnabled: false
       occluderUnitPlaneMesh: !<reference.RenderMesh> a453f19f-0832-419f-bd8f-b3296b433b23
       radialGradientOcclusionMaterial: !<reference.Material> af45ff34-c96f-42c2-8446-8282edf6dece
+      gradientQuadRenderOrder: !<float> 9997.000000
       handOutlineMaterial: !<reference.Material> 7ac80b6c-979a-4a00-a694-099f296be161
       handOccluderMaterial: !<reference.Material> 5d5c762b-f0dd-4c06-b76f-bcb8f8fb525f
   ScriptTypes:
@@ -10451,6 +10460,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -10462,6 +10472,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -10766,7 +10777,6 @@
     LetterSpacing: 0.050000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<ScriptComponent/c0eb94be-f4e4-493c-bdcd-d36bd3385dc5>
@@ -11322,6 +11332,7 @@
   ScriptAsset: !<reference> f9b29b39-ec8c-41bd-8b53-769ae9b818b8
   ScriptInputsDefault:
     selectVisual: true
+    handMeshRenderOrder: true
     autoJointMapping: true
     wrist: true
     thumbToWrist: true
@@ -11350,7 +11361,9 @@
     pinkyUpperJoint: true
     pinkyTip: true
     shouldThumbPokeGlow: true
+    tipGlowRenderOrder: true
     occluderEnabled: true
+    gradientQuadRenderOrder: true
   ScriptTypesDefault:
     {}
   ScriptInputs:
@@ -11359,6 +11372,7 @@
       selectVisual: Default
       handInteractor: !<MappingBased.AssignableType> 1fe331d1-785d-41b3-9d09-31e0e823e6d6
       handMesh: !<reference.RenderMeshVisual> 3bee7a9c-28dd-47ad-86e5-bf18a2ce48f2
+      handMeshRenderOrder: !<float> 9999.000000
       root: !<reference.SceneObject> 9c727071-628d-4239-98df-0c83d5737aeb
       autoJointMapping: true
       wrist: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
@@ -11396,9 +11410,11 @@
       tapProximityThreshold: !<float> 8.000000
       pinchTexture: !<reference.Texture> 3391429c-5c74-4b5c-b9fc-4ad3ba30bda4
       tapTexture: !<reference.Texture> e33d2c7f-1d12-4250-92fb-433c25ce1923
+      tipGlowRenderOrder: !<float> 10000.000000
       occluderEnabled: false
       occluderUnitPlaneMesh: !<reference.RenderMesh> a453f19f-0832-419f-bd8f-b3296b433b23
       radialGradientOcclusionMaterial: !<reference.Material> af45ff34-c96f-42c2-8446-8282edf6dece
+      gradientQuadRenderOrder: !<float> 9997.000000
       handOutlineMaterial: !<reference.Material> 7ac80b6c-979a-4a00-a694-099f296be161
       handOccluderMaterial: !<reference.Material> bb8479b9-021e-4c42-809a-60edf99cbeac
   ScriptTypes:
@@ -12018,7 +12034,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/dd2370f0-e390-4b1c-9dcd-898ee05ade4f>
@@ -12126,7 +12141,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<ScreenTransform/de2877f4-ef38-48c0-9806-241c1ed49c66>
@@ -12314,7 +12328,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<ScreenTransform/e0c0fc20-172c-4b11-8344-9a1446371cb3>
@@ -12606,6 +12619,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -12617,6 +12631,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -13057,7 +13072,6 @@
     LetterSpacing: 0.050000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<RenderMeshVisual/ee82e44d-c457-42a9-8660-b22a8a8d3339>
@@ -13104,6 +13118,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -13115,6 +13130,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -13275,7 +13291,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<Text/f1e2e095-440e-48e9-b39d-29446ea93517>
@@ -13352,7 +13367,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<ScreenTransform/f2087ca3-a433-46ab-9e71-e60eb87e2266>
@@ -13887,6 +13901,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -13898,6 +13913,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000

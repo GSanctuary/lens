@@ -16,6 +16,8 @@
   CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
 - !<TypeScriptAssetData/ea002d7a-b922-4954-bdee-2d3b92f21038>
   SvgIcon: ""
+  SetupScript:
+    code: ""
   Description: ""
   InternalVersion: 0
   VersionMajor: 0
@@ -32,6 +34,7 @@
     useProd: false
   ScriptTypesHidden:
     {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - baseUrl: ""
@@ -46,6 +49,3 @@
     - // @input string prodUrl
     - // @input bool useProd
     - // @input Asset.InternetModule remoteServiceModule
-  SetupScript:
-    code: ""
-  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000

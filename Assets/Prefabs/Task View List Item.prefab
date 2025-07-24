@@ -78,7 +78,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<Image/3269a8ce-da16-4f43-9b6a-cf7e9c3a7308>
@@ -100,9 +99,6 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
-  Size:
-    x: !<float> 1.000000
-    y: !<float> 1.000000
 - !<SceneObject/3576d474-c538-4d86-beb1-c7dc3392f6c4>
   PrefabRemaps:
     []
@@ -465,6 +461,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -476,6 +473,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -609,7 +607,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/f21f2563-a52f-47b2-aea9-489ad884c408>
