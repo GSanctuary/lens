@@ -1,0 +1,51 @@
+- !<AssetImportMetadata/1a878c0d-3853-f384-ed16-3a2f1dd9340c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d7365b94-dd04-4655-bd5f-87a7de3148bb
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d7365b94-dd04-4655-bd5f-87a7de3148bb
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  AssetDataMap:
+    TypeScriptAsset: !<own> 39bfff41-e89a-4195-a1da-12ad4a7f00ba
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+  ExtraData:
+    {}
+- !<TypeScriptAssetData/39bfff41-e89a-4195-a1da-12ad4a7f00ba>
+  SvgIcon: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 4a450cb7-4309-4a10-a5de-7d4991802ced
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    connectedLensModule: false
+    debug: false
+    storage: false
+    useLocalStorage: false
+  ScriptTypesHidden:
+    {}
+  DefaultScriptInputs:
+    - storage: !<reference.LocationCloudStorageModule> 00000000-0000-0000-0000-000000000000
+      connectedLensModule: !<reference.ConnectedLensModule> 00000000-0000-0000-0000-000000000000
+      useLocalStorage: true
+      debug: true
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.LocationCloudStorageModule storage
+    - // @input Asset.ConnectedLensModule connectedLensModule
+    - // @input bool useLocalStorage = true
+    - // @input bool debug = true
+  SetupScript:
+    code: ""
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000

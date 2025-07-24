@@ -71,16 +71,7 @@ export class StickyNoteWidget extends Widget {
         }
     }
 
-    protected override setupVoicePrefixHandler(): VoicePrefixHandler {
-        return new VoicePrefixHandler(
-            this.kindString,
-            RemoveMethod.RemoveBefore
-        );
-    }
-
-    protected override handleVoiceInputCallback(input: string): void {
-        this.voicePreviewText.text = input;
-    }
+    
 
     private async syncStickyNotes(): Promise<void> {
         for (const renderedNote of this.renderedNotes) {

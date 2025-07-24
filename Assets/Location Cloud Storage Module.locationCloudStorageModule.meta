@@ -1,0 +1,16 @@
+- !<AssetImportMetadata/6774c503-686e-49b5-91a0-557f9247ab0e>
+  ImportedAssetIds:
+    LocationCloudStorageModule: !<reference> 1c366a0d-33b2-4975-a10e-f585351a45d6
+  ImporterName: LocationCloudStorageModuleImporter
+  PrimaryAsset: !<reference> 1c366a0d-33b2-4975-a10e-f585351a45d6
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    {}
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000

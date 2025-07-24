@@ -10,7 +10,7 @@ export class EventEmitter extends BaseScriptComponent {
 
     private activeWidgets: Record<WidgetKind, Widget | undefined>;
 
-    private isActive: boolean = false;
+    private isActive: boolean = true;
 
     // Events that should run regardless of EE activation state
     private privilegedEvents: EventType[] = [EventType.WidgetRegistered];

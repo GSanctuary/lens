@@ -1,0 +1,45 @@
+- !<AssetImportMetadata/c450a2c3-0e3b-492a-9605-7d48c89a28a6>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c4b06946-96b0-429d-8a82-eb4a4d5abe18
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c4b06946-96b0-429d-8a82-eb4a4d5abe18
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> da9a23c2-524e-4da1-bd3a-7ee73d64bd0d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/da9a23c2-524e-4da1-bd3a-7ee73d64bd0d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 6c5ee404-2249-4bb1-aea2-aa386bbe1a99
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    collider: false
+    roomDetectionInterfaceInstance: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - collider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      roomDetectionInterfaceInstance: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.ColliderComponent collider
+    - // @input AssignableType roomDetectionInterfaceInstance

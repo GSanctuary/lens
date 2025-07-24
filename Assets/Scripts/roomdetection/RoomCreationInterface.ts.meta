@@ -1,0 +1,60 @@
+- !<AssetImportMetadata/ce8c4e53-97d2-4859-bb3a-1b7982305467>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 51165d70-3168-454c-8f3e-5cb9c513c0c5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 51165d70-3168-454c-8f3e-5cb9c513c0c5
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 39949479-b0c3-43db-8ec6-89724aafbe37
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/39949479-b0c3-43db-8ec6-89724aafbe37>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  InternalVersion: 0
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: cebef78c-2284-4a88-b8f0-3291f343eb7d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    backButton: false
+    camera: false
+    confirmButton: false
+    roomCreationInterfaceContainer: false
+    roomDetectionCreationHandlerInstance: false
+    roomDetectionInstance: false
+    roomScannerInstance: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - roomCreationInterfaceContainer: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
+      confirmButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      backButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      roomScannerInstance: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      roomDetectionInstance: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      roomDetectionCreationHandlerInstance: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType roomCreationInterfaceContainer
+    - // @input AssignableType_1 confirmButton
+    - // @input AssignableType_2 backButton
+    - // @input AssignableType_3 roomScannerInstance
+    - // @input AssignableType_4 roomDetectionInstance
+    - // @input AssignableType_5 roomDetectionCreationHandlerInstance
+    - // @input Component.Camera camera
