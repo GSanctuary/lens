@@ -1,19 +1,19 @@
 - !<AssetImportMetadata/22a88a28-c23a-317d-dee0-7e46e40d3b2b>
-  ImporterSettings: !<AssetImporterSettings>
-    {}
   ImportedAssetIds:
     ObjectPrefab: !<reference> f99aa791-3d32-4c74-9900-87e9ac339070
   ImporterName: ObjectPrefabImporter
   PrimaryAsset: !<reference> f99aa791-3d32-4c74-9900-87e9ac339070
   PackageType: NotAPackage
-  AssetDataMap:
-    ObjectPrefab: !<own> 4ef9647c-65c5-45e2-91f0-5d9ba1c1039c
   PackagePolicy: CannotBeUnpacked
-  DependentFiles:
-    []
-  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
   ExtraData:
     {}
+  AssetDataMap:
+    ObjectPrefab: !<own> 4ef9647c-65c5-45e2-91f0-5d9ba1c1039c
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
 - !<ScriptComponent/1e18c4de-9c75-4227-90d1-ca5909ef44ff>
   PrefabRemaps:
     []
@@ -81,12 +81,9 @@
     - !<reference> 85116ad6-0e81-4092-b426-d3f69dcf9233
   FlipX: false
   FlipY: false
-  Pivot: {x: 0.000000, y: 0.000000}
-  Size:
-    x: !<float> 1.000000
-    y: !<float> 1.000000
-  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
   RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
 - !<SceneObject/489b62d7-b692-4a0c-9368-4dc52c0c9375>
   PrefabRemaps:
     []
@@ -176,12 +173,9 @@
     - !<reference> c938cdbd-265e-49e9-9f06-5664ce3f4781
   FlipX: false
   FlipY: false
-  Pivot: {x: 0.000000, y: 0.000000}
-  Size:
-    x: !<float> 1.000000
-    y: !<float> 1.000000
-  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
   RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
 - !<ScreenTransform/66ad884b-bf77-4dd9-ac3b-60e4c61b8e02>
   PrefabRemaps:
     []
@@ -489,7 +483,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/c8f37d71-8def-41a3-9364-14c60cfa368f>
@@ -586,7 +579,6 @@
     LetterSpacing: 0.000000
     LineSpacing: 1.000000
     CapitalizationOverride: None
-    CapitilizationOverride: None
   DepthTest: false
   TwoSided: false
 - !<SceneObject/e10bce2e-38e7-469d-9671-618f0fd1b7ef>
@@ -668,6 +660,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -679,6 +672,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -696,6 +690,7 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
+    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -707,6 +702,7 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
+      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000

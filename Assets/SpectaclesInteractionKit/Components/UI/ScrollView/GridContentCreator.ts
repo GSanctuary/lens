@@ -14,6 +14,7 @@ export class GridContentCreator extends BaseScriptComponent {
 
         for (let i = 0; i < this.itemsCount; i++) {
             const item = this.itemPrefab.instantiate(this.getSceneObject());
+            print(item);
             const screenTransform = item.getComponent(
                 "Component.ScreenTransform"
             );
