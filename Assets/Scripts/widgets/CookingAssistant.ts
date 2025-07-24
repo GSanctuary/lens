@@ -8,6 +8,7 @@ import { TimerWidget } from "./TimerWidget";
 import { RecipeCard } from "./RecipeCard";
 import { IngredientItem } from "./IngredientItem";
 import { Recipe } from "../types/Sanctuary";
+import { PersistentStorageManager } from "../utils/PersistentStorageManager";
 
 @component
 export class CookingAssistant extends Widget {
@@ -116,7 +117,7 @@ export class CookingAssistant extends Widget {
             this.recipeSearchButton.enabled = false;
             this.recipeTitleText.text = "Searching for recipe...";
             
-            const recipe = await SanctuaryAPI.getRecipe(query, ""); // TODO: Jesse please fix
+            const recipe = await SanctuaryAPI.getRecipe(query, PersistentStorageManager.getInstance().get("currentRoom")); 
             this.currentRecipe = recipe;
             this.currentInstructionIndex = 0;
             

@@ -4,6 +4,7 @@ import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { StickyNote } from "../types/Sanctuary";
 import { TextDisplay } from "./TextDisplay";
 import { RemoveMethod, VoicePrefixHandler } from "../utils/VoicePrefixHandler";
+import { PersistentStorageManager } from "../utils/PersistentStorageManager";
 
 type Metadata = {
     position: { x: number; y: number; z: number };
@@ -137,7 +138,7 @@ export class StickyNoteWidget extends Widget {
             createdAt: new Date(),
             updatedAt: new Date(),
             userId: -1, // Temporary user ID, will be replaced by API
-            anchorId: "", // TODO: Jesse pls fix
+            anchorId: PersistentStorageManager.getInstance().get("currentRoom"), 
         };
         this.stickyNotes.push(newNote);
 
@@ -162,7 +163,7 @@ export class StickyNoteWidget extends Widget {
                 z: scale.z,
             },
         };
-        SanctuaryAPI.createStickyNote(content, metadata, "") // TODO: Jesse pls fix
+        SanctuaryAPI.createStickyNote(content, metadata, PersistentStorageManager.getInstance().get("currentRoom")) 
             .then((createdNote) => {
                 newNote.id = createdNote.id; // Update the ID with the one from the API
                 newNote.userId = createdNote.userId; // Update the user ID

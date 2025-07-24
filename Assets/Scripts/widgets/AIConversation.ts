@@ -7,6 +7,7 @@ import { Conversation } from "../types/Sanctuary";
 import { WidgetKind } from "../types/WidgetKind";
 import { Widget } from "../Widget";
 import { AIConversationItem } from "./AIConversationItem";
+import { PersistentStorageManager } from "../utils/PersistentStorageManager";
 
 @component
 export class AIConversation extends Widget {
@@ -45,7 +46,7 @@ export class AIConversation extends Widget {
                 : 1;
         const conversationTitle = `Conversation ${maxId + 1}`;
         this.isCreatingNewConversation = true;
-        SanctuaryAPI.newConversation(conversationTitle, "") // TODO: Jesse pls fix
+        SanctuaryAPI.newConversation(conversationTitle, PersistentStorageManager.getInstance().get("currentRoom")) 
             .then((conversation) => {
                 print(`New conversation created: ${conversation.title}`);
                 this.conversations = [conversation, ...this.conversations];

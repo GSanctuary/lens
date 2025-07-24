@@ -6,6 +6,8 @@ import {
 import { Anchor } from 'Spatial Anchors.lspkg/Anchor';
 import { AnchorComponent } from 'Spatial Anchors.lspkg/AnchorComponent';
 import { AnchorModule } from 'Spatial Anchors.lspkg/AnchorModule';
+import { PersistentStorageManager } from '../utils/PersistentStorageManager';
+import { SanctuaryAPI } from '../services/SanctuaryAPI';
 
 @component
 export class RoomCreationDetectionHandler extends BaseScriptComponent {
@@ -33,13 +35,27 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
 
     // Listen for nearby anchors
     this.anchorSession.onAnchorNearby.add(this.onAnchorNearby.bind(this));
+
+    // Set current room to "NONE"
+    PersistentStorageManager.getInstance().set("currentRoom", "NONE");
   }
 
-  public onAnchorNearby(anchor: Anchor) {
+  public async onAnchorNearby(anchor: Anchor) {
     print('Anchor found: ' + anchor.id);
-    //this.attachNewObjectToAnchor(anchor);
+    try {
+        const room = await SanctuaryAPI.getRoom("your-anchor-id");
+        const pos = new vec3(room.position[0],room.position[1],room.position[2]);
+        const scaleX = room.scale[0];
+        const scaleZ = room.scale[1];
+        const rotationDegrees = room.rotation;
+        this.associatePrefabWithRoomAnchor(anchor, [pos, scaleX, scaleZ, rotationDegrees]);
+    } catch (error) {
+        print("Error getting room: " + error);
+        throw error; 
+    }
   }
 
+  // TODO: Add naming functionality
   async createRoom(scanData: [vec3, number, number, number], name: string) {
     const anchorPos = scanData[0];
 
@@ -49,8 +65,9 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
     // Create the anchor
     let anchor = await this.anchorSession.createWorldAnchor(anchorPosition);
     
-    // TODO: anchor id to go to backend
-    print(anchor.id);
+    // Save room data to backend
+    SanctuaryAPI.createRoom({position: [scanData[0][0],scanData[0][1], scanData[0][2]], scale: [scanData[1], scanData[2]], name: anchor.id, anchorId: anchor.id, rotation: scanData[3]});
+    print("Data for room " + anchor.id + " saved to backend")
 
     // Create the object and attach it to the anchor
     this.associatePrefabWithRoomAnchor(anchor, scanData);
@@ -59,13 +76,8 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
     try {
       this.anchorSession.saveAnchor(anchor);
     } catch (error) {
-      print('Error saving anchor: ' + error);
+      throw new Error('Error saving anchor: ' + error);
     }
-  }
-
-  private onExistingRoomDetected(anchor: Anchor) {
-    // call backend for data and call below method
-
   }
 
   private associatePrefabWithRoomAnchor(anchor: Anchor, data: [vec3, number, number, number]) {
@@ -87,5 +99,6 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
     newRoom.getTransform().setLocalPosition(new vec3(0,-42,0)); // Keep at anchor position
     newRoom.getTransform().setLocalScale(new vec3(data[1]/9, 28, data[2]/9));
     newRoom.getTransform().setLocalRotation(quat.fromEulerAngles(0, data[3], 0));
+    print("Room with id " + anchor.id + " associated/reassociated")
 }
 }
