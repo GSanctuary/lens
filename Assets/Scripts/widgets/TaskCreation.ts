@@ -64,7 +64,7 @@ export class TaskCreation extends Widget {
         if (taskName === this.initialTaskNameValue) return;
 
         try {
-            const task = await SanctuaryAPI.createTask(taskName);
+            const task = await SanctuaryAPI.createTask(taskName, ""); // TODO: Jesse pls fix
             print(`Task created: ${task.name}`);
             EventEmitter.emit(EventType.TaskCreated, task);
         } catch (error) {

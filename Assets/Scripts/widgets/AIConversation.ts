@@ -45,7 +45,7 @@ export class AIConversation extends Widget {
                 : 1;
         const conversationTitle = `Conversation ${maxId + 1}`;
         this.isCreatingNewConversation = true;
-        SanctuaryAPI.newConversation(conversationTitle)
+        SanctuaryAPI.newConversation(conversationTitle, "") // TODO: Jesse pls fix
             .then((conversation) => {
                 print(`New conversation created: ${conversation.title}`);
                 this.conversations = [conversation, ...this.conversations];

@@ -137,6 +137,7 @@ export class StickyNoteWidget extends Widget {
             createdAt: new Date(),
             updatedAt: new Date(),
             userId: -1, // Temporary user ID, will be replaced by API
+            anchorId: "", // TODO: Jesse pls fix
         };
         this.stickyNotes.push(newNote);
 
@@ -161,7 +162,7 @@ export class StickyNoteWidget extends Widget {
                 z: scale.z,
             },
         };
-        SanctuaryAPI.createStickyNote(content, metadata)
+        SanctuaryAPI.createStickyNote(content, metadata, "") // TODO: Jesse pls fix
             .then((createdNote) => {
                 newNote.id = createdNote.id; // Update the ID with the one from the API
                 newNote.userId = createdNote.userId; // Update the user ID
