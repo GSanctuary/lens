@@ -8,6 +8,7 @@ import { AnchorComponent } from 'Spatial Anchors.lspkg/AnchorComponent';
 import { AnchorModule } from 'Spatial Anchors.lspkg/AnchorModule';
 import { PersistentStorageManager } from '../utils/PersistentStorageManager';
 import { SanctuaryAPI } from '../services/SanctuaryAPI';
+import { Room } from '../types/Sanctuary';
 
 @component
 export class RoomCreationDetectionHandler extends BaseScriptComponent {
@@ -64,9 +65,23 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
 
     // Create the anchor
     let anchor = await this.anchorSession.createWorldAnchor(anchorPosition);
+
+    const roomData: Room = {
+        position: [scanData[0].x, scanData[0].y, scanData[0].z],
+        scale: [scanData[1], scanData[2]], // Ensure these are numbers, not arrays
+        name: anchor.id,
+        anchorId: anchor.id,
+        rotation: scanData[3],
+        widgets: {
+            aiConversations: [],
+            recipes: [],
+            task: [],
+            stickyNotes: []
+        }
+    };
     
     // Save room data to backend
-    SanctuaryAPI.createRoom({position: [scanData[0][0],scanData[0][1], scanData[0][2]], scale: [scanData[1], scanData[2]], name: anchor.id, anchorId: anchor.id, rotation: scanData[3]});
+    SanctuaryAPI.createRoom(roomData);
     print("Data for room " + anchor.id + " saved to backend")
 
     // Create the object and attach it to the anchor
