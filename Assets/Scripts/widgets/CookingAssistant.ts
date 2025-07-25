@@ -7,7 +7,8 @@ import { Widget } from "../Widget";
 import { TimerWidget } from "./TimerWidget";
 import { RecipeCard } from "./RecipeCard";
 import { IngredientItem } from "./IngredientItem";
-import { Recipe, Timer, Ingredient, Instruction } from "../types/Sanctuary";
+import { Recipe } from "../types/Sanctuary";
+import { PersistentStorageManager } from "../utils/PersistentStorageManager";
 
 @component
 export class CookingAssistant extends Widget {
@@ -45,13 +46,10 @@ export class CookingAssistant extends Widget {
 
     // Navigation
     @input
-    showTimersButton: PinchButton;
-    @input
     showRecipeButton: PinchButton;
     @input
     showIngredientsButton: PinchButton;
 
-    private timers: Timer[] = [];
     private currentRecipe: Recipe | null = null;
     private currentInstructionIndex: number = 0;
     private timerWidgets: TimerWidget[] = [];
@@ -61,7 +59,7 @@ export class CookingAssistant extends Widget {
 
     override onAwake(): void {
         print("CookingAssistant awake");
-        this.createEvent("OnStartEvent").bind(() => this.onStart());
+        this.createEvent("OnStartEvent").bind(() => this.onStart())
     }
 
     override async onStart(): Promise<void> {
@@ -80,14 +78,10 @@ export class CookingAssistant extends Widget {
     }
 
     private setupButtonCallbacks(): void {
-        // Timer controls
-        this.addTimerButton.onButtonPinched.add(this.addTimer.bind(this));
-        
         // Recipe controls
         this.recipeSearchButton.onButtonPinched.add(this.searchRecipe.bind(this));
         
         // Navigation
-        this.showTimersButton.onButtonPinched.add(() => this.showView('timers'));
         this.showRecipeButton.onButtonPinched.add(() => this.showView('recipe'));
         this.showIngredientsButton.onButtonPinched.add(() => this.showView('ingredients'));
     }
@@ -114,60 +108,6 @@ export class CookingAssistant extends Widget {
         }
     }
 
-    private addTimer(): void {
-        // Default 5-minute timer
-        const newTimer: Timer = {
-            id: `timer_${Date.now()}`,
-            name: `Timer ${this.timers.length + 1}`,
-            duration: 300, // 5 minutes
-            remainingTime: 300,
-            isRunning: false,
-            isCompleted: false,
-            position: new vec3(0, 0, 0)
-        };
-        
-        this.timers.push(newTimer);
-        this.createTimerWidget(newTimer);
-    }
-
-    private createTimerWidget(timer: Timer): void {
-        // Find an available timer widget slot
-        for (let i = 0; i < this.timerContainer.getChildrenCount(); i++) {
-            const child = this.timerContainer.getChild(i);
-            if (!child.enabled) {
-                child.enabled = true;
-                const timerWidget = child.getComponent(TimerWidget.getTypeName());
-                timerWidget.initialize(
-                    timer,
-                    this.onTimerComplete.bind(this),
-                    this.onTimerDelete.bind(this)
-                );
-                this.timerWidgets.push(timerWidget);
-                break;
-            }
-        }
-    }
-
-    private onTimerComplete(timerId: string): void {
-        print(`Timer ${timerId} completed!`);
-        // Could add audio notification here
-    }
-
-    private onTimerDelete(timerId: string): void {
-        this.timers = this.timers.filter(t => t.id !== timerId);
-        this.timerWidgets = this.timerWidgets.filter(tw => tw.getTimer().id !== timerId);
-        
-        // Disable the corresponding widget
-        for (let i = 0; i < this.timerContainer.getChildrenCount(); i++) {
-            const child = this.timerContainer.getChild(i);
-            const timerWidget = child.getComponent(TimerWidget.getTypeName());
-            if (timerWidget && timerWidget.getTimer().id === timerId) {
-                child.enabled = false;
-                break;
-            }
-        }
-    }
-
     private async searchRecipe(): Promise<void> {
         try {
             // Use voice input to get recipe query
@@ -177,7 +117,7 @@ export class CookingAssistant extends Widget {
             this.recipeSearchButton.enabled = false;
             this.recipeTitleText.text = "Searching for recipe...";
             
-            const recipe = await SanctuaryAPI.getRecipe(query);
+            const recipe = await SanctuaryAPI.getRecipe(query, PersistentStorageManager.getInstance().get("currentRoom")); 
             this.currentRecipe = recipe;
             this.currentInstructionIndex = 0;
             
@@ -194,20 +134,19 @@ export class CookingAssistant extends Widget {
     private displayRecipe(): void {
         if (!this.currentRecipe) return;
 
-        this.recipeTitleText.text = this.currentRecipe.title;
+        this.recipeTitleText.text = this.currentRecipe.name;
         this.recipeDescriptionText.text = this.currentRecipe.description;
-        this.recipeInfoText.text = `Prep: ${this.currentRecipe.prepTime}min | Cook: ${this.currentRecipe.cookTime}min | Serves: ${this.currentRecipe.servings}`;
         
         this.displayCurrentInstruction();
         this.displayIngredients();
     }
 
     private displayCurrentInstruction(): void {
-        if (!this.currentRecipe || this.currentRecipe.instructions.length === 0) return;
+        if (!this.currentRecipe || this.currentRecipe.steps.length === 0) return;
 
-        const instruction = this.currentRecipe.instructions[this.currentInstructionIndex];
-        this.currentInstructionText.text = instruction.description;
-        this.instructionProgressText.text = `${this.currentInstructionIndex + 1} of ${this.currentRecipe.instructions.length}`;
+        const instruction = this.currentRecipe.steps[this.currentInstructionIndex];
+        this.currentInstructionText.text = instruction;
+        this.instructionProgressText.text = `${this.currentInstructionIndex + 1} of ${this.currentRecipe.steps.length}`;
     }
 
     private displayIngredients(): void {
@@ -229,51 +168,16 @@ export class CookingAssistant extends Widget {
             const ingredientItem = child.getComponent(IngredientItem.getTypeName());
             ingredientItem.initialize(
                 this.currentRecipe.ingredients[i],
-                this.onIngredientToggle.bind(this)
             );
             this.ingredientItems.push(ingredientItem);
         }
     }
 
-    private onIngredientToggle(ingredientId: string, checked: boolean): void {
-        if (!this.currentRecipe) return;
-        
-        const ingredient = this.currentRecipe.ingredients.find(i => i.id === ingredientId);
-        if (ingredient) {
-            ingredient.checked = checked;
-        }
-    }
-
     private async getVoiceInput(prompt: string): Promise<string | null> {
-        // This would integrate with the voice input system
-        // For now, return a default query
         return "pasta carbonara";
     }
 
     protected override handleVoiceInputCallback(input: string): void {
         super.handleVoiceInputCallback(input);
-        
-        // Handle voice commands for timers
-        if (input.toLowerCase().includes("timer")) {
-            const timeMatch = input.match(/(\d+)\s*(min|minute|minutes|sec|second|seconds)/i);
-            if (timeMatch) {
-                const time = parseInt(timeMatch[1]);
-                const unit = timeMatch[2].toLowerCase();
-                const duration = unit.startsWith('min') ? time * 60 : time;
-                
-                const newTimer: Timer = {
-                    id: `timer_${Date.now()}`,
-                    name: `Voice Timer`,
-                    duration: duration,
-                    remainingTime: duration,
-                    isRunning: false,
-                    isCompleted: false,
-                    position: new vec3(0, 0, 0)
-                };
-                
-                this.timers.push(newTimer);
-                this.createTimerWidget(newTimer);
-            }
-        }
     }
 }

@@ -4,6 +4,7 @@ import { SanctuaryAPI } from "../services/SanctuaryAPI";
 import { EventType } from "../types/Event";
 import { RemoveMethod, VoicePrefixHandler } from "../utils/VoicePrefixHandler";
 import { Widget } from "../Widget";
+import { PersistentStorageManager } from "../utils/PersistentStorageManager";
 
 @component
 export class TaskCreation extends Widget {
@@ -64,7 +65,7 @@ export class TaskCreation extends Widget {
         if (taskName === this.initialTaskNameValue) return;
 
         try {
-            const task = await SanctuaryAPI.createTask(taskName);
+            const task = await SanctuaryAPI.createTask(taskName, PersistentStorageManager.getInstance().get("currentRoom")); 
             print(`Task created: ${task.name}`);
             EventEmitter.emit(EventType.TaskCreated, task);
         } catch (error) {

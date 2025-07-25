@@ -45,7 +45,6 @@
     recipeTitleText: false
     showIngredientsButton: false
     showRecipeButton: false
-    showTimersButton: false
     timerContainer: false
     timerDurationInput: false
     voiceInputDelay: false
@@ -72,9 +71,8 @@
       instructionProgressText: !<reference.Text> 00000000-0000-0000-0000-000000000000
       ingredientsContainer: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
       ingredientsTitleText: !<reference.Text> 00000000-0000-0000-0000-000000000000
-      showTimersButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
-      showRecipeButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
-      showIngredientsButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      showRecipeButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      showIngredientsButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -97,6 +95,5 @@
     - // @input Component.Text instructionProgressText
     - // @input SceneObject ingredientsContainer
     - // @input Component.Text ingredientsTitleText
-    - // @input AssignableType_3 showTimersButton
-    - // @input AssignableType_4 showRecipeButton
-    - // @input AssignableType_5 showIngredientsButton
+    - // @input AssignableType_3 showRecipeButton
+    - // @input AssignableType_4 showIngredientsButton
