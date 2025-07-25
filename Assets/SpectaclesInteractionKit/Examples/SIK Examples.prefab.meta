@@ -186,7 +186,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -198,7 +197,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -878,7 +876,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -890,7 +887,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -908,7 +904,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -920,7 +915,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -1190,7 +1184,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -1202,7 +1195,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -1336,7 +1328,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -1348,7 +1339,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -1964,7 +1954,6 @@
   ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
   ScriptInputsDefault:
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -1976,7 +1965,6 @@
     "":
       targetingMode: !<float> 7.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -2858,7 +2846,6 @@
   ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
   ScriptInputsDefault:
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -2870,7 +2857,6 @@
     "":
       targetingMode: !<float> 7.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -4376,7 +4362,6 @@
   ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
   ScriptInputsDefault:
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -4388,7 +4373,6 @@
     "":
       targetingMode: !<float> 7.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -4735,7 +4719,6 @@
   ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
   ScriptInputsDefault:
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -4747,7 +4730,6 @@
     "":
       targetingMode: !<float> 7.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -5634,7 +5616,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -5646,7 +5627,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -6919,7 +6899,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -6931,7 +6910,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -6982,7 +6960,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -6994,7 +6971,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -7052,7 +7028,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -7064,7 +7039,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -7081,7 +7055,6 @@
   ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
   ScriptInputsDefault:
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -7093,7 +7066,6 @@
     "":
       targetingMode: !<float> 7.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -7870,7 +7842,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -7882,7 +7853,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -8087,7 +8057,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -8099,7 +8068,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -8117,7 +8085,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -8129,7 +8096,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -8803,7 +8769,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -8815,7 +8780,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -8851,7 +8815,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -8863,7 +8826,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -9333,7 +9295,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -9345,7 +9306,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -9489,7 +9449,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -9501,7 +9460,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -10689,7 +10647,6 @@
   ScriptAsset: !<reference> 652e631a-22d0-4941-9f74-2943df59f34c
   ScriptInputsDefault:
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -10701,7 +10658,6 @@
     "":
       targetingMode: !<float> 7.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -11170,7 +11126,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -11182,7 +11137,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000
@@ -11452,7 +11406,6 @@
   ScriptInputsDefault:
     targetingMode: true
     enableInstantDrag: true
-    isScrollable: true
     allowMultipleInteractors: true
     enablePokeDirectionality: true
     acceptableXDirections: true
@@ -11464,7 +11417,6 @@
     "":
       targetingMode: !<float> 3.000000
       enableInstantDrag: false
-      isScrollable: false
       allowMultipleInteractors: true
       enablePokeDirectionality: false
       acceptableXDirections: !<float> 3.000000

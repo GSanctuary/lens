@@ -43,7 +43,7 @@ export class RoomCreationDetectionHandler extends BaseScriptComponent {
   public async onAnchorNearby(anchor: Anchor) {
     print('Anchor found: ' + anchor.id);
     try {
-        const room = await SanctuaryAPI.getRoom("your-anchor-id");
+        const room = await SanctuaryAPI.getRoom(anchor.id);
         const pos = new vec3(room.position[0],room.position[1],room.position[2]);
         const scaleX = room.scale[0];
         const scaleZ = room.scale[1];

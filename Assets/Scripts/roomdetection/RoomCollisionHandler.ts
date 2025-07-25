@@ -14,18 +14,18 @@ export class RoomCollisonHandler extends BaseScriptComponent {
     }
 
     onStart() {
-        const roomAnchorID = this.getSceneObject().name;
+        const roomAnchorID = this.getSceneObject().name.slice(0,10);
         print("Collision handler for room with id " + this.getSceneObject().name + " associated");
         this.collider.onOverlapEnter.add((e) => {
             // on overlap enter open room detection and set current room within persistent storage
             print("overlap entered with room: " + roomAnchorID)
             this.roomDetectionInterfaceInstance.roomDetected();
-            this.roomDetectionInterfaceInstance.updateCurrentRoom(roomAnchorID);
+            this.roomDetectionInterfaceInstance.updateCurrentRoom("In room with ID: " + roomAnchorID);
             PersistentStorageManager.getInstance().set("currentRoom", roomAnchorID);
         });
 
         this.collider.onOverlapStay.add((e) => {
-            this.roomDetectionInterfaceInstance.updateCurrentRoom(roomAnchorID);
+            this.roomDetectionInterfaceInstance.updateCurrentRoom("In room with ID: " + roomAnchorID);
         });
 
         this.collider.onOverlapExit.add((e) => {
