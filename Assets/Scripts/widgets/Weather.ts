@@ -86,6 +86,7 @@ export class Weather extends Widget {
 
         const latitude = parseFloat(rawLatitude);
         const longitude = parseFloat(rawLongitude);
+        print(`Latitude: ${latitude}, Longitude: ${longitude}`);
         if (isNaN(latitude) || isNaN(longitude)) {
             throw new Error("Invalid Latitude or Longitude values.");
         }

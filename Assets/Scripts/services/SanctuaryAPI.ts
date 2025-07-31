@@ -65,12 +65,11 @@ export class SanctuaryAPI extends BaseScriptComponent {
     static setAPIKey(apiKey: string) {
         this.instance.apiKey = apiKey;
         this.instance.headers["x-api-key"] = apiKey;
+        print(`API Key set: ${apiKey}`);
     }
 
     static async getCredentials(): Promise<string> {
-        const request = new Request(`${this.url()}/user/credential`, {
-            method: "POST",
-        });
+        const request = new Request(`${this.url()}/user/credential`);
         const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 201) {
@@ -83,7 +82,10 @@ export class SanctuaryAPI extends BaseScriptComponent {
         return body.user.apiKey as string;
     }
 
-    static async newConversation(title: string, anchorId: string): Promise<Conversation> {
+    static async newConversation(
+        title: string,
+        anchorId: string
+    ): Promise<Conversation> {
         if (!this.instance.apiKey) {
             throw new Error("API key not set");
         }
@@ -247,7 +249,7 @@ export class SanctuaryAPI extends BaseScriptComponent {
     static async createStickyNote(
         content: string,
         metadata: Record<string, any> = {},
-        anchorId: string,
+        anchorId: string
     ): Promise<StickyNote> {
         if (!this.instance.apiKey) {
             throw new Error("API key not set");
@@ -348,7 +350,9 @@ export class SanctuaryAPI extends BaseScriptComponent {
         latitude: number,
         longitude: number
     ): Promise<CurrentWeather> {
+        print(`Fetching weather for lat: ${latitude}, lon: ${longitude}`);
         if (!this.instance.apiKey) {
+            print("here");
             throw new Error("API key not set");
         }
         const request = new Request(
@@ -365,6 +369,8 @@ export class SanctuaryAPI extends BaseScriptComponent {
         }
 
         const body = await response.json();
+
+        print(JSON.stringify(body));
 
         return body as CurrentWeather;
     }
@@ -392,13 +398,13 @@ export class SanctuaryAPI extends BaseScriptComponent {
         if (response.status !== 200) {
             throw new Error("Failed to create recipe");
         }
-        
+
         try {
-            return await response.json() as Recipe;
+            return (await response.json()) as Recipe;
         } catch (error) {
             throw new Error("Failed to parse recipe data from AI response");
         }
-    } 
+    }
 
     static async getRoom(anchorId: string): Promise<Room> {
         if (!this.instance.apiKey) {
@@ -409,19 +415,22 @@ export class SanctuaryAPI extends BaseScriptComponent {
             throw new Error("Anchor ID cannot be empty");
         }
 
-        const request = new Request(`${this.url()}/rooms?anchorId=${anchorId}`, {
-            method: "GET",
-            headers: this.instance.headers,
-        });
+        const request = new Request(
+            `${this.url()}/rooms?anchorId=${anchorId}`,
+            {
+                method: "GET",
+                headers: this.instance.headers,
+            }
+        );
 
         const response = await this.instance.remoteServiceModule.fetch(request);
 
         if (response.status !== 200) {
             throw new Error("Failed to fetch room");
         }
-        
+
         try {
-            return await response.json() as Room;
+            return (await response.json()).room as Room;
         } catch (error) {
             throw new Error("Failed to parse room");
         }
@@ -429,8 +438,11 @@ export class SanctuaryAPI extends BaseScriptComponent {
 
     static async createRoom(room: Room): Promise<boolean> {
         if (!this.instance.apiKey) {
+            print("here?");
             throw new Error("API key not set");
         }
+
+        print(JSON.stringify(room));
 
         const request = new Request(`${this.url()}/rooms/`, {
             method: "POST",
@@ -443,8 +455,8 @@ export class SanctuaryAPI extends BaseScriptComponent {
         if (response.status !== 200) {
             throw new Error("Failed to create room");
         }
-        
-        return true
+
+        return true;
     }
 
     private static async healthCheck() {

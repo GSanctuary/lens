@@ -8562,7 +8562,7 @@
     {}
   ScriptInputs:
     "":
-      baseUrl: "http://localhost:3000"
+      baseUrl: "https://caaa47f4cf62.ngrok-free.app"
       prodUrl: "https://sanctuary-backend-three.vercel.app/"
       useProd: false
       remoteServiceModule: !<reference.InternetModule> a1eac110-0527-48d2-84d5-1390427ce8b8
