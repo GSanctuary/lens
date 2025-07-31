@@ -66,6 +66,7 @@ export class Widget extends BaseScriptComponent {
         this.frame.getSceneObject().enabled = true;
         this.placeInFrontOfCamera();
         this.isWidgetEnabled = true;
+        this.hydrate();
         print(`Widget ${this.kind} activated`);
         return this;
     }

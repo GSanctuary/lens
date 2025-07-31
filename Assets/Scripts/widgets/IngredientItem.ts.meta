@@ -28,8 +28,6 @@
   CurrentVisibility: Editable
   MaxVisibility: Editable
   ScriptInputsHidden:
-    checkboxButton: false
-    checkboxText: false
     ingredientText: false
   ScriptTypesHidden:
     {}
@@ -37,12 +35,8 @@
   DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
   DefaultScriptInputs:
     - ingredientText: !<reference.Text> 00000000-0000-0000-0000-000000000000
-      checkboxButton: !<MappingBased.AssignableType> 00000000-0000-0000-0000-000000000000
-      checkboxText: !<reference.Text> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input Component.Text ingredientText
-    - // @input AssignableType checkboxButton
-    - // @input Component.Text checkboxText

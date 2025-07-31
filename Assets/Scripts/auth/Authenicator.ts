@@ -10,14 +10,9 @@ export class Authenticator extends BaseScriptComponent {
     async onAwake() {
         const store = PersistentStorageManager.getInstance();
         let apiKey = store.get(this.authKey);
-        if (apiKey) {
-            print(`Found API Key: ${apiKey}`);
-        } else {
-            print(`No API Key found. Generating a new one.`);
-            apiKey = await this.generateAPIKey();
-            store.set(this.authKey, apiKey);
-            print(`Generated API Key: ${apiKey}`);
-        }
+        apiKey = await this.generateAPIKey();
+        store.set(this.authKey, apiKey);
+        print(`Generated API Key: ${apiKey}`);
         SanctuaryAPI.setAPIKey(apiKey);
         EventEmitter.activate();
     }
