@@ -8557,14 +8557,14 @@
   Enabled: true
   ScriptAsset: !<reference> c2d4b70e-d56b-4f40-b509-306da1671b86
   ScriptInputsDefault:
-    useProd: true
+    {}
   ScriptTypesDefault:
     {}
   ScriptInputs:
     "":
       baseUrl: "https://caaa47f4cf62.ngrok-free.app"
       prodUrl: "https://sanctuary-backend-three.vercel.app/"
-      useProd: false
+      useProd: true
       remoteServiceModule: !<reference.InternetModule> a1eac110-0527-48d2-84d5-1390427ce8b8
   ScriptTypes:
     "":
